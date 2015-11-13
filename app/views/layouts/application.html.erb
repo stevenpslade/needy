@@ -17,9 +17,25 @@
     <li class="logo">
       <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
       <a id="logo-container" href="#" class="brand-logo"></a>
+      <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
     </li>
-     <li class="bold">
-      <a href="/users" class="waves-effect waves-light btn-large">Log In<i class="material-icons">settings_input_component</i></a>
+     <li class="bold waves-effect waves-light btn-large">
+      <% if current_user %>
+      <li class="bold waves-effect waves-light btn-large">
+        <%= link_to "Logout", :logout, method: :post %>
+      </li>
+      <% else %>
+      <li class="bold waves-effect waves-light btn-large">
+        <%= link_to "Register", new_user_path %>
+      </li>
+      <li class="bold waves-effect waves-light btn-large">
+        <%= link_to "Login", :login %>
+      </li>
+      <% end %>
+      <i class="material-icons">settings_input_component</i></a>
     </li>
     <li class="bold">
       <a href="#" class="waves-effect waves-light btn-large">Profile<i class="material-icons">face</i></a>
@@ -39,7 +55,7 @@
   </ul>
 </div>
 
-<%= yield %>
+  <%= yield %>
 
 <script>
     $('.datepicker').pickadate({

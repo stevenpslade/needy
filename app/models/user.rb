@@ -4,17 +4,25 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :requests
 
-  validates :username,
-    presence: true,
-    uniqueness: true
+  authenticates_with_sorcery!
 
-  validates :birth_date,
-    presence: true
+  # validates :username,
+  #   presence: true,
+  #   uniqueness: true
 
-  validates :city,
-    presence: true
+  # validates :birth_date,
+  #   presence: true
 
-  validates :phone,
-    format: { with: /\d{3}-\d{3}-\d{4}/, message: "Please enter valid phone number" }
+  # validates :city,
+  #   presence: true
+
+  # validates :phone,
+  #   format: { with: /\d{3}-\d{3}-\d{4}/, message: "Please enter valid phone number" }
+
+  validates :email, uniqueness: true
+
+  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes["password"] }
+  validates :password, confirmation: true, if: -> { new_record? || changes["password"] }
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
 end

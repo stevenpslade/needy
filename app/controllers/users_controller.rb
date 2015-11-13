@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_login, only: [:index, :new, :create]
+
   def index
   end
 
@@ -8,15 +10,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-      if @user.save
-        # send email to user upon account creation
-        puts UserMailer.created_account(@user).deliver_later
-        redirect_to tasks_path, notice: "Welcome aboard, #{@user.firstname}!"
-        session[:user_id] = @user.id
-      else
-        render :new
-      end
+    if @user.save
+    @user = login(@user.email, @user.password)
+      redirect_back_or_to(:users, notice: "Welcome aboard, #{@user.first_name}!")
+      # redirect_to root_url, notice: "Signup successful! Log in."
+    else
+      @user = User.new
+      flash.now[:alert] = 'Signup failed'
+      render :new
+    end
   end
 
   def show
@@ -26,11 +28,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    logout
+    redirect_to root_path, notice: "You've been logged out"
   end
 
-  protected
+  private
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :password, :skills, :bio, :birth_date, :phone, :city, :profilr_image_url)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
   end
 end
