@@ -1,5 +1,5 @@
 == README
 
-###It's like Uber for services.
+**It's like Uber for services.**
 
 Needy connects people to get things done! People can post tasks that they need completed and doers can request to complete them for compensation or in return to have something done for them (barter). Needy ignores strict, rigid requirements in return for ease of access to an open community. Needers can search for doers to get things done in a particular area and doers can search through a board of tasks that need to get done.
