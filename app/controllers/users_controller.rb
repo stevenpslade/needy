@@ -30,15 +30,9 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "You've been logged out"
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
-  end
-
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :crypted_password, :skills, :bio, :birth_date, :phone, :city, :profilr_image_url)
+    params.require(:user).permit(:email, :crypted_password)
   end
 end
