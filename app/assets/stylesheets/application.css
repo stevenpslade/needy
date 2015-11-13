@@ -1,5 +1,25 @@
-  li {
-    background-color: #ef9a9a ;
+.waves-effect.waves-light.btn-large {
+  background-color: #9ccc65 ;
+}
+
+.side-nav.fixed {
+  background-color: #81d4fa;
+}
+
+li.bold {
+  margin-bottom: 2%;
+}
+
+img#needy-logo {
+
+  margin-top: 45px;
+  height: 127px;
+  width: 170px;
+  border-radius: 50%;
+  -moz-box-shadow: 1px 0px 75px #9ccc65;
+  -webkit-box-shadow: 1px 0px 75px #9ccc65;
+  box-shadow: 1px 0px 75px #9ccc65;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
