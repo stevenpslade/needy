@@ -16,3 +16,19 @@
  *= require_tree .
  *= require_self
  */
+.center-transparent {
+  border: solid;
+  width: 40%;
+  margin: 0 auto;
+  background-color: rgba(84, 210, 137, 0.4);
+  -moz-box-shadow: 13px 21px 50px #000000;
+  -webkit-box-shadow: 13px 21px 50px #000000;
+  box-shadow: 13px 21px 50px #000000;
+  border-color: rgba(26, 187, 99, 1);
+  border-radius: 20px;
+}
+
+.error-field {
+  padding-left: 10px;
+  color: red;
+}
