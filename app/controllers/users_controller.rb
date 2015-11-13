@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: "Welcome aboard, #{@user.email}!"
     else
       @user = User.new
-      flash.now[:alert] = 'Login failed'
+      flash.now[:alert] = 'Signup failed'
       render :new
     end
   end
