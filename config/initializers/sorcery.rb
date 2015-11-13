@@ -282,7 +282,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    # user.user_activation_mailer = 
 
 
     # when true sorcery will not automatically
