@@ -73,15 +73,10 @@
     </div>
     <div class="row">
       <button class="btn waves-effect waves-light" type="submit" name="action">
-        <i class="material-icons right"><%= f.submit %></i>
+        <i class="material-icons right"></i><%= f.submit %>
       </button>
     </div>
   </form>
 <% end %>
-<script>
-$('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 100 // Creates a dropdown of 15 years to control year
-  });
-</script>
+
 </div>
