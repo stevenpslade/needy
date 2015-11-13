@@ -13,7 +13,8 @@
 
 </head>
 <body>
-  <ul class="side-nav fixed" style="width: 200px;">
+<div class="side-nav col s3 fixed">
+  <ul>
     <li class="logo">
       <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
       <a id="logo-container" href="#" class="brand-logo"></a>
@@ -44,26 +45,27 @@
       <a href="#" class="waves-effect waves-light btn-large">All Needed's<i class="material-icons">group</i></a>
     </li>
     <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">All Needs<i class="material-icons">work</i></a>
+      <div class="waves-effect waves-light btn-large"><%= link_to "All Needs", tasks_path %><i class="material-icons">work</i></div>
     </li>
     <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">Post Need<i class="material-icons">note_add</i></a>
+      <div class="waves-effect waves-light btn-large"><%= link_to "Post a Need", new_task_path %><i class="material-icons">note_add</i></a>
     </li>
     <li class="bold">
       <a href="#" class="waves-effect waves-light btn-large">View Map<i class="material-icons">navigation</i></a>
     </li>
   </ul>
+</div>
 
   <%= yield %>
 
-  <script>
-  $('.datepicker').pickadate({
+<script>
+    $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 100 // Creates a dropdown of 15 years to control year
     });
-  </script>
+</script>
 
-  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 
 
 </body>
