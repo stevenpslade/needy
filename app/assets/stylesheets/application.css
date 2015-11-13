@@ -11,14 +11,17 @@ li.bold {
 }
 
 img#needy-logo {
-
-  margin-top: 45px;
-  height: 127px;
-  width: 170px;
+  
+  width: 70%;
+  margin: 0 auto;
   border-radius: 50%;
   -moz-box-shadow: 1px 0px 75px #9ccc65;
   -webkit-box-shadow: 1px 0px 75px #9ccc65;
   box-shadow: 1px 0px 75px #9ccc65;
+}
+
+.bold {
+
 }
 
 /*
