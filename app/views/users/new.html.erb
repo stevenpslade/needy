@@ -1,2 +1,16 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="show-form-background">
+  <div class="center-transparent col s4">
+    <%= render "create_form" %>
+  </div>
+</div>
+
+
+
+<script>
+$(body).on('click', '.show-form-background', function({
+  // add class with transparent BG color.
+  // set div to fit screen(responive)
+}));
+// add class to center-transparent div to display on click of nav-bar (body for now), hide before.
+// add slideDown/Up ??  Translate across?  Toggle tab out from navbar?
+</script>
