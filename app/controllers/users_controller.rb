@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, notice: "Welcome aboard, #{@user.first_name}!"
+    @user = login(@user.email, @user.password)
+      redirect_back_or_to(:users, notice: "Welcome aboard, #{@user.first_name}!")
+      # redirect_to root_url, notice: "Signup successful! Log in."
     else
       @user = User.new
       flash.now[:alert] = 'Signup failed'
@@ -33,6 +35,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
   end
 end
