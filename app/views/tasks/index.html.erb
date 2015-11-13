@@ -1,23 +1,23 @@
-<div class="container" style="margin-left: 25%">
+<div class="container" style="margin-left: 23.5%">
   <h3>Show me the NEEDS</h3>
   <div class="row">
     <% @tasks.each do |task| %>
-    <div class="col s4">
-      <div class="card small">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator responsive-img"><%= image_tag(task.image_url) %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= link_to task.title, task_path(task) %><i class="material-icons right">more_vert</i></span>
-          <p>Est Duration: <%= task.estimated_duration %><span> | </span>Difficulty: <%= task.difficulty %></p>
-          <p>Category: <%= task.category %><span> | </span>Compensation: <%= task.compensation %></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4"><%= task.title %><i class="material-icons right">close</i></span>
-          <p><%= task.description %></p>
+      <div class="col s4">
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator responsive-img"><%= image_tag(task.image_url) %>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= link_to task.title, task_path(task) %><i class="material-icons right">more_vert</i></span>
+            <p>Est Duration: <%= task.estimated_duration %><span> | </span>Difficulty: <%= task.difficulty %></p>
+            <p>Category: <%= task.category %><span> | </span>Compensation: <%= task.compensation %></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= task.title %><i class="material-icons right">close</i></span>
+            <p><%= task.description %></p>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
