@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to tasks_path, notice: "Welcome aboard, #{@user.firstname}!"
+      redirect_to root_url, notice: "Welcome aboard, #{@user.first_name}!"
     else
       @user = User.new
       flash.now[:alert] = 'Signup failed'
@@ -30,9 +30,9 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "You've been logged out"
   end
 
-  protected
+  private
 
   def user_params
-    params.require(:user).permit(:email, :crypted_password)
+    params.require(:user).permit(:email, :crypted_password, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
   end
 end
