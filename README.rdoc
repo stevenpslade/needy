@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###It's like Uber for services.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Needy connects people to get things done! People can post tasks that they need completed and doers can request to complete them for compensation or in return to have something done for them (barter). Needy ignores strict, rigid requirements in return for ease of access to an open community. Needers can search for doers to get things done in a particular area and doers can search through a board of tasks that need to get done.
