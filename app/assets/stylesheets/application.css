@@ -1,3 +1,8 @@
+/*Ivan's CSS*/
+body {
+  background-color: #fff9c4;
+}
+
 .waves-effect.waves-light.btn-large {
   background-color: #9ccc65 ;
 }
@@ -20,6 +25,27 @@ img#needy-logo {
   -webkit-box-shadow: 1px 0px 75px #9ccc65;
   box-shadow: 1px 0px 75px #9ccc65;
 }
+
+.hidden-element {
+  visibility: hidden;
+}
+
+.task-user-image {
+  border-radius: 50%;
+}
+
+.task-map-image {
+  border-radius: 1%;
+  height: 75%;
+  width: 75%;
+}
+
+.need-me-btn {
+  margin-top: -15%;
+}
+
+/*END (Ivan's CSS)*/
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
