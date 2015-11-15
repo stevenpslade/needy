@@ -98,12 +98,12 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
   color: black;
 }
 
-.timer {
-  font-size: 65px;
+.task-timer {
+  display: none;
 }
 
-.task-timer {
-
+#time {
+  font-size: 65px;
 }
 
 
