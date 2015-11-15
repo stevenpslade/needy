@@ -68,6 +68,10 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
 
 /*ROB CSSSSSSSSSS */
 
+.top-content {
+  margin-top: 5%;
+}
+
 .center-transparent {
   border: solid;
   width: 40%;
@@ -87,3 +91,20 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
 
 
 /*END ROB CSSSSSSSSSSSS
+/*STEVEN CSS*/
+
+.card {
+  text-align: center;
+  color: white;
+}
+
+.timer {
+  font-size: 65px;
+}
+
+.task-timer {
+
+}
+
+
+/*END STEVEN CSS*/
