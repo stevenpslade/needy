@@ -100,12 +100,12 @@ body > div > div.row.top-row-of-page > div:nth-child(2) > img {
   color: white;
 }
 
-.timer {
-  font-size: 65px;
+.task-timer {
+  display: none;
 }
 
-.task-timer {
-
+#time {
+  font-size: 65px;
 }
 
 
