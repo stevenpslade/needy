@@ -1,4 +1,4 @@
-<div class="container">
+  <div class="container">
 
   <div class="row">
     <div class="top-content col s6">
@@ -53,7 +53,15 @@
   <div class="row">
     <div class="col s6 hidden-element"><h1></h1></div>
     <div class="col s6 center-align">
-      <div class="need-me-btn"><a class="waves-effect waves-light btn-large btn-flat"><i class="material-icons right directions_run">directions_run</i>Need me?</a></div>
+      <div class="need-me-btn">
+        <%= form_for @request do |f| %>
+          <%= f.hidden_field :user_id,:value=> current_user.id %>
+          <%= f.hidden_field :task_id,:value=> @task.id %>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Need me?
+          <%= f.submit %>
+          </button>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>  

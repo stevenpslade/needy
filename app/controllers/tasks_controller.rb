@@ -23,6 +23,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @request = Request.new
   end
 
   def edit

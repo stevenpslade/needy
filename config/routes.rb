@@ -6,6 +6,8 @@ resources :users
 resources :tasks
 resources :password_resets
 
+resources :requests, only: [:create, :destroy]
+
 get 'login' => 'user_sessions#new', :as => :login
 post 'logout' => 'user_sessions#destroy', :as => :logout
 
