@@ -12,54 +12,16 @@
 
 </head>
 <body>
-<div class="side-nav col s3 fixed">
-  <ul>
-    <li class="logo">
-      <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
-      <a id="logo-container" href="#" class="brand-logo"></a>
-      <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
-  </div>
-    </li>
-     <li class="bold waves-effect waves-light btn-large">
-      <% if current_user %>
-      <li class="bold waves-effect waves-light btn-large">
-        <%= link_to "Logout", :logout, method: :post %>
-      </li>
-      <% else %>
-      <li class="bold waves-effect waves-light btn-large">
-        <%= link_to "Register", new_user_path %>
-      </li>
-      <li class="bold waves-effect waves-light btn-large">
-        <%= link_to "Login", :login %>
-      </li>
-      <% end %>
-      <i class="material-icons">settings_input_component</i></a>
-    </li>
-    <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">Profile<i class="material-icons">face</i></a>
-    </li>
-    <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">All Needed's<i class="material-icons">group</i></a>
-    </li>
-    <li class="bold">
-      <div class="waves-effect waves-light btn-large"><%= link_to "All Needs", tasks_path %><i class="material-icons">work</i></div>
-    </li>
-    <li class="bold">
-      <div class="waves-effect waves-light btn-large"><%= link_to "Post a Need", new_task_path %><i class="material-icons">note_add</i></a>
-    </li>
-    <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">View Map<i class="material-icons">navigation</i></a>
-    </li>
-  </ul>
-</div>
+
+<%= render 'layouts/nav' %>
 
 <main>
 
   <%= yield %>
 
 </main>
+
+<%= render 'layouts/footer' %>
 
 <script>
     $('.datepicker').pickadate({
