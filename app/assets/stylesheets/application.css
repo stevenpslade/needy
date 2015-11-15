@@ -70,6 +70,10 @@ body > div > div.row.top-row-of-page > div:nth-child(2) > img {
 
 /*ROB CSSSSSSSSSS */
 
+.top-content {
+  margin-top: 5%;
+}
+
 .center-transparent {
   border: solid;
   width: 40%;
@@ -89,3 +93,20 @@ body > div > div.row.top-row-of-page > div:nth-child(2) > img {
 
 
 /*END ROB CSSSSSSSSSSSS
+/*STEVEN CSS*/
+
+.card {
+  text-align: center;
+  color: white;
+}
+
+.timer {
+  font-size: 65px;
+}
+
+.task-timer {
+
+}
+
+
+/*END STEVEN CSS*/
