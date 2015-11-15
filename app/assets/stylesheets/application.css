@@ -2,6 +2,11 @@
 main {
   background-color: #fff9c4;
   margin-left: 15%;
+<<<<<<< HEAD
+=======
+  height: 100%;
+  min-height: 100%;
+>>>>>>> sun
 }
 
 .waves-effect.waves-light.btn-large {
@@ -41,10 +46,6 @@ img#needy-logo {
 }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 535882a45a05af94acc5e93e106ceedbb1081c20
 /*body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
   width: 50%;
   height: 35%;
@@ -55,17 +56,15 @@ img#needy-logo {
 body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
   font-size: 2.2rem;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> sun
 }*/
 
-=======
-}
-*/
->>>>>>> 535882a45a05af94acc5e93e106ceedbb1081c20
 .task-triple-icons {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 
 
 /*END (Ivan's CSS)*/
@@ -73,6 +72,11 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
 /*----------------------------------------------------------------------------------------------------------*/
 
 /*ROB CSSSSSSSSSS */
+
+body html {
+  height: 100%;
+  min-height: 100%;
+}
 
 .top-content {
   margin-top: 5%;
@@ -94,6 +98,8 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
   padding-left: 10px;
   color: red;
 }
+
+
 
 
 /*END ROB CSSSSSSSSSSSS
