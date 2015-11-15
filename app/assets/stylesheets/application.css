@@ -40,15 +40,15 @@ img#needy-logo {
   width: 75%;
 }
 
-.need-me-btn {
-  margin-top: -15%;
-}
-
 /*END (Ivan's CSS)*/
 
 /*----------------------------------------------------------------------------------------------------------*/
 
 /*ROB CSSSSSSSSSS */
+
+.top-content {
+  margin-top: 5%;
+}
 
 .center-transparent {
   border: solid;
@@ -74,6 +74,14 @@ img#needy-logo {
 .card {
   text-align: center;
   color: white;
+}
+
+.timer {
+  font-size: 65px;
+}
+
+.task-timer {
+
 }
 
 
