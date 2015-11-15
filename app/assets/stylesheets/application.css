@@ -1,6 +1,7 @@
 /*Ivan's CSS*/
-body {
+main {
   background-color: #fff9c4;
+  padding-left: 10%;
 }
 
 .waves-effect.waves-light.btn-large {
