@@ -44,7 +44,7 @@ img#needy-logo {
   margin-top: -12%;
 }
 
-body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
+/*body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
   width: 50%;
   height: 35%;
   font-size: 25px;
@@ -54,15 +54,13 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
 body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
   font-size: 2.2rem;
 }
-
+*/
 .task-triple-icons {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-body > div > div.row.top-row-of-page > div:nth-child(2) > img {
-  margin-top: 50px;
-}
+
 
 /*END (Ivan's CSS)*/
 
