@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   #   presence: true,
   #   uniqueness: true
 
+  # validates :first_name,
+  #   presence: true
+
   # validates :birth_date,
   #   presence: true
 

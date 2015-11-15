@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+  skip_before_filter :require_login, only: [:index, :new, :create]
+
   def index
     @tasks = Task.all
   end
