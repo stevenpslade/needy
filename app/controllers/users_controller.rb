@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+
+    @user = login(@user.email, @user.password)
+
       redirect_back_or_to(:users, notice: "Welcome aboard, #{@user.first_name}!")
       # redirect_to root_url, notice: "Signup successful! Log in."
     else

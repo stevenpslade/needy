@@ -3,21 +3,18 @@ class Task < ActiveRecord::Base
   has_many :reviews
   belongs_to :user
 
-  validates :user_id,
-    presence: true
+  # validates :location,
+  #   presence: true
 
-  validates :location,
-    presence: true
+  # validates :description,
+  #   presence: true
 
-  validates :description,
-    presence: true
+  # validates :category,
+  #   presence: true
 
-  validates :category,
-    presence: true
+  # validates :compensation,
+  #   presence: true
 
-  validates :compensation,
-    presence: true
-
-  validates :difficulty,
-    presence: true
+  # validates :difficulty,
+  #   presence: true
 end
