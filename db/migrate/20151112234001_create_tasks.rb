@@ -1,7 +1,7 @@
 class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
-      t.references :user, index: true
+      t.references :user
       t.integer :needed_id
       t.boolean :needy_confirm_completion
       t.boolean :needed_confirm_completion

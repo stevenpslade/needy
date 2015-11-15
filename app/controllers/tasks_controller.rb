@@ -9,8 +9,9 @@ class TasksController < ApplicationController
   end
 
   def create
+    params[:task][:user_id] = current_user.id
     @task = Task.new(task_params)
-
+  
     if @task.save
       redirect_to tasks_path, notice: "New Task Created!"
     else
@@ -31,7 +32,7 @@ class TasksController < ApplicationController
   protected
 
   def task_params
-    params.require(:task).permit(:needed_id, :needy_confirmation_completion, :needed_confirmation_completion, :location, :decription, :estimated_duration, :category, :due_date, :compensation, :image_url, :video_url, :difficulty)
+    params.require(:task).permit(:user_id, :needed_id, :needy_confirmation_completion, :needed_confirmation_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty)
   end
 
 end
