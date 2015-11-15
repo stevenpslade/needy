@@ -14,12 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
- $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 100 // Creates a dropdown of 15 years to control year
-    });
+$(function() {
+  
+ // $('.datepicker').pickadate({
+ //      selectMonths: true, // Creates a dropdown to control month
+ //      selectYears: 100 // Creates a dropdown of 15 years to control year
+ //    });
 
  // $('.need-me-btn a').on('click', function(){
  //  var task_id = $(this).data('id');
  // });
+
+ $('#start').on('click', function() {
+    $('.task-icons').hide();
+    $('.task-timer').show();
+ });
+
+});
