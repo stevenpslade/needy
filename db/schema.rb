@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
   end
 
   add_index "reviews", ["task_id"], name: "index_reviews_on_task_id"

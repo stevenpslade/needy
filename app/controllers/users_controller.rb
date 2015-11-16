@@ -11,10 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-
-    @user = login(@user.email, @user.password)
-
-      redirect_back_or_to(:users, notice: "Welcome aboard, #{@user.first_name}!")
+      redirect_back_or_to(:tasks, notice: "Welcome aboard, #{@user.first_name}!")
       # redirect_to root_url, notice: "Signup successful! Log in."
     else
       @user = User.new
@@ -24,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
@@ -38,6 +35,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username, :first_name, :last_name, :skills, :bio, :birth_date, :phone, :city, :profile_image_url)
   end
 end
