@@ -1,7 +1,12 @@
 /*Ivan's CSS*/
 main {
   background-color: #fff9c4;
-  padding-left: 10%;
+  margin-left: 15%;
+<<<<<<< HEAD
+=======
+  height: 100%;
+  min-height: 100%;
+>>>>>>> sun
 }
 
 .waves-effect.waves-light.btn-large {
@@ -40,9 +45,6 @@ img#needy-logo {
   width: 75%;
 }
 
-.need-me-btn {
-  margin-top: -12%;
-}
 
 /*body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
   width: 50%;
@@ -53,13 +55,16 @@ img#needy-logo {
 
 body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
   font-size: 2.2rem;
-}
-*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> sun
+}*/
+
 .task-triple-icons {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 
 
 /*END (Ivan's CSS)*/
@@ -67,6 +72,11 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
 /*----------------------------------------------------------------------------------------------------------*/
 
 /*ROB CSSSSSSSSSS */
+
+body html {
+  height: 100%;
+  min-height: 100%;
+}
 
 .top-content {
   margin-top: 5%;
@@ -90,11 +100,18 @@ body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
 }
 
 
+
+
 /*END ROB CSSSSSSSSSSSS
 /*STEVEN CSS*/
 
 .task-icons {
   text-align: center;
+  color: grey;
+}
+
+.timer {
+  font-size: 65px;
   color: black;
 }
 
