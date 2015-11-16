@@ -25,9 +25,4 @@ $(function() {
  //  var task_id = $(this).data('id');
  // });
 
- $('#start').on('click', function() {
-    $('.task-icons').hide();
-    $('.task-timer').show();
- });
-
 });
