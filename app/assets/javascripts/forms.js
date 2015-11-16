@@ -3,7 +3,6 @@ $(document).on("page:change", function() {
 
   $('body').on('click', '#task-form', function() {
     $('#post-task').animate({width: 'toggle'});
-    $('.overlay').toggle();
     $('main').toggle();
     // $('.show-form').colorbox();
   });
