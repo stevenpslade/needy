@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     params[:review][:user_id] = current_user.id
-    @review = review.new(review_params)
+    @review = Review.new(review_params)
   
     if @review.save
       redirect_to reviews_path, notice: "New review Created!"
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
   protected
 
   def review_params
-    params.require(:review).permit()
+    params.require(:review).permit(:user_id, :task_id, :content, :for_user)
   end
 
 

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  skip_before_filter :require_login, only: [:index, :new, :create, :show]
+  skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
     @tasks = Task.all
@@ -25,6 +25,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
+    # @review allos for the form_for to allow the review parameter
+    @review = Review.new
   end
 
   def edit
