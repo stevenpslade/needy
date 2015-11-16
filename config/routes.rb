@@ -8,6 +8,11 @@ resources :password_resets
 
 resources :requests, only: [:create, :destroy]
 
+namespace :map do
+  resources :tasks do
+  end
+end
+
 get 'login' => 'user_sessions#new', :as => :login
 post 'logout' => 'user_sessions#destroy', :as => :logout
 
