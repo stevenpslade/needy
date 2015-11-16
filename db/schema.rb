@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
   end
 
   create_table "tasks", force: :cascade do |t|
