@@ -21,20 +21,14 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.string   "comment"
   end
 
-  add_index "requests", ["task_id"], name: "index_requests_on_task_id"
-  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
-
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "task_id"
-    t.string   "for_user"
+    t.integer  "for_user"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "reviews", ["task_id"], name: "index_reviews_on_task_id"
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,8 +48,6 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.datetime "updated_at",                null: false
     t.string   "title"
   end
-
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false
@@ -84,7 +76,6 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
 

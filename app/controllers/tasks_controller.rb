@@ -23,6 +23,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    # @request allows for the form_for to allow the request parameter
     @request = Request.new
   end
 

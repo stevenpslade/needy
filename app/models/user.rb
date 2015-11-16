@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # validates :username,
   #   presence: true,
   #   uniqueness: true

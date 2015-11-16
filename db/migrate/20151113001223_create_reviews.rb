@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.references :user
       t.references :task
-      t.string :for_user
+      t.integer :for_user
       t.text :content
 
       t.timestamps null: false

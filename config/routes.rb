@@ -5,6 +5,7 @@ resources :user_sessions
 resources :users
 resources :tasks
 resources :password_resets
+resources :reviews, except: [:index]
 
 resources :requests, only: [:create, :destroy]
 
