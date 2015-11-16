@@ -1,4 +1,5 @@
-<div class="side-nav col s3 fixed">
+<!-- 
+<div id="slide-out" class="side-nav col s3 fixed">
   <ul>
     <li class="logo">
       <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
@@ -9,22 +10,21 @@
       </div>
     </li>
     <% if current_user %>
-    <li class="bold waves-effect waves-light btn-large">
-      <%= link_to "Logout", :logout, method: :post %>
-    </li>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Logout", :logout, method: :post %>
+    </div></li>
     <% else %>
-    <li class="bold waves-effect waves-light btn-large">
-      <%= link_to "Register", new_user_path %>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Register", new_user_path %></div>
     </li>
-    <li class="bold waves-effect waves-light btn-large">
-      <%= link_to "Login", :login %>
-      <i class="material-icons">settings_input_component</i></a>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Login", :login %>
+      <i class="material-icons">settings_input_component</i></div>
     </li>
     <% end %>
-    </li>
     <% if current_user %>
-      <li class="bold waves-effect waves-light btn-large">
-      <%= link_to "Profile", user_path(current_user) %>
+      <li class="bold waves-effect waves-light btn-large nav-button">
+        <%= link_to "Profile", user_path(current_user) %>
         <a href="#" class="waves-effect waves-light btn-large">Profile<i class="material-icons">face</i></a>
       </li>
     <% end %>
@@ -32,13 +32,76 @@
       <a href="#" class="waves-effect waves-light btn-large">All Needed's<i class="material-icons">group</i></a>
     </li>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large"><%= link_to "All Needs", tasks_path %><i class="material-icons">work</i></div>
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div><i class="material-icons">work</i>
     </li>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large"><%= link_to "Post a Need", new_task_path %><i class="material-icons">note_add</i></a>
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Post a Need", new_task_path %><i class="material-icons">note_add</i></a>
     </li>
     <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large">View Map<i class="material-icons">navigation</i></a>
+      <a href="#" class="waves-effect waves-light btn-large nav-button">View Map<i class="material-icons">navigation</i></a>
     </li>
   </ul>
 </div>
+ -->
+<nav style="background-color: #fff9c4;">
+  <ul id="slide-out" class="side-nav fixed">
+    <li class="logo">
+      <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
+      <a id="logo-container" href="#" class="brand-logo"></a>
+      <div>
+        <p id="notice"><%= flash[:notice] %></p>
+        <p id="alert"><%= flash[:alert] %></p>
+      </div>
+    </li>
+    <% if current_user %>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Logout", :logout, method: :post %>
+    </div></li>
+    <% else %>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Register", new_user_path %></div>
+    </li>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Login", :login %>
+      <i class="material-icons">settings_input_component</i></div>
+    </li>
+    <% end %>
+    <% if current_user %>
+      <li class="bold waves-effect waves-light btn-large nav-button">
+        <%= link_to "Profile", user_path(current_user) %>
+        <a href="#" class="waves-effect waves-light btn-large">Profile<i class="material-icons">face</i></a>
+      </li>
+    <% end %>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needed's", users_path %></div>
+    </li>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div>
+    </li>
+    <li class="bold">
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Post a Need", new_task_path %>
+    </li>
+    <li class="bold">
+      <a href="#" class="waves-effect waves-light btn-large nav-button">View Map<i class="material-icons">navigation</i></a>
+    </li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse" style="background-color: #81d4fa;"><i class="mdi-navigation-menu"></i></a>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Initialize collapse button
+  $(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  // $('.collapsible').collapsible();
+  
+  </script>

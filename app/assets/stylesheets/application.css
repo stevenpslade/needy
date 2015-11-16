@@ -1,4 +1,4 @@
-body html {
+body {
   height: 100%;
   min-height: 100%;
   background-color: #fff9c4;
@@ -24,13 +24,18 @@ li.bold {
 }
 
 img#needy-logo {
-  
   width: 70%;
-  margin: 0 auto;
+  margin-top: 10%;
+  margin-left: 14%;
   border-radius: 50%;
   -moz-box-shadow: 1px 0px 75px #9ccc65;
   -webkit-box-shadow: 1px 0px 75px #9ccc65;
   box-shadow: 1px 0px 75px #9ccc65;
+}
+
+.nav-button {
+  width:80%;
+  margin-left: 8%;
 }
 
 .hidden-element {
@@ -51,7 +56,6 @@ img#needy-logo {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 
 .top-content {
   margin-top: 5%;
