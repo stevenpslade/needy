@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  # validates :username,
-  #   presence: true,
-  #   uniqueness: true
+  validates :username,
+    presence: true,
+    uniqueness: true
 
   # validates :first_name,
   #   presence: true
