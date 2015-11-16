@@ -9,26 +9,25 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
 
-$(function() {
+//= require colorbox-rails
+//= require forms
+
+$(document).on("page:change", function() {
   
- // $('.datepicker').pickadate({
- //      selectMonths: true, // Creates a dropdown to control month
- //      selectYears: 100 // Creates a dropdown of 15 years to control year
- //    });
+  $(".button-collapse").sideNav();
+
 
  // $('.need-me-btn a').on('click', function(){
  //  var task_id = $(this).data('id');
  // });
+  $('body').on('click', '#task-form', function() {
+    
+  });
 
- $('#start').on('click', function() {
+  $('#start').on('click', function() {
     $('.task-icons').hide();
     $('.task-timer').show();
- });
+  });
 
 });
