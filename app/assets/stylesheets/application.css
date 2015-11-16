@@ -1,12 +1,14 @@
-/*Ivan's CSS*/
+body html {
+  height: 100%;
+  min-height: 100%;
+  background-color: #fff9c4;
+}
+
 main {
   background-color: #fff9c4;
   margin-left: 15%;
-<<<<<<< HEAD
-=======
   height: 100%;
   min-height: 100%;
->>>>>>> sun
 }
 
 .waves-effect.waves-light.btn-large {
@@ -45,38 +47,11 @@ img#needy-logo {
   width: 75%;
 }
 
-
-/*body > div > div:nth-child(3) > div.col.s6.center-align > div > a {
-  width: 50%;
-  height: 35%;
-  font-size: 25px;
-  font-weight: bold;
-}
-
-body > div > div:nth-child(3) > div.col.s6.center-align > div > a > i {
-  font-size: 2.2rem;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> sun
-}*/
-
 .task-triple-icons {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-
-/*END (Ivan's CSS)*/
-
-/*----------------------------------------------------------------------------------------------------------*/
-
-/*ROB CSSSSSSSSSS */
-
-body html {
-  height: 100%;
-  min-height: 100%;
-}
 
 .top-content {
   margin-top: 5%;
@@ -99,11 +74,43 @@ body html {
   color: red;
 }
 
+footer {
+  margin-left: 15%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #fff9c4;
+}
 
+/*.background-show-page {
+  background-color: rgba(84, 210, 137, 0.4);
+  -moz-box-shadow: 13px 21px 50px #000000;
+  -webkit-box-shadow: 13px 21px 50px #000000;
+  box-shadow: 13px 21px 50px #000000;
+  border-color: rgba(26, 187, 99, 1);
+  border-radius: 20px;
+}*/
 
+.profile-image {
+  display: inline-block;
+  margin-left: 32%;
+  border-radius: 50%;
+  border: solid;
+  border-color: #81d4fa;
+  -moz-box-shadow: 10px 14px 29px #121214;
+  -webkit-box-shadow: 10px 14px 29px #121214;
+  box-shadow: 10px 14px 29px #121214;
+}
 
-/*END ROB CSSSSSSSSSSSS
-/*STEVEN CSS*/
+.name {
+  margin-left: 12%;
+}
+
+.show-label {
+  color: #81d4fa;
+  display: inline-block;
+  padding-right: 10px;
+}
 
 .task-icons {
   text-align: center;
