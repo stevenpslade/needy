@@ -6,9 +6,14 @@
       <img class="task-user-image" src="<%= @task.image_url %>"/>
       <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
     </div>
-    <div class=" top-content col s4">
+
+
+<!-- MAP RENDER -->
+    <!-- <div class=" top-content col s4">
       <div><%= render 'map/tasks/map' %></div>
-    </div>
+    </div> -->
+
+
     <div class="top-content col s4">
       <% all_requests = Request.where(task_id: @task.id) %>
       <p>There are currently <%= all_requests.count %> users requesting to do this job! Click to view their profile.</p>
@@ -36,27 +41,16 @@
     </div>
   <% else %>
     <!-- if the CURRENT USER is the user who POSTED the TASK -->
-    <% if current_user.id == @task.user_id %>
       <div class="top-content col s6">
         <img class="task-user-image" src="<%= @task.image_url %>"/>
-        <p>Needy user:  ME!!!!</p>
-        <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
-      </div>
-    <!-- if the CURRENT USER is the user who  ACCEPTED to do the TASK -->
-    <% elsif current_user.id == @task.needed_id %>
-       <div class="top-content col s6">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
+      <% if @task.needed_id != nil %>
         <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-        <p>Needed user: MEE!!!</p>
-      </div>
-      <!-- if CURRENT USER is not assocaited with the task -->
-    <% elsif current_user.id != @task.user_id && current_user.id != @task.needed_id %>
-      <div class="top-content col s6">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
-        <p>Needy user:  <%= User.find(@task.user_id).full_name %></p>
         <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
+      <% else %>
+        <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+        <p>Needed user: <span>Pending</span></p>
+      <% end %>
       </div>
-    <% end %>
   <% end %>
 </div>
 <div class="row task-icons">
@@ -76,6 +70,19 @@
         </div>
       <div class="card-action">
         <a id="start">Start Task</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- show/hide review form -->
+<div class="row">
+  <div class="col s8">
+    <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Add review<i class="material-icons right">send</i></button>
+    <div id="review" class="hide-form">
+      <div class="center-transparent col s8">
+        <!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
+        <%= render 'tasks/review' %>
       </div>
     </div>
   </div>
@@ -102,57 +109,8 @@
     <h5 class="center-align"><%= @task.description %></h5>
   </div>
 </div>
-<!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
-<% if (current_user.id != @task.user_id) && (@task.needed_id == current_user.id)  %>
-  <div class="row">
-    <div class="col s6 hidden-element"><h1></h1></div>
-      <form class="col s6 center-align">
-        <div class="need-me-btn input-field col s8">
-          <%= form_for @review do |f| %>
-            <i class="material-icons prefix">mode_edit</i>
-            <textarea id="comment" class="materialize-textarea"></textarea>
-            <%= f.hidden_field :user_id,:value=> current_user.id %>
-            <%= f.hidden_field :task_id,:value=> @task.id %>
-            <%= f.hidden_field :for_user,:value=> @task.user_id %>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-            <%= f.submit %>for <%= User.find(@task.user_id).first_name %>
-            </button>
-          <% end %>
-        </div>
-      </form>
-  </div>      
-<!-- if CURRENT USER is the POSTER of the TASK, and NEEDED_ID is PRESENT -->
-<% elsif (current_user.id == @task.user_id) && (@task.needed_id != nil)  %>
-  <div class="row hidden-element">
-    <div class="col s6 hidden-element"><h1></h1></div>
-      <div class="col s6 center-align">
-        <div class="need-me-btn">
-          <%= form_for @review do |f| %>
-            <%= f.hidden_field :user_id,:value=> current_user.id %>
-            <%= f.hidden_field :task_id,:value=> @task.id %>
-            <%= f.hidden_field :for_user,:value=> @task.needed_id %>
-            <button class="btn waves-effect waves-light change-value-text" type="submit" name="action">
-            <%= f.submit %>for <%= User.find(@task.needed_id).first_name %>
-            </button>
-          <% end %>
-        </div>
-      </div>
-  </div>
-<!-- if CURRENT USER is not the POSTER of the TASK, and NO NEEDED_ID -->
-<% elsif (current_user.id != @task.user_id) && @task.needed_id == nil %>
-  <div class="row">
-    <div class="col s6 hidden-element"><h1></h1></div>
-      <div class="col s6 center-align">
-        <div class="need-me-btn">
-          <%= form_for @request do |f| %>
-            <%= f.hidden_field :user_id,:value=> current_user.id %>
-            <%= f.hidden_field :task_id,:value=> @task.id %>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-            <%= f.submit %>
-            </button>
-          <% end %>
-        </div>
-      </div>
-  </div>      
-<% end %>
-</div>
+
+
+
+
+

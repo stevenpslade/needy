@@ -159,13 +159,15 @@ footer {
 
 .profile-image {
   display: inline-block;
-  margin-left: 32%;
+  margin-left: 0%;
   border-radius: 50%;
   border: solid;
   border-color: #81d4fa;
   -moz-box-shadow: 10px 14px 29px #121214;
   -webkit-box-shadow: 10px 14px 29px #121214;
   box-shadow: 10px 14px 29px #121214;
+  height: 257px;
+  width: 287px;
 }
 
 .name {
