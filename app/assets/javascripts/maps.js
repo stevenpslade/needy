@@ -19,30 +19,6 @@
       center: myLatLng,
       zoom: 10
     });
-    // content to show in marker on click
-    //this will be filled with task description etc.
-    // var contentString = '<div id="content">'+
-    //     '<div id="siteNotice">'+
-    //     '</div>'+
-    //     '<h1 id="firstHeading" class="firstHeading">' + taskTitle + '</h1>'+
-    //     '<div id="bodyContent">'+
-    //     '<p>task descrip</p>'+
-    //     '</div>'+
-    //     '</div>';
-
-    // the actual info window that shows on click
-    // info = new google.maps.InfoWindow({
-    //   content: contentBox
-    // });
-
-    // var marker = new google.maps.Marker({
-    //   animation: google.maps.Animation.DROP,
-    //   map: map,
-    //   title: 'Need this?'
-    // });
-    // marker.addListener('click', function() {
-    //   info.open(map, marker);
-    // });
 
     // adds circle radius around marker
     // var circle = new google.maps.Circle({
@@ -81,12 +57,10 @@
     }
       var geocoder = new google.maps.Geocoder();
 
-    document.getElementById('submit').addEventListener('click', function() {
-      gon.tasks.forEach(function(task) {
-        popUp = contentBox(task.title, task.description)
-        address = task.location;
-        geocodeAddress(geocoder, map, address, popUp);
-      });
+    gon.tasks.forEach(function(task) {
+      popUp = contentBox(task.title, task.description)
+      address = task.location;
+      geocodeAddress(geocoder, map, address, popUp);
     });
 
   }
