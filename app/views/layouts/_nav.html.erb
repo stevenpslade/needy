@@ -22,9 +22,9 @@
     </li>
     <% end %>
     <% if current_user %>
-      <li class="bold waves-effect waves-light btn-large nav-button">
-        <%= link_to "Profile", user_path(current_user) %>
-        <a href="#" class="waves-effect waves-light btn-large">Profile<i class="material-icons">face</i></a>
+      <li class="bold">
+        <div class=" waves-effect waves-light btn-large nav-button"><%= link_to "Profile", user_path(current_user) %>
+        </div>
       </li>
     <% end %>
     <li class="bold">
@@ -34,7 +34,7 @@
       <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div>
     </li>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Post a Need", new_task_path %>
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Post Need", new_task_path %></div>
     </li>
     <li class="bold">
       <a href="#" class="waves-effect waves-light btn-large nav-button">View Map<i class="material-icons">navigation</i></a>

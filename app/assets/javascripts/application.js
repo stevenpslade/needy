@@ -22,9 +22,14 @@ $(function() {
  //      selectYears: 100 // Creates a dropdown of 15 years to control year
  //    });
 
- // $('.need-me-btn a').on('click', function(){
- //  var task_id = $(this).data('id');
- // });
+// When you click on the 'Write a Review', the hidden form appears so you can leave a comment
+  
+// $('write-review-btn-div button').on('click', function(e){
+//   $('.dom-removed-element').addClass('show-review-form');
+//   $('write-review-btn-div').addClass('dom-removed-element');
+//   e.preventDefault();
+  
+// })
 
  $('#start').on('click', function() {
     $('.task-icons').hide();

@@ -21,7 +21,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    # IF-clause is for the 'Profile' on the navbar
+    # ELSE-claues allows you to click on the 'Requesters' on TASK/SHOW page
+    if params[:id].empty? || params[:id] == nil
+      @user = current_user
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def edit

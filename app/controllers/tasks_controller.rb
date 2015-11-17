@@ -29,6 +29,10 @@ class TasksController < ApplicationController
     @review = Review.new
   end
 
+  def update
+    byebug
+  end
+
   def edit
   end
 
