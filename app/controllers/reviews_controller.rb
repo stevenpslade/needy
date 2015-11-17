@@ -1,36 +1,37 @@
 class ReviewsController < ApplicationController
+
+  def index 
+    @reviews = Review.where(user_id: current_user.id)
+  end
+
   def new
-    @reviews = Review.new
+    @review = @task.reviews.build
+    if @review.user_id = @task.user_id
+      @review.for_user = @task.needed_id
+    else
+      @review.for_user = @task.user_id
+    end
+    @review_user = @review.for_user
   end
 
   def create
-    params[:review][:user_id] = current_user.id
-    @review = Review.new(review_params)
-  
-    if @review.save
-      redirect_to reviews_path, notice: "New review Created!"
-    else
+    @review = @task.reviews.build(review_params)
+    @review.user_id = current_user.id
+    if @review.save 
+      redirect_to @task, notice: "Review added"
+    else 
       render :new
     end
   end
 
-  def show
-    @review = review.find(params[:id])
-    # @request allows for the form_for to allow the request parameter
-    @request = Request.new
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
-
   protected
 
-  def review_params
-    params.require(:review).permit(:user_id, :task_id, :content, :for_user)
+  def find_task
+    @task = Task.find(params[:task_id])
   end
 
+  def review_params
+    params.require(:review).permit(:for_user, :content, :rating)
+  end
 
 end

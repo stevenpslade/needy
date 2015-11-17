@@ -1,11 +1,9 @@
 <footer>
-  <div class="footer-copyright">
-    <div class="container">
+  <div class="footer-copyright">    
       <% if current_user %>
-        Signed in as <%= current_user.full_name %> (<%= link_to "Log out", logout_path("current"), method: :delete %>)
+        <%= current_user.username %> (<%= link_to "Log out", logout_path("current"), method: :delete %>)
       <% else %>
         <%= link_to "Log In", login_path %> | <%= link_to "Sign Up", new_user_path %>
       <% end %>
-    </div>
   </div>
 </footer>
