@@ -33,7 +33,7 @@ li.bold {
   display: inline-block;
 }
 
-.overlay {
+body.overlay {
     display:none;
     background-color: #000;
     bottom: 0;
@@ -104,9 +104,11 @@ img#needy-logo {
 footer {
   margin-left: 15%;
   position: fixed;
+  font-size: 0.8em;
   bottom: 0;
   right: 0;
   background-color: #fff9c4;
+  border-radius: 50%;
 }
 
 /*.background-show-page {
@@ -163,5 +165,17 @@ nav {
   box-shadow: 0px 0px 0px #000000;
 }
 
+.card-attr {
+  text-align: left;
+}
+
+.card-attr span {
+  font-weight: bold;
+}
+
+.input-field {
+  padding: 5px;
+
+}
 
 /*END STEVEN CSS*/

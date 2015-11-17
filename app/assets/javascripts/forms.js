@@ -1,12 +1,23 @@
 $(document).on("page:change", function() {
 
-
+// show neew task form 
   $('body').on('click', '#task-form', function() {
     $('#post-task').animate({width: 'toggle'});
     $('main').toggle();
+    // $('main').fadeToggle('linear');
     // $('.show-form').colorbox();
   });
 
+// show login form
+  $('body').on('click', '#show-login', function() {
+    $('#login-form').animate({width: 'toggle'});
+    $('main').fadeToggle('linear');
+  });
+
+// show review form
+  $('body').on('click', '#show-review', function() {
+    $('#review').toggle().SlideDown('slow');
+  });
 
 // Materialize datepicker
   $('.datepicker').pickadate({

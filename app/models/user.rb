@@ -28,4 +28,12 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, if: -> { new_record? || changes["password"] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
+  def review_average
+    if reviews.size == 0
+      flash.now[:alert] = "#{@user.username} has no reviews"
+    else
+      "#{reviews.sum(:rating)/reviews.size}/10"
+    end
+  end
+
 end

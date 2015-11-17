@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115212309) do
+ActiveRecord::Schema.define(version: 20151116233019) do
 
   create_table "requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,18 +48,18 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.string   "category"
     t.datetime "due_date"
     t.string   "compensation"
-    t.string   "image_url"
+    t.string   "image_url",                 default: "http://a3.mzstatic.com/us/r30/Purple3/v4/2f/81/d1/2f81d1ad-bd3c-1bf0-d355-0a843c1f8977/icon128-2x.png"
     t.string   "video_url"
     t.string   "difficulty"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                                                                                                                  null: false
+    t.datetime "updated_at",                                                                                                                                  null: false
     t.string   "title"
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                           null: false
+    t.string   "email",                                                                                                                             null: false
     t.string   "username"
     t.string   "phone"
     t.date     "birth_date"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20151115212309) do
     t.text     "bio"
     t.string   "gender"
     t.string   "city"
-    t.string   "profile_image_url"
+    t.string   "profile_image_url",               default: "http://smallfarms.oregonstate.edu/sites/default/files/_includes/staff_placeholder.jpg"
     t.string   "needy_rating"
     t.string   "needed_rating"
     t.boolean  "trackable"
