@@ -58,11 +58,10 @@
       var geocoder = new google.maps.Geocoder();
 
     gon.tasks.forEach(function(task) {
-      popUp = contentBox(task.title, task.description)
+      popUp = contentBox(task.title, task.description);
       address = task.location;
       geocodeAddress(geocoder, map, address, popUp);
     });
-
   }
 
 
