@@ -8,6 +8,11 @@ $(document).on("page:change", function() {
     // $('.show-form').colorbox();
   });
 
+  $('body').on('click', '#register', function() {
+    $('#signup-form').animate({width: 'toggle'});
+    $('main').toggle();
+  });
+
 // show login form
   $('body').on('click', '#show-login', function() {
     $('#login-form').animate({width: 'toggle'});
@@ -16,7 +21,7 @@ $(document).on("page:change", function() {
 
 // show review form
   $('body').on('click', '#show-review', function() {
-    $('#review').toggle().SlideDown('slow');
+    $('#review').slideToggle();
   });
 
 // Materialize datepicker

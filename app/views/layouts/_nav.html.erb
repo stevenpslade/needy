@@ -16,7 +16,7 @@ box-shadow: 0px 0px 0px #000000;">
     </div></li>
     <% else %>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Register", new_user_path %></div>
+      <div id="register" class="waves-effect waves-light btn-large nav-button">Sign Up!</div>
     </li>
     <li class="bold">
       <div id="show-login" class="waves-effect waves-light btn-large nav-button">Login
@@ -60,9 +60,15 @@ box-shadow: 0px 0px 0px #000000;">
 
 </div> -->
 
-<div id="login-form" class="hide-form">
+<div id="signup-form" class="hide-form">
   <div class="center-transparent col s4">
     <% @user = User.new %>
+    <%= render "users/create_form" %>
+  </div>
+</div>
+
+<div id="login-form" class="hide-form">
+  <div class="center-transparent col s4">
     <%= render "user_sessions/form" %>
   </div>
 </div>
@@ -74,7 +80,6 @@ box-shadow: 0px 0px 0px #000000;">
       <%= render "tasks/form_new" %>
     <% else %>
       <h6 class="error-field">You must be logged in!</h6>
-      <% @user = User.new %>
       <%= render "user_sessions/form" %>
     <% end %>
   </div>

@@ -12,6 +12,7 @@
 
 //= require colorbox-rails
 //= require forms
+//= require map
 
 $(document).on("page:change", function() {
   

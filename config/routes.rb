@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
 root :to => 'tasks#index'
 resources :user_sessions
-resources :users
-
-resources :tasks do
+resources :users do
   resources :reviews
 end
+
+resources :tasks
 
 resources :password_resets
 resources :reviews, except: [:index]
