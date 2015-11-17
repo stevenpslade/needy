@@ -19,8 +19,19 @@
             <% end %>
           </small>
         </p>
-        <p>Click one of the Needed's below to approve their request!</p>
-        <!-- APPROVAL STUFF SHOULD GO HERE --> 
+        <% if current_user.id == @task.user_id %>
+          <p>Select one of the Needed's below and approve their request!</p>
+          <!-- APPROVAL STUFF SHOULD GO HERE --> 
+          <%= form_for @task do |f|%>
+            <% all_requests.each do |r| %>
+              <p>
+                <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
+                <label for="<%= r[:user_id] %>"><%= User.find(r[:user_id]).full_name %></label>
+              </p>
+            <% end %>
+              <%= f.submit("Approve Request", name: nil) %>
+          <% end %>
+        <% end %>
       </div>
     <% else %>
       <!-- if the CURRENT USER is the user who POSTED the TASK -->
@@ -30,7 +41,7 @@
           <p>Needy user:  ME!!!!</p>
           <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
         </div>
-      <!-- if the CURRENT USER is the user who was ACCEPTED to do the TASK -->
+      <!-- if the CURRENT USER is the user who  ACCEPTED to do the TASK -->
       <% elsif current_user.id == @task.needed_id %>
          <div class="top-content col s6">
           <img class="task-user-image" src="http://cdn.okccdn.com/php/load_okc_image.php/images/0x0/0x0/0/3133668790142149848.jpeg___1_500_1_500_cb94de6a_.png"/>

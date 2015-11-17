@@ -1,9 +1,10 @@
-class TasksController < ApplicationController
+class Map::TasksController < ApplicationController
 
-  skip_before_filter :require_login, only: [:index, :new, :create]
+  skip_before_filter :require_login, only: [:index, :new, :create, :show]
 
   def index
-    @tasks = Task.all
+    gon.tasks = Task.all
+    # @tasks = Task.all
   end
 
   def new
@@ -23,25 +24,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    # @request allows for the form_for to allow the request parameter
     @request = Request.new
-    # @review allos for the form_for to allow the review parameter
-    @review = Review.new
-  end
-
-  def update
-    if params[:task] == nil
-      @task = Task.find(params[:id])
-      params.permit(:needed_id)
-      @task.needed_id = params[:needed_id]
-      if @task.save
-        redirect_to task_path(params[:id]), notice: "You have accepted someone to do your bidding!"
-      else
-        render :show
-      end
-    else
-        
-    end
   end
 
   def edit

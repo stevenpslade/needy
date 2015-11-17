@@ -1,3 +1,5 @@
+/*= require colorbox-rails*/
+
 body {
   height: 100%;
   min-height: 100%;
@@ -21,6 +23,27 @@ main {
 
 li.bold {
   margin-bottom: 2%;
+}
+
+.hide-form {
+  display: none;
+}
+
+.hide-form .show-form {
+  display: inline-block;
+}
+
+.overlay {
+    display:none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity = 50); /* IE7 & 8 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
 }
 
 img#needy-logo {
@@ -129,7 +152,7 @@ footer {
   padding-right: 10px;
 }
 
-.card {
+.task-icons {
   text-align: center;
   color: grey;
 }
@@ -145,6 +168,12 @@ footer {
 
 #time {
   font-size: 65px;
+}
+
+nav {
+  -moz-box-shadow: 0px 0px 0px #000000;
+  -webkit-box-shadow: 0px 0px 0px #000000;
+  box-shadow: 0px 0px 0px #000000;
 }
 
 

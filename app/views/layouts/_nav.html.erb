@@ -1,4 +1,6 @@
-<nav style="background-color: #fff9c4;">
+<nav style="background-color: #fff9c4; -moz-box-shadow: 0px 0px 0px #000000;
+-webkit-box-shadow: 0px 0px 0px #000000;
+box-shadow: 0px 0px 0px #000000;">
   <ul id="slide-out" class="side-nav fixed">
     <li class="logo">
       <img id="needy-logo" src="http://www.logowallpaper.net/wp-content/uploads/2014/12/play-doh_logo.jpg">
@@ -23,21 +25,20 @@
     <% end %>
     <% if current_user %>
       <li class="bold">
-        <div class=" waves-effect waves-light btn-large nav-button"><%= link_to "Profile", user_path(current_user) %>
-        </div>
+        <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Profile", user_path(current_user) %></div>
       </li>
     <% end %>
     <li class="bold">
       <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needed's", users_path %></div>
     </li>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div>
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Needs", tasks_path %></div>
     </li>
     <li class="bold">
-      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Post Need", new_task_path %></div>
+      <div id="task-form" class="waves-effect waves-light btn-large nav-button">Post A Need</div>
     </li>
     <li class="bold">
-      <a href="#" class="waves-effect waves-light btn-large nav-button">View Map<i class="material-icons">navigation</i></a>
+      <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Map", map_tasks_path %>
     </li>
 
   </ul>
@@ -51,3 +52,18 @@
   // $('.collapsible').collapsible();
   
   </script>
+<div class="overlay">
+</div>
+
+<div id='post-task' class="hide-form">
+  <div class="center-transparent col s4">
+    <% if current_user %>
+      <% @task = Task.new %>
+      <%= render "tasks/form_new" %>
+    <% else %>
+      <h6 style="color: red;">you must be logged in</h6>
+    <% end %>
+  </div>
+</div>
+
+
