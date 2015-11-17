@@ -62,7 +62,6 @@ box-shadow: 0px 0px 0px #000000;">
 
 <div id="login-form" class="hide-form">
   <div class="center-transparent col s4">
-    <% @user = User.new %>
     <%= render "user_sessions/form" %>
   </div>
 </div>
@@ -74,7 +73,6 @@ box-shadow: 0px 0px 0px #000000;">
       <%= render "tasks/form_new" %>
     <% else %>
       <h6 class="error-field">You must be logged in!</h6>
-      <% @user = User.new %>
       <%= render "user_sessions/form" %>
     <% end %>
   </div>

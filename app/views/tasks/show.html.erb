@@ -1,13 +1,14 @@
+<div class="container">
 <div class="row">
   <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
   <% if @task.needed_id == nil %>
     <div class="top-content col s4">
-      <img class="task-user-image" src="http://cdn.okccdn.com/php/load_okc_image.php/images/0x0/0x0/0/3133668790142149848.jpeg___1_500_1_500_cb94de6a_.png"/>
+      <img class="task-user-image" src="<%= @task.image_url %>"/>
       <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
     </div>
     <div class=" top-content col s4">
-      <img class="task-map-image" src ="http://mike.teczno.com/img/google-maps-track.png"/>
-    </div> 
+      <div><%= render 'map/tasks/map' %></div>
+    </div>
     <div class="top-content col s4">
       <% all_requests = Request.where(task_id: @task.id) %>
       <p>There are currently <%= all_requests.count %> users requesting to do this job! Click to view their profile.</p>
@@ -37,28 +38,25 @@
     <!-- if the CURRENT USER is the user who POSTED the TASK -->
     <% if current_user.id == @task.user_id %>
       <div class="top-content col s6">
-        <img class="task-user-image" src="http://cdn.okccdn.com/php/load_okc_image.php/images/0x0/0x0/0/3133668790142149848.jpeg___1_500_1_500_cb94de6a_.png"/>
+        <img class="task-user-image" src="<%= @task.image_url %>"/>
         <p>Needy user:  ME!!!!</p>
         <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
       </div>
     <!-- if the CURRENT USER is the user who  ACCEPTED to do the TASK -->
     <% elsif current_user.id == @task.needed_id %>
        <div class="top-content col s6">
-        <img class="task-user-image" src="http://cdn.okccdn.com/php/load_okc_image.php/images/0x0/0x0/0/3133668790142149848.jpeg___1_500_1_500_cb94de6a_.png"/>
+        <img class="task-user-image" src="<%= @task.image_url %>"/>
         <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
         <p>Needed user: MEE!!!</p>
       </div>
       <!-- if CURRENT USER is not assocaited with the task -->
     <% elsif current_user.id != @task.user_id && current_user.id != @task.needed_id %>
       <div class="top-content col s6">
-        <img class="task-user-image" src="http://cdn.okccdn.com/php/load_okc_image.php/images/0x0/0x0/0/3133668790142149848.jpeg___1_500_1_500_cb94de6a_.png"/>
+        <img class="task-user-image" src="<%= @task.image_url %>"/>
         <p>Needy user:  <%= User.find(@task.user_id).full_name %></p>
         <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
       </div>
     <% end %>
-    <div class=" top-content col s6">
-      <img class="task-map-image" src ="http://mike.teczno.com/img/google-maps-track.png"/>
-    </div>
   <% end %>
 </div>
 <div class="row task-icons">
@@ -157,3 +155,4 @@
       </div>
   </div>      
 <% end %>
+</div>
