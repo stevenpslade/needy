@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 root :to => 'tasks#index'
 resources :user_sessions
 resources :users
-resources :tasks
+
+resources :tasks do
+  resources :reviews
+end
+
 resources :password_resets
 
 resources :requests, only: [:create, :destroy]

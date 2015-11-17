@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to task_path(task_id), notice: "You have submitted your request!"
     else
-      redirect_to task_path(task_id), alert: "Unsuccessfully request submission!"
+      redirect_to task_path(task_id), alert: "Unsuccessfull request submission!"
     end
   end
 

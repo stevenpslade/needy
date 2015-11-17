@@ -21,9 +21,6 @@ $(document).on("page:change", function() {
  // $('.need-me-btn a').on('click', function(){
  //  var task_id = $(this).data('id');
  // });
-  $('body').on('click', '#task-form', function() {
-    
-  });
 
   $('#start').on('click', function() {
     $('.task-icons').hide();

@@ -1,17 +1,16 @@
-<div class="show-form-background">
-  <div class="center-transparent col s4">
-
 <%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
+  <div class="input-field col s6">
     <%= label_tag :email %><br />
     <%= text_field_tag :email %>
   </div>
-  <div class="field">
+  <div class="input-field col s6">
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
+  <div class="input-field col s4">
+    <div class="actions">
+      <button class="waves-effect waves-light btn"><%= submit_tag "Login" %></button>
+    </div>
   </div>
 <% end %>
 
