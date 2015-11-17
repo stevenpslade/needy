@@ -54,9 +54,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    colorbox-rails (0.1.2)
-      jquery-rails
-      rails (>= 3.1.1)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -174,7 +171,6 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
-  colorbox-rails
   gon
   jbuilder (~> 2.0)
   jquery-rails
