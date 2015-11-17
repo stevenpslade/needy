@@ -57,10 +57,14 @@
     }
       var geocoder = new google.maps.Geocoder();
 
-    gon.tasks.forEach(function(task) {
-      popUp = contentBox(task.title, task.description);
-      address = task.location;
-      geocodeAddress(geocoder, map, address, popUp);
+    // console.log(gon.watch('tasks'));
+    gon.watch('tasks', function(tasks) {
+      tasks.forEach(function(task) {
+        popUp = contentBox(task.title, task.description);
+        address = task.location;
+        console.log(address);
+        geocodeAddress(geocoder, map, address, popUp);
+      });
     });
   }
 

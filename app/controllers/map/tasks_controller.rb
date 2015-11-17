@@ -3,7 +3,7 @@ class Map::TasksController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create, :show]
 
   def index
-    gon.tasks = Task.all
+    gon.watch.tasks = Task.all
     # @tasks = Task.all
   end
 
