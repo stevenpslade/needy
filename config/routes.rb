@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root :to => 'tasks#index'
+root :to => 'welcome#index'
 resources :user_sessions
 resources :users do
   resources :reviews
@@ -10,7 +10,7 @@ resources :tasks
 
 resources :password_resets
 resources :reviews, except: [:index]
-
+resources :welcome, only: [:index]
 resources :requests, only: [:create, :destroy]
 
 namespace :map do

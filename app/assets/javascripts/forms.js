@@ -21,7 +21,7 @@ $(document).on("page:change", function() {
 
 // show review form
   $('body').on('click', '#show-review', function() {
-    $('#review').slideToggle();
+    $('#review').animate({height: 'toggle'});
   });
 
 // Materialize datepicker
