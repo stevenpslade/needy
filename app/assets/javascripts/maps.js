@@ -23,48 +23,48 @@
     var infoWindow = new google.maps.InfoWindow({map: map});
 
     //geolocation: shows current location or error saying it did not work
-    gon.watch('tasks', function(tasks) {
-      console.log(typeof tasks !== 'object');
-      if (typeof tasks !== 'object') {
+    if (window.location.pathname == '/map/tasks') {
 
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
 
-              youAreHere = new google.maps.Marker({
-                position: pos,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                map: map,
-                title: 'You Are Here'
-              });
+            youAreHere = new google.maps.Marker({
+              position: pos,
+              icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+              map: map,
+              title: 'You Are Here'
+            });
 
-              // adds circle radius around marker
-              var circle = new google.maps.Circle({
-                map: map,
-                radius: 1609,    // 10 miles in metres
-                fillColor: '#AA0000'
-              });
-              circle.bindTo('center', youAreHere, 'position');
+            // adds circle radius around marker
+            var circle = new google.maps.Circle({
+              map: map,
+              radius: 1609,    // 10 miles in metres
+              fillColor: '#AA0000'
+            });
+            circle.bindTo('center', youAreHere, 'position');
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You Are Here');
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('You Are Here');
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
 
-     }
-  });
+    }
+
     var geocoder = new google.maps.Geocoder();
 
     gon.watch('tasks', function(tasks) {
+      console.log(tasks);
+      // if (window.location.pathname == '/map/tasks') {
       if (tasks.length >= 1) {
         tasks.forEach(function(task) {
           popUp = contentBox(task.title, task.description);
