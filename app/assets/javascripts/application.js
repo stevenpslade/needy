@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
-//= require colorbox-rails
 //= require forms
-//= require map
+//= require maps
 
 $(document).on("page:change", function() {
   
