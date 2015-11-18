@@ -17,16 +17,8 @@
 
     map = new google.maps.Map(document.getElementById('map'), {
       center: myLatLng,
-      zoom: 10
+      zoom: 12
     });
-
-    // adds circle radius around marker
-    // var circle = new google.maps.Circle({
-    // map: map,
-    // radius: 1609,    // 10 miles in metres
-    // fillColor: '#AA0000'
-    // });
-    // circle.bindTo('center', youAreHere, 'position');
 
     var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -38,12 +30,20 @@
           lng: position.coords.longitude
         };
 
-        youAreHere = new google.maps.Marker({
-          position: pos,
-          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-          map: map,
-          title: 'You Are Here'
-        });
+      youAreHere = new google.maps.Marker({
+        position: pos,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        map: map,
+        title: 'You Are Here'
+      });
+
+      // adds circle radius around marker
+      var circle = new google.maps.Circle({
+        map: map,
+        radius: 1609,    // 10 miles in metres
+        fillColor: '#AA0000'
+      });
+      circle.bindTo('center', youAreHere, 'position');
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('You Are Here');
@@ -57,12 +57,10 @@
     }
       var geocoder = new google.maps.Geocoder();
 
-    // console.log(gon.watch('tasks'));
     gon.watch('tasks', function(tasks) {
       tasks.forEach(function(task) {
         popUp = contentBox(task.title, task.description);
         address = task.location;
-        console.log(address);
         geocodeAddress(geocoder, map, address, popUp);
       });
     });
