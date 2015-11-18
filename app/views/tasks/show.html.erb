@@ -16,8 +16,6 @@
         <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
         <p>Needed user: This spot could be yours!</p>
       </div>
-<<<<<<< HEAD
-      <!-- MAP RENDER -->
       <div class="top-content col s6">
         <div class="card medium">
           <div class="card-image waves-effect waves-block waves-light"></div>
@@ -154,7 +152,7 @@
   <% elsif @task.needed_id %>     
     <div class="row">
       <div class="col s6">
-        <h5 class="center-align"><%= @task.description %></h5>
+        <h5 class="show-label">Description: </h5><h5 class="center-align description"><%= @task.description %></h5>
       </div>
       <div class="col s6">
         <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Review Experience<i class="material-icons right">mode_edit</i></button>
