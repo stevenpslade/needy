@@ -6,14 +6,10 @@
       <img class="task-user-image" src="<%= @task.image_url %>"/>
       <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
     </div>
-
-
-<!-- MAP RENDER -->
-    <!-- <div class=" top-content col s4">
+    <!-- MAP RENDER -->
+    <div class=" top-content col s4">
       <div><%= render 'map/tasks/map' %></div>
-    </div> -->
-
-
+    </div>
     <div class="top-content col s4">
       <% all_requests = Request.where(task_id: @task.id) %>
       <p>There are currently <%= all_requests.count %> users requesting to do this job! Click to view their profile.</p>
@@ -40,18 +36,18 @@
       <% end %>
     </div>
   <% else %>
-    <!-- if the CURRENT USER is the user who POSTED the TASK -->
-      <div class="top-content col s6">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
-      <% if @task.needed_id != nil %>
-        <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-        <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
-      <% else %>
-        <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-        <p>Needed user: <span>Pending</span></p>
-      <% end %>
-      </div>
-  <% end %>
+  <!-- if the CURRENT USER is the user who POSTED the TASK -->
+    <div class="top-content col s6">
+      <img class="task-user-image" src="<%= @task.image_url %>"/>
+    <% if @task.needed_id != nil %>
+      <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+      <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
+    <% else %>
+      <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+      <p>Needed user: <span>Pending</span></p>
+    <% end %>
+    </div>
+<% end %>
 </div>
 <div class="row task-icons">
   <div class="col s12">
@@ -74,19 +70,36 @@
     </div>
   </div>
 </div>
-
-<!-- show/hide review form -->
-<div class="row">
-  <div class="col s8">
-    <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Add review<i class="material-icons right">send</i></button>
-    <div id="review" class="hide-form">
-      <div class="center-transparent col s8">
-        <!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
-        <%= render 'tasks/review' %>
+<!-- show REQUEST or REVIEW button  -->
+<% if (current_user.id != @task.user_id) && (@task.needed_id == nil) %>
+  <div class="row">
+    <div class="col s6 hidden-element"><h1></h1></div>
+      <div class="col s6 center-align">
+        <div class="need-me-btn">
+          <%= form_for @request do |f| %>
+            <%= f.hidden_field :user_id,:value=> current_user.id %>
+            <%= f.hidden_field :task_id,:value=> @task.id %>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+            <%= f.submit %>
+            </button>
+          <% end %>
+        </div>
+      </div>
+  </div>
+  <!-- bring up the REVIEW button if the task has both is PENDING-->
+  <% elsif @task.needed_id %>     
+  <div class="row">
+    <div class="col s8">
+      <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Add review<i class="material-icons right">send</i></button>
+      <div id="review" class="hide-form">
+        <div class="center-transparent col s8">
+          <!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
+          <%= render 'tasks/review' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 <!--   <div class="row task-timer">
 =======
 

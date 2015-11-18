@@ -1,90 +1,79 @@
-<% if (current_user.id != @task.user_id) && (@task.needed_id == current_user.id)  %>
-          <%= form_for [@user, @review] do |f| %>
-          <div class="row">
-            <form class="col s8">
-              <div class="error-field">
-              <% if @task.errors.any? %>
-                <%= pluralize(@task.errors.count, "error") %> prevented the task from being created:
-                <ul>
-                  <% @task.errors.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <h5>Review for <%= @task.user_id %></h5>
-                </div>
-              </div>
-                <%= f.hidden_field :user_id,:value=> current_user.id %>
-                <%= f.hidden_field :task_id,:value=> @task.id %>
-                <%= f.hidden_field :for_user,:value=> @task.user_id %>
-              <div class="row">
-                <div class="input-field col s12">
-                  <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
-                  <%= f.label :content, style: 'padding: 15px;' %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                <%= f.range_field :rating, :in => 0..5, :step => '.1' %>
-                <%= f.label :rating, style: 'padding: 15px;' %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                <div class="waves-effect waves-light btn green"><%= f.submit %><i class="material-icons">add</i></div>
-                </div>
-              </div>
-              <% end %>
-            </form>
-          </div>
-        <!-- if CURRENT USER is the POSTER of the TASK, and NEEDED_ID is PRESENT -->
-        <% elsif (current_user.id == @task.user_id) && (@task.needed_id != nil)  %>
-          <%= form_for [@user, @review] do |f| %>
-        <div class="row">
-          <form class="col s8">
-            <div class="error-field">
-            <% if @task.errors.any? %>
-              <%= pluralize(@task.errors.count, "error") %> prevented the task from being created:
-              <ul>
-                <% @task.errors.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            <% end %>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <h5>Review for <%= @task.needed_id %></h5>
-              </div>
-            </div>
-              <%= f.hidden_field :user_id,:value=> current_user.id %>
-              <%= f.hidden_field :task_id,:value=> @task.id %>
-              <%= f.hidden_field :for_user,:value=> @task.needed_id %>
-            <div class="row">
-              <div class="input-field col s12">
-                <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
-                <%= f.label :content, style: 'padding: 15px;' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-              <%= f.range_field :rating, :in => 0..5, :step => '.1' %>
-              <%= f.label :rating, style: 'padding: 15px;' %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s6">
-              <div class="waves-effect waves-light btn green"><%= f.submit %><i class="material-icons">add</i></div>
-              </div>
-            </div>
-            <% end %>
-          </form>
+<!-- Current user is NEEDED, then leave a review for NEEDED -->
+<% if (current_user.id != @task.user_id) && (current_user.id == @task.needed_id)  %>
+  <%= form_for [@user, @review] do |f| %>
+  <div class="row">
+    <form class="col s8">
+      <div class="error-field">
+      <% if @task.errors.any? %>
+        <%= pluralize(@task.errors.count, "error") %> prevented the task from being created:
+        <ul>
+          <% @task.errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <h5>Review for <%= @task.user_id %></h5>
         </div>
-        <!-- if CURRENT USER is not the POSTER of the TASK, and NO NEEDED_ID -->
-        <% else %>
-          <h4 class="error-field">Task must be complete in order to review</h4>
-        <% end %>
+      </div>
+        <%= f.hidden_field :user_id,:value=> current_user.id %>
+        <%= f.hidden_field :task_id,:value=> @task.id %>
+        <%= f.hidden_field :for_user,:value=> @task.user_id %>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
+          <%= f.label :content, style: 'padding: 15px;' %>
         </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+        <div class="waves-effect waves-light btn green"><%= f.submit %><i class="material-icons">add</i></div>
+        </div>
+      </div>
+      <% end %>
+    </form>
+  </div>
+<!-- if CURRENT USER is the POSTER of the TASK, and NEEDED_ID is PRESENT -->
+<% elsif (current_user.id == @task.user_id) && (@task.needed_id != nil)  %>
+  <%= form_for [@user, @review] do |f| %>
+  <div class="row">
+    <form class="col s8">
+      <div class="error-field">
+      <% if @task.errors.any? %>
+        <%= pluralize(@task.errors.count, "error") %> prevented the task from being created:
+        <ul>
+          <% @task.errors.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <h5>Review for <%= @task.needed_id %></h5>
+        </div>
+      </div>
+        <%= f.hidden_field :user_id,:value=> current_user.id %>
+        <%= f.hidden_field :task_id,:value=> @task.id %>
+        <%= f.hidden_field :for_user,:value=> @task.needed_id %>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
+          <%= f.label :content, style: 'padding: 15px;' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+        <div class="waves-effect waves-light btn green"><%= f.submit %><i class="material-icons">add</i></div>
+        </div>
+      </div>
+      <% end %>
+    </form>
+  </div>
+<!-- if CURRENT USER is not the POSTER of the TASK, and NO NEEDED_ID -->
+<% else %>
+  <h4 class="error-field">Task must be complete in order to review</h4>
+<% end %>
+</div>
