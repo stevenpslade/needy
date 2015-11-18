@@ -1,4 +1,4 @@
-<!-- Current user is NEEDED, then leave a review for NEEDED -->
+<!-- Current user is NEEDED, then leave a review for NEEDY -->
 <% if (current_user.id != @task.user_id) && (current_user.id == @task.needed_id)  %>
   <%= form_for [@user, @review] do |f| %>
   <div class="row">
@@ -15,7 +15,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <h5>Review for <%= @task.user_id %></h5>
+          <h5>Review for <%= User.find(@task.needed_id).first_name %></h5>
         </div>
       </div>
         <%= f.hidden_field :user_id,:value=> current_user.id %>
@@ -35,7 +35,7 @@
       <% end %>
     </form>
   </div>
-<!-- if CURRENT USER is the POSTER of the TASK, and NEEDED_ID is PRESENT -->
+<!-- if CURRENT USER is the POSTER of the TASK, leave review for NEEDED -->
 <% elsif (current_user.id == @task.user_id) && (@task.needed_id != nil)  %>
   <%= form_for [@user, @review] do |f| %>
   <div class="row">
@@ -52,7 +52,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <h5>Review for <%= @task.needed_id %></h5>
+          <h5>Review for <%= User.find(@task.needed_id).first_name %></h5>
         </div>
       </div>
         <%= f.hidden_field :user_id,:value=> current_user.id %>
