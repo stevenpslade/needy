@@ -1,31 +1,52 @@
+  <head>
+    <style type="text/css">
+      #map {
+        position: absolute;
+        height: 75%;
+        width: 89%;
+      }
+    </style>
+  </head>
 <div class="container">
-    <h3 class="show-label"><%= @task.title %></h3>
-  <div class="row">
-    <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
-    <% if @task.needed_id == nil %>
-      <div class="top-content col s4">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
-        <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+
+<div class="row">
+
+  <div class="top-content col s6">
+    <div class="card medium">
+      <div class="card-image waves-effect waves-block waves-light">
       </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Map<i class="material-icons right">more_vert</i></span>
+        <p><%= link_to "See Task Map", map_tasks_path %></p>
+        <div id="map"></div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
+  <% if @task.needed_id == nil %>
+    <div class="top-content col s4">
+      <img class="task-user-image" src="<%= @task.image_url %>"/>
+      <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+    </div>
 
 
-  <!-- MAP RENDER -->
-      <!-- <div class=" top-content col s4">
-        <div><%= render 'map/tasks/map' %></div>
-      </div> -->
-
-      <div class="top-content col s4">
-        <% all_requests = Request.where(task_id: @task.id) %>
-        <p>There are currently <%= all_requests.count %> users requesting to do this job! Click to view their profile.</p>
-        <p>
-          <small>| 
-            <% all_requests.each do |request| %>
-              <% requester = User.find(request.user_id) %>
-              <%= link_to requester.full_name, user_path(request.user_id) %> | 
-            <% end %>
-          </small>
-        </p>
-        <% if current_user.id == @task.user_id %>
+    <div class="top-content col s4">
+      <% all_requests = Request.where(task_id: @task.id) %>
+      <p>There are currently <%= all_requests.count %> users requesting to do this job! Click to view their profile.</p>
+      <p>
+        <small>
+          <% all_requests.each do |request| %>
+            <% requester = User.find(request.user_id) %>
+            <%= link_to requester.full_name, user_path(request.user_id) %> | 
+          <% end %>
+        </small>
+      </p>
+      <% if current_user.id == @task.user_id %>
         <p>Select one of the Needed's below and approve their request!</p>
           <!-- APPROVAL STUFF SHOULD GO HERE --> 
           <%= form_for @task do |f|%>
@@ -108,6 +129,17 @@
   </div>
 <<<<<<< HEAD
 </div> -->
+<<<<<<< HEAD
+=======
+<div class="row">
+  <div class="col s6">
+    <h5 class="center-align"><%= @task.description %></h5>
+  </div>
+</div>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZQ0u0B58kHdvch8UmNPY6jMM3L4n9fJc&callback=initMap">
+  </script>
+>>>>>>> feature/show_map
 
 
 
