@@ -20,49 +20,63 @@
       zoom: 13
     });
 
-    var infoWindow = new google.maps.InfoWindow({map: map});
 
     //geolocation: shows current location or error saying it did not work
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    if (window.location.pathname == '/map/tasks') {
 
-      youAreHere = new google.maps.Marker({
-        position: pos,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-        map: map,
-        title: 'You Are Here'
-      });
+    var infoWindow = new google.maps.InfoWindow({map: map});
+    
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
 
-      // adds circle radius around marker
-      var circle = new google.maps.Circle({
-        map: map,
-        radius: 1609,    // 10 miles in metres
-        fillColor: '#AA0000'
-      });
-      circle.bindTo('center', youAreHere, 'position');
+            youAreHere = new google.maps.Marker({
+              position: pos,
+              icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+              map: map,
+              title: 'You Are Here'
+            });
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('You Are Here');
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+            // adds circle radius around marker
+            var circle = new google.maps.Circle({
+              map: map,
+              radius: 1609,    // 10 miles in metres
+              fillColor: '#AA0000'
+            });
+            circle.bindTo('center', youAreHere, 'position');
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('You Are Here');
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+
     }
-      var geocoder = new google.maps.Geocoder();
+
+    var geocoder = new google.maps.Geocoder();
 
     gon.watch('tasks', function(tasks) {
-      tasks.forEach(function(task) {
-        popUp = contentBox(task.title, task.description);
-        address = task.location;
+      console.log(tasks);
+      // if (window.location.pathname == '/map/tasks') {
+      if (tasks.length >= 1) {
+        tasks.forEach(function(task) {
+          popUp = contentBox(task.title, task.description);
+          address = task.location;
+          geocodeAddress(geocoder, map, address, popUp);
+        });
+      } else {
+        popUp = contentBox(tasks.title, tasks.description);
+        address = tasks.location;
         geocodeAddress(geocoder, map, address, popUp);
-      });
+      }
     });
   }
 

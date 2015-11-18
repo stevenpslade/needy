@@ -23,6 +23,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    gon.watch.tasks = @task
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
     # @review allos for the form_for to allow the review parameter

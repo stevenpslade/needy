@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= include_gon(:init => true) %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'vendors', 'data-turbolinks-track' => true %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Need It</title>
+</head>
+<body>
+  <div class="landing-wrap col s12 row">
+    <div class="right-landing col s6">
+        <h3 class="landing-title">NEEDED</h3>
+      <div class="right-inner-content">
+        <div class="container">
+          <p>
+            A brief description of the Needed role of a user 
+          </p>
+          <button class="waves-effect waves-light btn-large needed-landing"><i class="material-icons right">cloud</i><%= link_to "Tasks", tasks_path %></button>
+        </div>
+      </div>
+    </div>
+    <div class="left-landing col s6">
+        <h3 class="landing-title">NEEDY</h3>
+      <div class="left-inner-content">
+        <p>
+          A brief description of the purpose and use of created tasks
+        </p>
+        <button class="waves-effect waves-light btn-large needed-landing"><i class="material-icons right">cloud</i><%= link_to "Users", users_path %></button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
