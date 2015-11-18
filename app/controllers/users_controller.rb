@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       redirect_back_or_to(:tasks, notice: "Welcome aboard, #{@user.first_name}!")
       # redirect_to root_url, notice: "Signup successful! Log in."
     else

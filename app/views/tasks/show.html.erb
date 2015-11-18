@@ -43,7 +43,7 @@
     <!-- if the CURRENT USER is the user who POSTED the TASK -->
       <div class="top-content col s6">
         <img class="task-user-image" src="<%= @task.image_url %>"/>
-      <% if @task.needed_id != nil %>
+      <% if @task.needed_id == nil %>
         <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
         <p>Needed user: <%= User.find(@task.needed_id).full_name %></p>
       <% else %>
