@@ -20,11 +20,12 @@
       zoom: 13
     });
 
-    var infoWindow = new google.maps.InfoWindow({map: map});
 
     //geolocation: shows current location or error saying it did not work
     if (window.location.pathname == '/map/tasks') {
 
+    var infoWindow = new google.maps.InfoWindow({map: map});
+    
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
           var pos = {
