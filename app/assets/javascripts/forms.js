@@ -31,8 +31,8 @@ $(document).on("page:change", function() {
   });
 
   // show navbar
-  $('body').on('hover', '#show-navbar', function() {
-    $('#navbar').animate({width: 'toggle'});
-  });
+  // $('body').on('hover', '#show-navbar', function() {
+  //   $('#navbar').animate({width: 'toggle'});
+  // });
   
 });
