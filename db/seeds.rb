@@ -22,12 +22,3 @@
 #     t.datetime "reset_password_email_sent_at"
 #     t.string   "first_name"
 #     t.string   "last_name"
-
-
-
-
-
-
-Task.create(user_id: 3, needed_id: 4, needy_confirm_completion: nil, needed_confirm_completion: true, location: 'Whistler, BC', description: 'I have to work late and really need someone to pick up my drycleaning before they close. Please help me', estimated_duration: 40, category: 'errand', compensation: 50, difficulty: 'easy', title: 'Pick up my dry cleaning' )
-
-Task.create(user_id: 3, needed_id: 4, needy_confirm_completion: true, needed_confirm_completion: true, title: "Paint my wall", location: 'New Westminster', description: 'I need someone to come paint a beautiful landscape on my wall while talking soothingly to me.', estimated_duration: 5, category: 'painting', compensation: 'I will make you tea and cookies and a $100 gift card to Boston Pizza', difficulty: 'medium')

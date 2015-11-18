@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151116233019) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "task_id"
-    t.string   "for_user"
+    t.integer  "for_user"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
