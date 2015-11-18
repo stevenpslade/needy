@@ -5,10 +5,10 @@ class Review < ActiveRecord::Base
   validates :content,
     presence: true
 
-  validates :rating,
+  validates :user_rating,
     numericality: { only_integer: true }
-  validates :rating,
+  validates :user_rating,
     numericality: { greater_than_or_equal_to: 0 }
-  validates :rating,
+  validates :user_rating,
     numericality: { less_than_or_equal_to: 5 }
 end

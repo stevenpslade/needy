@@ -5,7 +5,9 @@ html, body {
   -webkit-background-size: cover; /* For WebKit*/
   -moz-background-size: cover;    /* Mozilla*/
   -o-background-size: cover;      /* Opera*/
-  background-size: 100% 100%;  
+  background-size: 100% 100%; 
+  /*color: rgba(18, 231, 48, 1); */
+  color:white;
 }
 
 main {
@@ -19,7 +21,11 @@ main {
 }
 
 .side-nav.fixed {
-  background-color: #81d4fa;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#show-navbar {
+
 }
 
 li.bold {
@@ -102,12 +108,13 @@ img#needy-logo {
   border: solid;
   width: 40%;
   margin: 0 auto;
-  background-color: rgba(84, 210, 137, 0.4);
+  background-color: rgba(23, 21, 22, 0.4);
   -moz-box-shadow: 13px 21px 50px #000000;
   -webkit-box-shadow: 13px 21px 50px #000000;
   box-shadow: 13px 21px 50px #000000;
   border-color: rgba(26, 187, 99, 1);
   border-radius: 20px;
+  color: black;
 }
 
 .error-field {
@@ -118,21 +125,26 @@ img#needy-logo {
 footer {
   margin-left: 15%;
   position: fixed;
-  font-size: 0.8em;
+  font-size: 0.7em;
   bottom: 0;
   right: 0;
   background-color: #fff9c4;
   border-radius: 50%;
+  text-align: center;
+  height: 17px;
+  width: 135px;
+  color: white;
+  background:-webkit-gradient(linear, 13% 56%, 0% 12%, from(#000000), to(#FFFFFF));
 }
 
-/*.background-show-page {
-  background-color: rgba(84, 210, 137, 0.4);
+.background-show-page {
+  background-color: rgba(23, 21, 22, 0.4);
   -moz-box-shadow: 13px 21px 50px #000000;
   -webkit-box-shadow: 13px 21px 50px #000000;
   box-shadow: 13px 21px 50px #000000;
   border-color: rgba(26, 187, 99, 1);
   border-radius: 20px;
-}*/
+}
 
 .profile-image {
   display: inline-block;
@@ -184,6 +196,7 @@ nav {
 
 .card-attr {
   text-align: left;
+  color: black;
 }
 
 .card-attr span {
@@ -282,6 +295,36 @@ button {
 }
 
 
+/*CSS Override Materialize form colors*/
+.input-field label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text] + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=textarea]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=radio]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text]:focus {
+   border-bottom: 1px solid #81d4fa !important;
+   box-shadow: 0 1px 0 0 #000;
+ }
+
+.description {
+  /*color: rgba(18, 231, 48, 1);*/
+  color:white;
+}
 
 
 

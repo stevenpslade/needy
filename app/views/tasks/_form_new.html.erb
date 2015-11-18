@@ -1,6 +1,6 @@
 <%= form_for @task do |f| %>
 <div class="row">
-  <form class="col s6">
+  <form class="col s6" id="new-task-form">
     <div class="error-field">
     <% if @task.errors.any? %>
       <%= pluralize(@task.errors.count, "error") %> prevented the task from being created:
