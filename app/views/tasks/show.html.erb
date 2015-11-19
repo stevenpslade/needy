@@ -16,7 +16,6 @@
         <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
         <p>Needed user: This spot could be yours!</p>
       </div>
-<<<<<<< HEAD
       <!-- MAP RENDER -->
       <div class="top-content col s6">
         <div class="card medium">
@@ -56,11 +55,12 @@
         <div class="col s6">
           <h5 class="center-align"><%= @task.description %></h5>
         </div>
+        <!-- List the number of people requesting to do the job  -->
         <div class="top-content col s6">
           <% all_requests = Request.where(task_id: @task.id) %>
           <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
           <%= all_requests.each do |r| %>
-            <p><%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+            <p><%= link_to User.find(r[:user_id]).full_name, user_path(r[:user_id]) %></p>
           <% end %>
           <!-- Radio button select to approve one of the people requesting to do the task -->
           <% if current_user.id == @task.user_id %>
@@ -89,10 +89,22 @@
           <p>Needed user: <span>This spot could be yours!</span></p>
         <% end %>
         <!-- MARK AS COMPLETE buttons -->
-        <% if current_user.id == @task.user_id %>
-          <button class="btn waves-effect waves-light" type="submit" name="action">Task Complete
+        <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false )  %>
+          <%= form_for @task do |f| %>
+            <%= f.hidden_field :needed_confirm_completion, :value=> true %>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              <%= f.submit("Task complete", name: nil) %>
             <i class="material-icons right">done</i>
-          </button>
+            </button>
+          <% end %>
+        <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) %>
+          <%= form_for @task do |f| %>
+            <%= f.hidden_field :needy_confirm_completion, :value=> true %>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              <%= f.submit("Task complete", name: nil) %>
+            <i class="material-icons right">done</i>
+            </button>
+          <% end %>
         <% end %>
       </div>
       <div class="top-content col s6">
@@ -129,29 +141,34 @@
           </div>
         </div>
       </div>
+      <div class="col s6">
+        <h5 class="center-align"><%= @task.description %></h5>
+      </div>
     <% end %>
   </div>
   <!-- show REQUEST or REVIEW button depending on state of the task  -->
   <% if (current_user.id != @task.user_id) && (@task.needed_id == nil) && Request.where(user_id: current_user.id, task_id: @task.id).blank? %>
     <div class="row">
-      <div class="col s6 hidden-element"><h1></h1></div>
-        <div class="col s6 center-align">
-          <div class="need-me-btn">
-            <!-- prevent duplicate requests from same user -->
-            <% if Request.where(task_id: @task_id).blank? %>
-              <%= form_for @request do |f| %>
-                <%= f.hidden_field :user_id,:value=> current_user.id %>
-                <%= f.hidden_field :task_id,:value=> @task.id %>
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                <%= f.submit %>
-                </button>
-              <% end %>
+      <div class="col s6">
+        <h5 class="center-align"><%= @task.description %></h5>
+      </div>
+      <div class="col s6 center-align">
+        <div class="need-me-btn">
+          <!-- prevent duplicate requests from same user -->
+          <% if Request.where(task_id: @task_id).blank? %>
+            <%= form_for @request do |f| %>
+              <%= f.hidden_field :user_id,:value=> current_user.id %>
+              <%= f.hidden_field :task_id,:value=> @task.id %>
+              <button class="btn waves-effect waves-light" type="submit" name="action">
+              <%= f.submit %>
+              </button>
             <% end %>
-          </div>
+          <% end %>
         </div>
+      </div>
     </div>
     <!-- bring up the REVIEW button if the task has both is PENDING-->
-  <% elsif @task.needed_id %>     
+  <% elsif (@task.needed_id) && ((current_user.id == @task.user_id) || (current_user.id == @task.needed_id)) %>     
     <div class="row">
       <div class="col s6">
         <h5 class="center-align"><%= @task.description %></h5>

@@ -1,13 +1,16 @@
 html, body {
   height: 100%;
   min-height: 100%;
- /* background: url('https://c1.staticflickr.com/5/4124/5202980757_10e5e165fc_b.jpg') no-repeat center center fixed;*/
+  background: url('https://c1.staticflickr.com/5/4124/5202980757_10e5e165fc_b.jpg') no-repeat center center fixed;
   -webkit-background-size: cover; /* For WebKit*/
   -moz-background-size: cover;    /* Mozilla*/
   -o-background-size: cover;      /* Opera*/
   background-size: 100% 100%; 
   /*color: rgba(18, 231, 48, 1); */
   color:white;
+}
+.card-content {
+  color: black;
 }
 
 main {
