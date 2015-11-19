@@ -27,10 +27,6 @@ main {
   background-color: rgba(0, 0, 0, 0);
 }
 
-#show-navbar {
-
-}
-
 li.bold {
   margin-bottom: 2%;
 }
@@ -89,7 +85,7 @@ img#needy-logo {
 
 
 .task-user-image {
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 .task-map-image {
@@ -147,6 +143,7 @@ footer {
   box-shadow: 13px 21px 50px #000000;
   border-color: rgba(26, 187, 99, 1);
   border-radius: 20px;
+  width: 110%;
 }
 
 .profile-image {
@@ -208,7 +205,10 @@ nav {
 
 .input-field {
   padding: 5px;
+}
 
+.card-content {
+  color: black;
 }
 
 button {
@@ -329,5 +329,19 @@ button {
   color:white;
 }
 
+#task-index {
+  margin-left: 25%;
+}
 
+.material-icons large {
+  color: blue;
+}
+
+#users-index {
+  margin-left: 25%;
+}
+
+.nav-change-color {
+  background-color: blue;
+}
 

@@ -38,6 +38,9 @@ gem 'sorcery'
 # Gon is for using JS with rails
 gem 'gon'
 
+# Pusher
+gem 'pusher'
+
 # carrierwave to upload images
 gem 'carrierwave'
 gem "rmagick"

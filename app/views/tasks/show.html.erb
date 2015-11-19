@@ -29,31 +29,64 @@
             <p>Here is some more information about this product that is only revealed once clicked on.</p>
           </div>
         </div>
-      </div>
-      <div class="row task-icons">
-        <div class="col s12">
-          <div class="card blue-grey darken-1">
-            <div class="col s4">
-              <i class="material-icons large">tune</i>
-              <p><%= @task.difficulty %></p>
+        <div class="top-content col s6">
+          <div class="card medium">
+            <div class="card-image waves-effect waves-block waves-light"></div>
+            <div class="card-content">
+              <p><%= link_to "See Task Map", map_tasks_path %></p>
+              <div id="map"></div>
             </div>
-            <div class="col s4">
-              <i class="material-icons large">access_alarms</i>
-              <p><%= @task.estimated_duration %> min</p>
-            </div>
-            <div class="col s4">
-              <i class="material-icons large">adb</i>
-              <p>$<%= @task.compensation %></p>
-            </div>
-            <div class="card-action">
-              <a id="start">Start Task</a>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s6">
-          <h5 class="center-align"><%= @task.description %></h5>
+        <div class="row task-icons">
+          <div class="col s12">
+            <div class="card blue-grey darken-1">
+              <div class="col s4">
+                <i class="material-icons large">tune</i>
+                <p><%= @task.difficulty %></p>
+              </div>
+              <div class="col s4">
+                <i class="material-icons large">access_alarms</i>
+                <p><%= @task.estimated_duration %><!-- dynamic minutes, hours, days based on form input --></p>
+              </div>
+              <div class="col s4">
+                <i class="material-icons blue large">adb</i>
+                <p><%= @task.compensation %></p>
+              </div>
+              <div class="card-action">
+                <a id="start"><%= @task.title %></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <h5 class="center-align"><%= @task.description %></h5>
+          </div>
+          <div class="top-content col s6">
+            <% all_requests = Request.where(task_id: @task.id) %>
+            <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
+            <%= all_requests.each do |r| %>
+              <p><%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+            <% end %>
+            <!-- Radio button select to approve one of the people requesting to do the task -->
+            <% if current_user.id == @task.user_id %>
+              <p>Select one of the Needed's below and approve their request!</p>
+              <%= form_for @task do |f|%>
+                <% all_requests.each do |r| %>
+                  <p>
+                    <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
+                    <label for="<%= r[:user_id] %>"><%= User.find(r[:user_id]).full_name %></label>
+                  </p>
+                <% end %>
+                  <%= f.submit("Approve Request", name: nil) %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
         <!-- List the number of people requesting to do the job  -->
         <div class="top-content col s6">
@@ -62,20 +95,14 @@
           <%= all_requests.each do |r| %>
             <p><%= link_to User.find(r[:user_id]).full_name, user_path(r[:user_id]) %></p>
           <% end %>
-          <!-- Radio button select to approve one of the people requesting to do the task -->
+          <!-- MARK AS COMPLETE buttons -->
           <% if current_user.id == @task.user_id %>
-            <p>Select one of the Needed's below and approve their request!</p>
-            <%= form_for @task do |f|%>
-              <% all_requests.each do |r| %>
-                <p>
-                  <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
-                  <label for="<%= r[:user_id] %>"><%= User.find(r[:user_id]).full_name %></label>
-                </p>
-              <% end %>
-                <%= f.submit("Approve Request", name: nil) %>
-            <% end %>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Task Complete
+              <i class="material-icons right">done</i>
+            </button>
           <% end %>
         </div>
+<<<<<<< HEAD
       </div>
     <% else %>
     <!-- if TASK.NEEDED_ID is present -->
@@ -135,8 +162,9 @@
               <i class="material-icons large">adb</i>
               <p>$<%= @task.compensation %></p>
             </div>
-            <div class="card-action">
-              <a id="start">Start Task</a>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
         </div>
@@ -173,20 +201,27 @@
       <div class="col s6">
         <h5 class="center-align"><%= @task.description %></h5>
       </div>
-      <div class="col s6">
-        <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Review Experience<i class="material-icons right">mode_edit</i></button>
-        <div id="review" class="hide-form">
-          <div class="center-transparent col s12">
-            <!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
-            <%= render 'tasks/review' %>
+      <!-- bring up the REVIEW button if the task has both is PENDING-->
+    <% elsif @task.needed_id %>     
+      <div class="row">
+        <div class="col s6">
+          <h5 class="show-label">Description: </h5><h5 class="center-align description"><%= @task.description %></h5>
+        </div>
+        <div class="col s6">
+          <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Review Experience<i class="material-icons right">mode_edit</i></button>
+          <div id="review" class="hide-form">
+            <div class="center-transparent col s12">
+              <!-- if CURRENT USER is not the POSTER of the TASK, BUT was the NEEDED USER -->
+              <%= render 'tasks/review' %>
+            </div>
           </div>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZQ0u0B58kHdvch8UmNPY6jMM3L4n9fJc&callback=initMap"></script>
-
 
 
 

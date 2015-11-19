@@ -1,0 +1,2 @@
+module Pusher::AuthHelper
+end
