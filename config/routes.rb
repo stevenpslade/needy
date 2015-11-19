@@ -18,8 +18,9 @@ namespace :map do
   end
 end
 
-resources :messages
-post '/pusher/auth'    => 'pusher#auth'
+namespace :pusher do
+  post 'auth' => 'auth#create'
+end
 
 get 'login' => 'user_sessions#new', :as => :login
 post 'logout' => 'user_sessions#destroy', :as => :logout

@@ -38,7 +38,7 @@ gem 'sorcery'
 # Gon is for using JS with rails
 gem 'gon'
 
-# Pusher for real-time
+# Pusher
 gem 'pusher'
 
 # carrierwave to upload images
