@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
-  // gon.watch('tasks', function(task) {
-  //   console.log(task.user_id);
-  // });
+  current_name = gon.current_user.first_name + " " + gon.current_user.last_name
+  other_name = gon.other_user.first_name + " " + gon.other_user.last_name
 
   var pusher = new Pusher('dbc5b3802db9df42fe20', {
     authEndpoint: '/pusher/auth',
@@ -20,7 +19,7 @@ $(document).ready(function() {
       .append('<img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32">')
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<span>').addClass('chat-time').html("13:53"))
-        .append($('<h5>').text('John Smith'))
+        .append($('<h5>').text(other_name))
         .append($('<p>').text(data.message)))
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'));
@@ -33,7 +32,7 @@ $(document).ready(function() {
       .append('<img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32" height="32">')
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<span>').addClass('chat-time').html("13:53"))
-        .append($('<h5>').text('John Smith'))
+        .append($('<h5>').text(current_name))
         .append($('<p>').text(message)))
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'))
