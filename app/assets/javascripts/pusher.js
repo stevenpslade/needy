@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  // gon.watch('tasks', function(task) {
+  //   console.log(task.user_id);
+  // });
+
   var pusher = new Pusher('dbc5b3802db9df42fe20', {
     authEndpoint: '/pusher/auth',
     auth: {
