@@ -12,6 +12,7 @@
 
 //= require forms
 //= require maps
+//= require pusher
 
 $(document).on("page:change", function() {
   
