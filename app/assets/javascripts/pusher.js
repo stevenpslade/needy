@@ -15,7 +15,8 @@ $(document).ready(function() {
     $('<div>').addClass('chat-message clearfix')
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<p>').text(data.message)))
-      .appendTo($('.chat-history'));
+      .appendTo($('.chat-history'))
+      $('<hr>').appendTo($('.chat-history'));
   });
 
 
@@ -25,6 +26,7 @@ $(document).ready(function() {
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<p>').text(message)))
       .appendTo($('.chat-history'))
+      $('<hr>').appendTo($('.chat-history'))
       $('#chatMsg').val("");
   }
 
