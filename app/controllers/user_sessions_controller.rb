@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to(:user, notice: "Logged in as: #{@user.first_name}!")
     else
       flash.now[:alert] = 'Login failed'
-      render action: 'tasks/index'
+      redirect_to root_path
     end
   end
 
