@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     if reviews.size == 0
       flash.now[:alert] = "#{@user.username} has no reviews"
     else
-      "#{reviews.sum(:rating)/reviews.size}/10"
+      "#{reviews.sum(:user_rating)/reviews.size}/10"
     end
   end
 

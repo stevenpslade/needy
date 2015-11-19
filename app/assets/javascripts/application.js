@@ -26,10 +26,10 @@ $(document).on("page:change", function() {
   
 // })
 
- $('#start').on('click', function() {
-    $('.task-icons').hide();
-    $('.task-timer').show();
- })
+ // $('#start').on('click', function() {
+ //    $('.task-icons').hide();
+ //    $('.task-timer').show();
+ // })
  // $('.need-me-btn a').on('click', function(){
  //  var task_id = $(this).data('id');
  // });
