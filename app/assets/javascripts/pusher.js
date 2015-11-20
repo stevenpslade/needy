@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  task_num = window.location.pathname.match(/\d/)[0]
   current_name = gon.current_user.first_name + " " + gon.current_user.last_name
   other_name = gon.other_user.first_name + " " + gon.other_user.last_name
 
@@ -18,7 +19,7 @@ $(document).ready(function() {
     }
   });
   
-  var channel = pusher.subscribe('private-chat-room-1');
+  var channel = pusher.subscribe('private-chat-room-' + task_num);
 
   channel.bind('client-new-message', function(data) {
     $('<div>').addClass('chat-message clearfix')
