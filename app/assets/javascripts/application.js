@@ -13,6 +13,8 @@
 //= require forms
 //= require maps
 //= require pusher
+//= require raty
+//= require raty_custom
 
 $(document).on("page:change", function() {
   
@@ -34,8 +36,5 @@ $(document).on("page:change", function() {
  // $('.need-me-btn a').on('click', function(){
  //  var task_id = $(this).data('id');
  // });
-$('body').on('click', '#task-form', function() {
-  
-})
 
 });

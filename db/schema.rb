@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118222314) do
+ActiveRecord::Schema.define(version: 20151120225523) do
 
   create_table "requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20151118222314) do
     t.string   "gender"
     t.string   "city"
     t.string   "profile_image_url",               default: "http://smallfarms.oregonstate.edu/sites/default/files/_includes/staff_placeholder.jpg"
-    t.string   "needy_rating"
-    t.string   "needed_rating"
+    t.integer  "needy_rating",                    default: 0
+    t.integer  "needed_rating",                   default: 0
     t.boolean  "trackable"
     t.string   "task_radius"
     t.string   "crypted_password"
