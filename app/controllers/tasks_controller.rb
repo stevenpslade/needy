@@ -29,15 +29,16 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     gon.watch.tasks = @task
     gon.current_user = current_user
-    if current_user.id == @task.user_id
+    if current_user.id == @task.user_id && @task.needed_id != nil
       @other_user = User.where("id = ? ", @task.needed_id)
     else
       @other_user = User.where("id = ? ", @task.user_id)
     end
     gon.other_user = @other_user[0]
+    gon.chat = Chat.where("task_id = ?", @task.id)
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
-    # @review allos for the form_for to allow the review parameter
+    # @review allows for the form_for to allow the review parameter
     @review = Review.new
   end
 
@@ -48,6 +49,8 @@ class TasksController < ApplicationController
       params.permit(:needed_id)
       @task.needed_id = params[:needed_id]
       if @task.save
+        @chat = Chat.new({task_id: params[:id]})
+        @chat.save
         redirect_to task_path(params[:id]), notice: "You have accepted someone to do your bidding!"
       else
         render :show
