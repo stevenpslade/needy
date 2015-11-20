@@ -1,4 +1,4 @@
-  <head>
+<head>
   <style type="text/css">
     #map {
       position: absolute;
@@ -8,26 +8,16 @@
   </style>
 </head>
 <div class="container">
-  <div class="row">
-    <% if @task.needed_id == nil %>
-    <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
-      <div class="top-content col s6">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
-        <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
-        <p>Needed user: This spot could be yours!</p>
-      </div>
-      <!-- MAP RENDER -->
-      <div class="top-content col s6">
-        <div class="card medium">
-          <div class="card-image waves-effect waves-block waves-light"></div>
-          <div class="card-content">
-            <p><%= link_to "See Task Map", map_tasks_path %></p>
-            <div id="map"></div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
+  <div class="background-show-page">
+    <div class="container" style="width:90%;">
+    <h3 class="show-label"><%= @task.title %></h3>
+      <div class="row">
+      <% if @task.needed_id == nil %>
+      <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
+        <div class="top-content col s6">
+          <img class="task-user-image" src="<%= @task.image_url %>"/>
+          <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
+          <p>Needed user: This spot could be yours!</p>
         </div>
         <div class="top-content col s6">
           <div class="card medium">
@@ -88,12 +78,16 @@
             <% end %>
           </div>
         </div>
-        <!-- List the number of people requesting to do the job  -->
+      <% else %>
+      <!-- if TASK.NEEDED_ID is present -->
         <div class="top-content col s6">
-          <% all_requests = Request.where(task_id: @task.id) %>
-          <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
-          <%= all_requests.each do |r| %>
-            <p><%= link_to User.find(r[:user_id]).full_name, user_path(r[:user_id]) %></p>
+          <img class="task-user-image" src="<%= @task.image_url %>"/>
+          <% if @task.user_id && @task.needed_id %>
+            <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
+            <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.user_id) %></p>
+          <% else %>
+            <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+            <p>Needed user: <span>This spot could be yours!</span></p>
           <% end %>
           <!-- MARK AS COMPLETE buttons -->
           <% if current_user.id == @task.user_id %>
@@ -102,65 +96,12 @@
             </button>
           <% end %>
         </div>
-<<<<<<< HEAD
-      </div>
-    <% else %>
-    <!-- if TASK.NEEDED_ID is present -->
-      <div class="top-content col s6">
-        <img class="task-user-image" src="<%= @task.image_url %>"/>
-        <% if @task.user_id && @task.needed_id %>
-          <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
-          <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.user_id) %></p>
-        <% else %>
-          <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-          <p>Needed user: <span>This spot could be yours!</span></p>
-        <% end %>
-        <!-- MARK AS COMPLETE buttons -->
-        <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false )  %>
-          <%= form_for @task do |f| %>
-            <%= f.hidden_field :needed_confirm_completion, :value=> true %>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-              <%= f.submit("Task complete", name: nil) %>
-            <i class="material-icons right">done</i>
-            </button>
-          <% end %>
-        <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) %>
-          <%= form_for @task do |f| %>
-            <%= f.hidden_field :needy_confirm_completion, :value=> true %>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-              <%= f.submit("Task complete", name: nil) %>
-            <i class="material-icons right">done</i>
-            </button>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="top-content col s6">
-        <div class="card medium">
-          <div class="card-image waves-effect waves-block waves-light"></div>
-          <div class="card-content">
-            <p><%= link_to "See Task Map", map_tasks_path %></p>
-            <div id="map"></div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row task-icons">
-        <div class="col s12">
-          <div class="card blue-grey darken-1">
-            <div class="col s4">
-              <i class="material-icons large">tune</i>
-              <p><%= @task.difficulty %></p>
-            </div>
-            <div class="col s4">
-              <i class="material-icons large">access_alarms</i>
-              <p><%= @task.estimated_duration %> min</p>
-            </div>
-            <div class="col s4">
-              <i class="material-icons large">adb</i>
-              <p>$<%= @task.compensation %></p>
+        <div class="top-content col s6">
+          <div class="card medium">
+            <div class="card-image waves-effect waves-block waves-light"></div>
+            <div class="card-content">
+              <p><%= link_to "See Task Map", map_tasks_path %></p>
+              <div id="map"></div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
@@ -168,38 +109,47 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col s6">
-        <h5 class="center-align"><%= @task.description %></h5>
-      </div>
-    <% end %>
-  </div>
-  <!-- show REQUEST or REVIEW button depending on state of the task  -->
-  <% if (current_user.id != @task.user_id) && (@task.needed_id == nil) && Request.where(user_id: current_user.id, task_id: @task.id).blank? %>
-    <div class="row">
-      <div class="col s6">
-        <h5 class="center-align"><%= @task.description %></h5>
-      </div>
-      <div class="col s6 center-align">
-        <div class="need-me-btn">
-          <!-- prevent duplicate requests from same user -->
-          <% if Request.where(task_id: @task_id).blank? %>
-            <%= form_for @request do |f| %>
-              <%= f.hidden_field :user_id,:value=> current_user.id %>
-              <%= f.hidden_field :task_id,:value=> @task.id %>
-              <button class="btn waves-effect waves-light" type="submit" name="action">
-              <%= f.submit %>
-              </button>
-            <% end %>
-          <% end %>
+        <div class="row task-icons">
+          <div class="col s12">
+            <div class="card blue-grey darken-1">
+              <div class="col s4">
+                <i class="material-icons large">tune</i>
+                <p><%= @task.difficulty %></p>
+              </div>
+              <div class="col s4">
+                <i class="material-icons large">access_alarms</i>
+                <p><%= @task.estimated_duration %> min</p>
+              </div>
+              <div class="col s4">
+                <i class="material-icons large">adb</i>
+                <p><%= @task.compensation %></p>
+              </div>
+              <div class="card-action">
+                <a id="start"><%= @task.title %></a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-    <!-- bring up the REVIEW button if the task has both is PENDING-->
-  <% elsif (@task.needed_id) && ((current_user.id == @task.user_id) || (current_user.id == @task.needed_id)) %>     
-    <div class="row">
-      <div class="col s6">
-        <h5 class="center-align"><%= @task.description %></h5>
+    <!-- show REQUEST or REVIEW button depending on state of the task  -->
+    <% if (current_user.id != @task.user_id) && (@task.needed_id == nil) && Request.where(user_id: current_user.id, task_id: @task.id).blank? %>
+      <div class="row">
+        <div class="col s6 hidden-element"><h1></h1></div>
+          <div class="col s6 center-align">
+            <div class="need-me-btn">
+              <!-- prevent duplicate requests from same user -->
+              <% if Request.where(task_id: @task_id).blank? %>
+                <%= form_for @request do |f| %>
+                  <%= f.hidden_field :user_id,:value=> current_user.id %>
+                  <%= f.hidden_field :task_id,:value=> @task.id %>
+                  <button class="btn waves-effect waves-light" type="submit" name="action">
+                  <%= f.submit %>
+                  </button>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
       </div>
       <!-- bring up the REVIEW button if the task has both is PENDING-->
     <% elsif @task.needed_id %>     
@@ -225,8 +175,3 @@
     <%end%>
 </div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZQ0u0B58kHdvch8UmNPY6jMM3L4n9fJc&callback=initMap"></script>
-
-
-
-
-
