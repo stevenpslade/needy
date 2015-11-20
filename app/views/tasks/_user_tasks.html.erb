@@ -2,6 +2,7 @@
   <h3>My Needs</h3>
   <div class="row">
   <% @user_tasks = Task.where(user_id: current_user.id) %>
+  <% if @user_tasks != nil %>
     <% @user_tasks.each do |task| %>
       <div class="col s4">
         <div class="index-card card small">
@@ -49,6 +50,7 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_back_or_to(:tasks, notice: "Welcome aboard, #{@user.first_name}!")
+      redirect_to user_path(current_user), notice: "Logged in as: #{@user.first_name}!"
       # redirect_to root_url, notice: "Signup successful! Log in."
     else
       @user = User.new
@@ -32,12 +32,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to user_path(current_user)
+    else
+      flash.now[:alert] = "Update Failed"
+    end
   end
 
   def destroy
-    logout
-    redirect_to root_path, notice: "You've been logged out"
+    @user = User.find(params[:id])
+    @user.destroy
   end
 
   private

@@ -54,6 +54,14 @@ $(document).on("page:change", function() {
     $(this).toggleClass('nav-change-color');
   });
 
+  // show edit profile form
+  $('body').on('click', '#show-edit-profile', function() {
+    $('#edit-profile').animate({height: 'toggle'});
+  });
+
+  $('.modal-trigger').leanModal();
+
+
   // show info on landing page
   // $('body').on('click', ".show-info", function() {
   //   $('.landing-info').animate({height: 'toggle'});

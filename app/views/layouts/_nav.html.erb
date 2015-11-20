@@ -110,8 +110,10 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
 
 <!-- show user tasks -->
 <div id="user-tasks" class="hide-form">
-  <% @user_tasks = Task.where("user_id = 'current_user'") %>
-  <%= render 'tasks/user_tasks' %>
+  <% if current_user %>
+    <% @user_tasks = Task.where("user_id = 'current_user'") %>
+    <%= render 'tasks/user_tasks' %>
+  <% end %>
 </div>
 
 
