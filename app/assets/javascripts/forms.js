@@ -8,6 +8,12 @@ $(document).on("page:change", function() {
     // $('.show-form').colorbox();
   });
 
+  // Show filter-tasks form
+   $('body').on('click', '#show-filter-by', function() {
+    $('#filter-by-form').animate({width: 'toggle'});
+    $('main').toggle();
+  });
+  
 // show signup form
   $('body').on('click', '.register', function() {
     $('#signup-form').animate({width: 'toggle'});
@@ -54,11 +60,21 @@ $(document).on("page:change", function() {
     $(this).toggleClass('nav-change-color');
   });
 
+  // show edit profile form
+  $('body').on('click', '#show-edit-profile', function() {
+    $('#edit-profile').animate({height: 'toggle'});
+  });
+
+  $('.modal-trigger').leanModal();
+
+
   // show info on landing page
   // $('body').on('click', ".show-info", function() {
   //   $('.landing-info').animate({height: 'toggle'});
   //   $('.show-info').toggle();
   //   $('.hide-form').toggle();
   // });
+
   
+ 
 });

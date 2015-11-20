@@ -1,7 +1,7 @@
 <footer>
   <div class="footer-copyright">    
       <% if current_user %>
-        <%= current_user.username %> (<%= link_to "Log out", logout_path("current"), method: :delete %>)
+        <%= current_user.username %> (<%= link_to "Logout", :logout, method: :post %>)
       <% else %>
         <a class="show-login">Login</a> | <a class="register">Sign Up</a>
       <% end %>

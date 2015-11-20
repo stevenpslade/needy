@@ -3,20 +3,10 @@
     <div class="container">
       <h4 class="show-label"><%= @user.username %></h4>
       <div class="row">
-          <%= image_tag(@user.profile_image_url, class: "profile-image") %>   
-      </div>
-      <div class="row">
         <div class="col s6">
-          <h6 class="show-label">NAME</h6>
-          <%= @user.first_name %> <%= @user.last_name %>
-        </div>
-      </div>
-      <div class="row">
+          <%= image_tag(@user.profile_image_url, class: "profile-image") %>
+        </div>   
         <div class="col s6">
-          <h6 class="show-label">BIO</h6>
-          <%= @user.bio %>
-        </div>  
-        <div class="col s6" style="padding-left: 30px;">
           <div class="row">
             <h6 class="show-label">SKILLS</h6>
             <%= @user.skills %>
@@ -33,7 +23,35 @@
             <h6 class="show-label">EMAIL</h6>
             <%= @user.email %>
           </div>
+          <div class="row">
+            <div id="show-edit-profile" class="btn-floating btn-large waves-effect waves-light blue btn tooltipped btn modal-trigger" data-delay="50" data-tooltip="Edit Profile" data-target="modal1">
+              <i class="material-icons">mode_edit</i>
+            </div>
+            <div id="modal1" class="modal">
+              <div id="edit-profile" class="hide-form">
+                <div class="center-transparent col s12">
+                  <%= render 'users/create_form' %>
+                </div>
+              </div>
+            </div>
+            <div id="delete-profile" class="btn-floating btn-large waves-effect waves-light red btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Profile">
+              <i class="material-icons">delete</i>
+            </div> <!-- still need to add functionality -->
+          </div>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <h6 class="show-label">NAME</h6>
+          <%= @user.first_name %> <%= @user.last_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <h6 class="show-label">BIO</h6>
+          <%= @user.bio %>
+        </div>  
       </div>
     </div>
   </div>
