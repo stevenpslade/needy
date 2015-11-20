@@ -8,6 +8,13 @@ $(document).on("page:change", function() {
     // $('.show-form').colorbox();
   });
 
+  // Show filter-tasks form
+   $('body').on('click', '#show-filter-by', function() {
+    $('#filter-by-form').animate({width: 'toggle'});
+    $('main').toggle();
+  });
+  
+
   $('body').on('click', '#register', function() {
     $('#signup-form').animate({width: 'toggle'});
     $('main').toggle();
@@ -46,5 +53,7 @@ $(document).on("page:change", function() {
   $('#slide-out').on('click', 'div', function() {
     $('div').toggleClass('.nav-change-color');
   });
+
   
+ 
 });

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.search(params[:username], params[:chronology])
   end
 
   def new
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def create
     params[:task][:user_id] = current_user.id
     @task = Task.new(task_params)
-  
+
     if @task.save
       redirect_to tasks_path, notice: "New Task Created!"
     else
@@ -31,7 +31,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    byebug
     @task = Task.find(params[:id])
     # the APPROVE REQUEST portion
     if params[:task] == nil
@@ -61,7 +60,6 @@ class TasksController < ApplicationController
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
     else
-      byebug
       redirect_to task_path(params[:id]), alert: "Error, something went wrong!" 
     end
   end
