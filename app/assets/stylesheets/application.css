@@ -148,7 +148,7 @@ footer {
 
 .profile-image {
   display: inline-block;
-  margin-left: 0%;
+  margin-left: -20%;
   border-radius: 50%;
   border: solid;
   border-color: #81d4fa;
