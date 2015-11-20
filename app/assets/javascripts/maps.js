@@ -64,7 +64,6 @@
     var geocoder = new google.maps.Geocoder();
 
     gon.watch('tasks', function(tasks) {
-      console.log(tasks);
       // if (window.location.pathname == '/map/tasks') {
       if (tasks.length >= 1) {
         tasks.forEach(function(task) {

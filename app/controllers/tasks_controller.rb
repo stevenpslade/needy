@@ -28,6 +28,13 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     gon.watch.tasks = @task
+    gon.current_user = current_user
+    if current_user.id == @task.user_id
+      @other_user = User.where("id = ? ", @task.needed_id)
+    else
+      @other_user = User.where("id = ? ", @task.user_id)
+    end
+    gon.other_user = @other_user[0]
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
     # @review allos for the form_for to allow the review parameter
