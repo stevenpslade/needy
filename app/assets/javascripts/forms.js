@@ -14,14 +14,14 @@ $(document).on("page:change", function() {
     $('main').toggle();
   });
   
-
-  $('body').on('click', '#register', function() {
+// show signup form
+  $('body').on('click', '.register', function() {
     $('#signup-form').animate({width: 'toggle'});
     $('main').toggle();
   });
 
 // show login form
-  $('body').on('click', '#show-login', function() {
+  $('body').on('click', '.show-login', function() {
     $('#login-form').animate({width: 'toggle'});
     $('main').fadeToggle('linear');
   });
@@ -35,6 +35,12 @@ $(document).on("page:change", function() {
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 100 // Creates a dropdown of 15 years to control year
+  });
+
+  // show user tasks
+  $('body').on('click', '#show-user-tasks', function() {
+    $('#user-tasks').animate({width: 'toggle'});
+    $('main').toggle();
   });
 
   // show Task index
@@ -51,8 +57,15 @@ $(document).on("page:change", function() {
 
   // change nav button color on click
   $('#slide-out').on('click', 'div', function() {
-    $('div').toggleClass('.nav-change-color');
+    $(this).toggleClass('nav-change-color');
   });
+
+  // show info on landing page
+  // $('body').on('click', ".show-info", function() {
+  //   $('.landing-info').animate({height: 'toggle'});
+  //   $('.show-info').toggle();
+  //   $('.hide-form').toggle();
+  // });
 
   
  

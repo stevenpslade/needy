@@ -21,7 +21,6 @@ class Task < ActiveRecord::Base
   def self.search(username = nil, chronology = nil)
    
     @task = Task.all
-    byebug
 
     if !username.blank? || !username == ""
       user = User.where("username LIKE ?", "%#{username}%") unless username.blank?
@@ -34,7 +33,7 @@ class Task < ActiveRecord::Base
               @task
             end
     else  
-      byebug
+
       @task = case chronology
             when 'newest_first' then @task
             when 'oldest_first' then @task.reverse
