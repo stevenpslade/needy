@@ -14,12 +14,15 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
     <li class="bold">
       <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Logout", :logout, method: :post %>
     </div></li>
+    <li class="bold">
+      <div id="show-user-tasks" class="waves-effect waves-light btn-large nav-button">My Tasks
+    </div></li>
     <% else %>
     <li class="bold">
-      <div id="register" class="waves-effect waves-light btn-large nav-button">Sign Up!</div>
+      <div class="waves-effect waves-light btn-large nav-button register">Sign Up!</div>
     </li>
     <li class="bold">
-      <div id="show-login" class="waves-effect waves-light btn-large nav-button">Login
+      <div class="waves-effect waves-light btn-large nav-button show-login">Login
       <i class="material-icons">settings_input_component</i></div>
     </li>
     <% end %>
@@ -64,6 +67,8 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
 
 </div> -->
 
+
+<!-- show signup form -->
 <div id="signup-form" class="hide-form">
   <div class="center-transparent col s4">
     <% @user = User.new %>
@@ -71,22 +76,26 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
   </div>
 </div>
 
+<!-- show login -->
 <div id="login-form" class="hide-form">
   <div class="center-transparent col s4">
     <%= render "user_sessions/form" %>
   </div>
 </div>
 
+<!-- show users index -->
 <div id="users" class="hide-form">
   <% @users = User.all %>
   <%= render 'users/index' %>
 </div>
 
+<!-- show tasks index -->
 <div id="needs" class="hide-form">
   <% @tasks = Task.all %>
   <%= render 'tasks/index' %>
 </div>
 
+<!-- show task form -->
 <div id='post-task' class="hide-form">
   <div class="center-transparent col s4">
     <% if current_user %>
@@ -98,6 +107,13 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
     <% end %>
   </div>
 </div>
+
+<!-- show user tasks -->
+<div id="user-tasks" class="hide-form">
+  <% @user_tasks = Task.where("user_id = 'current_user'") %>
+  <%= render 'tasks/user_tasks' %>
+</div>
+
 
 
 

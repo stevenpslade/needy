@@ -6,6 +6,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def user_tasks
+    @user_tasks = Task.where("user_id = 'current_user'")
+  end
+
   def new
     @task = Task.new
   end
@@ -31,17 +35,38 @@ class TasksController < ApplicationController
   end
 
   def update
+    byebug
+    @task = Task.find(params[:id])
+    # the APPROVE REQUEST portion
     if params[:task] == nil
-      @task = Task.find(params[:id])
       params.permit(:needed_id)
       @task.needed_id = params[:needed_id]
       if @task.save
         redirect_to task_path(params[:id]), notice: "You have accepted someone to do your bidding!"
       else
         render :show
+      end    
+    # TASK COMPLETE
+    elsif params[:task][:needy_confirm_completion]
+      params.permit(:needy_confirm_completion)
+      @task.needy_confirm_completion = params[:task][:needy_confirm_completion]
+      if @task.save
+        redirect_to task_path(params[:id]), notice: "Task marked as complete!"
+      else
+        redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
+      end
+    #  TASK COMPLETE
+    elsif params[:task][:needed_confirm_completion]
+      params.permit(:needed_confirm_completion)
+      @task.needed_confirm_completion = params[:task][:needed_confirm_completion]
+      if @task.save
+        redirect_to task_path(params[:id]), notice: "Task marked as complete!"
+       else
+        redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
     else
-        
+      byebug
+      redirect_to task_path(params[:id]), alert: "Error, something went wrong!" 
     end
   end
 
@@ -54,7 +79,7 @@ class TasksController < ApplicationController
   protected
 
   def task_params
-    params.require(:task).permit(:user_id, :needed_id, :needy_confirmation_completion, :needed_confirmation_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty)
+    params.require(:task).permit(:user_id, :needed_id, :needy_confirm_completion, :needed_confirm_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty)
   end
 
 end

@@ -15,7 +15,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <h5>Review your experience with <%= User.find(@task.needed_id).first_name %></h5>
+            <h5 class="review-title">Review your experience with <%= User.find(@task.user_id).first_name %></h5>
           </div>
         </div>
           <%= f.hidden_field :user_id,:value=> current_user.id %>
@@ -52,7 +52,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <h5>Review your experience with <%= User.find(@task.needed_id).first_name %></h5>
+            <h5 class="review-title">Review your experience with <%= User.find(@task.needed_id).first_name %></h5>
           </div>
         </div>
           <%= f.hidden_field :user_id,:value=> current_user.id %>
