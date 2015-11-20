@@ -18,29 +18,26 @@ class Task < ActiveRecord::Base
   # validates :difficulty,
   #   presence: true
 
-  def self.search(username = nil, chronology = nil)
-   
+  def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
     @task = Task.all
 
-    if !username.blank? || !username == ""
-      user = User.where("username LIKE ?", "%#{username}%") unless username.blank?
-      @task = @task.where(user: user).to_a
+    # build up the query, i.e. if the title is blank or title is an empty string, do NOT carry this out
+    @task = @task.where("title LIKE ?", "%#{title}%") unless title.blank? || title == ""
+    @task = @task.where("location LIKE ?", "%#{location}%") unless location.blank? || location == ""
+    @task = @task.where("difficulty LIKE ?", "%#{difficulty}%") unless difficulty.blank? || difficulty == ""
 
-      @task = case chronology
-            when 'newest_first' then @task
-            when 'oldest_first' then @task.reverse
-            else
-              @task
-            end
-    else  
-
-      @task = case chronology
-            when 'newest_first' then @task
-            when 'oldest_first' then @task.reverse
-            else
-              @task
-            end
+    unless username.blank? || username == ""
+      user = User.where("username LIKE ?", "%#{username}%") 
+      @task = @task.where(user: user).to_a 
     end
+
+    @task = case chronology
+          when 'newest_first' then @task
+          when 'oldest_first' then @task.reverse
+          else
+            @task
+          end
+    
     @task
   end
 

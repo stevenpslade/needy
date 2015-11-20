@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @tasks = Task.search(params[:username], params[:chronology])
+    @tasks = Task.search(params[:username], params[:title], params[:location], params[:difficulty], params[:chronology])
   end
 
   def user_tasks
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     gon.watch.tasks = @task
     gon.current_user = current_user
-    if current_user.id == @task.user_id
+    if current_user.id == @task.user_id && @task.needed_id != nil
       @other_user = User.where("id = ? ", @task.needed_id)
     else
       @other_user = User.where("id = ? ", @task.user_id)
