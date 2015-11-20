@@ -9,13 +9,13 @@
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4"><%= link_to user.username, user_path(user) %><i class="material-icons right">more_vert</i></span>
+            <p class="card-attr"><span>Needy Rating: </span><%= user.needy_rating %></p>
+            <p class="card-attr"><span>Needed Rating: </span><%= user.needed_rating %></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><%= user.username %><i class="material-icons right">close</i></span>
             <p class="card-attr"><span>First Name: </span><%= user.first_name %></p>
             <p class="card-attr"><span>Last Name: </span><%= user.last_name %></p>
-            <p class="card-attr"><span>Needy Rating: </span><%= user.needy_rating %></p>
-            <p class="card-attr"><span>Needed Rating: </span><%= user.needed_rating %></p>
             <p class="card-attr"><span>City: </span><%= user.city %></p>
             <p class="card-attr"><span>Skills: </span><%= user.skills %></p>
             <p class="card-attr"><span>Bio: </span><%= user.bio %></p>
