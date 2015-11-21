@@ -13,8 +13,6 @@
 //= require forms
 //= require maps
 //= require pusher
-//= require raty
-//= require raty_custom
 
 $(document).on("page:change", function() {
   
