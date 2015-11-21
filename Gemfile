@@ -58,5 +58,4 @@ group :development do
   gem 'spring'
 end
 
-gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 
