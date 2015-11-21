@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    # Pusher.trigger('private-chat-room-1', 'client-new-message', {:message => "test"})
     @task = Task.find(params[:id])
     gon.watch.tasks = @task
     gon.current_user = current_user
