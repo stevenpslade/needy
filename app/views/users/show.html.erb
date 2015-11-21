@@ -50,6 +50,43 @@
           <%= @user.bio %>
         </div>  
       </div>
+      <div class="row">
+        <div class="col s6">
+          <h6 class="show-label">TASKS ACCEPTED<small> (<%= @tasks.count %>)</small></h6><br>
+          <% @tasks = @tasks.where(needed_id: @user.id) %>
+          <% @tasks.each do |task| %>
+            <%= link_to "#{task.title}", task_path(task.id) %>
+          <% end %>
+        </div>
+        <div class="col s6">
+          <% @tasks = @tasks.where(@user.id) %> 
+          <% @tasks = @tasks.where(needy_confirm_completion: true, needed_confirm_completion: true) %>
+          <h6 class="show-label">TASKS COMPLETED<small> (<%= @tasks.count %>)</small></h6><br>
+          <% @tasks.each do |task| %>
+            <%= link_to "#{task.title}", task_path(task.id) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <h6 class="show-label">REVIEWS by <%= @user.username %></h6>
+            <% @reviews = @reviews.where(for_user: @user.id) %>
+            <% @reviews.each do |review| %>
+              <% if review.user_id == @user.id %>
+                <a class="reviews-by-user collection-item"><%= Task.find(review.task_id).title %></a>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="col s6">
+          <h6 class="show-label">REVIEWS for <%= @user.username %></h6><br>
+            <% @reviews = @reviews.where(for_user: @user.id) %>
+            <% @reviews.each do |review| %>
+              <% if review.for_user == @user.id %>
+                <a class="reviews-for-user"><%= Task.find(review.task_id).title %></a>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

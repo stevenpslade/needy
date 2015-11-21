@@ -1,6 +1,9 @@
 <div class="container">
   <h3>Show me the NEEDS</h3>
   <div class="row">
+    <div class="center-transparent col s12">
+      <%= render 'filter_by' %>
+    </div>
     <% @tasks.each do |task| %>
       <div class="col s4">
         <div class="index-card card small">

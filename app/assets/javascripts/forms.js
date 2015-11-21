@@ -11,7 +11,6 @@ $(document).on("page:change", function() {
   // Show filter-tasks form
    $('body').on('click', '#show-filter-by', function() {
     $('#filter-by-form').animate({width: 'toggle'});
-    $('main').toggle();
   });
   
 // show signup form

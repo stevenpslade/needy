@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
@@ -29,6 +29,8 @@ class UsersController < ApplicationController
       @user = current_user
     else
       @user = User.find(params[:id])
+      @tasks = Task.where(needed_id: params[:id])
+      @reviews = Review.where(for_user: params[:id])
     end
   end
 
