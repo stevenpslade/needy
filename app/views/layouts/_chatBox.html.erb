@@ -161,10 +161,10 @@
         border-radius: 50%;
         float: left;
     }
-
+/*
     .chat-message-content {
         margin-left: 56px;
-    }
+    }*/
 
     .chat-time {
         float: right;
@@ -186,7 +186,7 @@
 
       <h4><%= @other_user[0].first_name + " " + @other_user[0].last_name %></h4>
 
-      <span class="chat-message-counter">3</span>
+      <!-- <span class="chat-message-counter">3</span> -->
 
   </header>
 
@@ -232,7 +232,7 @@
     $('#live-chat header').on('click', function() {
 
         $('.chat').slideToggle(300, 'swing');
-        $('.chat-message-counter').fadeToggle(300, 'swing');
+        // $('.chat-message-counter').fadeToggle(300, 'swing');
         $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
 
     });

@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   function getTime() {
     d = new Date();
-    return d.getHours() + ":" + d.getMinutes()
+    return d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes()
   }
 
 
@@ -22,16 +22,20 @@ $(document).ready(function() {
   
   var channel = pusher.subscribe('private-chat-room-' + chat_id);
 
-  channel.bind('client-new-message', function(data) {
+  function appendMessage(image_url, name, text) {
     $('<div>').addClass('chat-message clearfix')
-      .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
+      .append('<img src="'+ image_url +'" alt="" width="32" height="32">')
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<span>').addClass('chat-time').html(getTime()))
-        .append($('<h5>').text(other_name))
-        .append($('<p>').text(data.message)))
+        .append($('<h5>').text(name))
+        .append($('<p>').text(text)))
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'));
       $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
+  }
+
+  channel.bind('client-new-message', function(data) {
+    appendMessage(gon.other_user.profile_image_url, other_name, data.message);
   });
 
 
@@ -43,16 +47,8 @@ $(document).ready(function() {
       method: 'GET',
       data: {message: message, chat: chat_id, user_id: gon.current_user.id, sent_at: getTime()},
       success:  function () {
-        $('<div>').addClass('chat-message clearfix')
-      .append('<img src="'+ gon.current_user.profile_image_url +'" alt="" width="32" height="32">')
-      .append($('<div>').addClass('chat-message-content clearfix')
-        .append($('<span>').addClass('chat-time').html(getTime()))
-        .append($('<h5>').text(current_name))
-        .append($('<p>').text(message)))
-      .appendTo($('.chat-history'))
-      $('<hr>').appendTo($('.chat-history'))
+        appendMessage(gon.current_user.profile_image_url, current_name, message);
       $('#chatMsg').val("");
-      $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
       }
     });
   }
