@@ -19,7 +19,6 @@ class Task < ActiveRecord::Base
   # validates :difficulty,
   #   presence: true
 
-<<<<<<< HEAD
   # def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
   #   @task = Task.all
 

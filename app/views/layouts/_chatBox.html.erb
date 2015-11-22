@@ -193,17 +193,19 @@
   <div class="chat">
 
     <div class="chat-history">
-    <% @messages.each do |message| %>
-        <% user = User.find(message.user_id) %>
-        <div class="chat-message clearfix">
-            <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
-            <div class="chat-message-content clearfix">
-              <span class="chat-time"><%= message.sent_at %></span>
-              <h5><%= user.first_name + " " + user.last_name %></h5>
-              <p><%= message.text %></p>
-            </div>
-        </div>
-        <hr>
+    <% unless @chat == nil %>
+      <% @messages.each do |message| %>
+          <% user = User.find(message.user_id) %>
+          <div class="chat-message clearfix">
+              <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
+              <div class="chat-message-content clearfix">
+                <span class="chat-time"><%= message.sent_at %></span>
+                <h5><%= user.first_name + " " + user.last_name %></h5>
+                <p><%= message.text %></p>
+              </div>
+          </div>
+          <hr>
+      <% end %>
     <% end %>
     </div> <!-- end chat-history -->
 
