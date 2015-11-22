@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   has_many :reviews
   belongs_to :user
 
+
   # validates :location,
   #   presence: true
 
@@ -17,6 +18,14 @@ class Task < ActiveRecord::Base
 
   # validates :difficulty,
   #   presence: true
+
+  # @all_msgs = 0
+
+  # def self.count_msgs(num)
+  #   count = num - all_msgs
+  #   @all_msgs += num
+  #   count
+  # end
 
   def self.search(username = nil, chronology = nil)
    
