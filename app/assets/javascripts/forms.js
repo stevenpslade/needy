@@ -30,6 +30,11 @@ $(document).on("page:change", function() {
     $('#review').animate({height: 'toggle'});
   });
 
+// show the review comment on the profile page 
+  $('body').on('click', '.user-reviews-tags', function(){
+    $(this).siblings().closest('div.hide-form.reviews-modal').animate({height: 'toggle'});
+  })
+
 // Materialize datepicker
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month

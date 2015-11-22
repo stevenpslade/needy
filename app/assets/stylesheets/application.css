@@ -13,8 +13,17 @@ html, body {
   color: black;
 }
 
+.chip.review-tag-spacer {
+  margin-bottom: 0.5%;
+}
+
 label {
   padding: 10px;
+}
+
+.hide-form.reviews-modal {
+  z-index: 5;
+  position: absolute;
 }
 
 main {
