@@ -1,3 +1,4 @@
+
   // var that sets location
   var myLatLng = {lat: 49.264, lng: -123.168};
   var info;

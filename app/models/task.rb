@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   has_many :reviews
   belongs_to :user
 
+
   # validates :location,
   #   presence: true
 
@@ -18,6 +19,7 @@ class Task < ActiveRecord::Base
   # validates :difficulty,
   #   presence: true
 
+<<<<<<< HEAD
   # def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
   #   @task = Task.all
 
@@ -42,6 +44,7 @@ class Task < ActiveRecord::Base
   # end
 
   def self.search(username = nil, query = nil, difficulty = nil, chronology = nil)
+
     @task = Task.all
 
     # build up the query, i.e. if the title is blank or title is an empty string, do NOT run code

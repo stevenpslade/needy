@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+resources :messages
+resources :chats
+
 root :to => 'welcome#index'
 resources :user_sessions
 resources :users do

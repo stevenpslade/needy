@@ -161,10 +161,10 @@
         border-radius: 50%;
         float: left;
     }
-
+/*
     .chat-message-content {
         margin-left: 56px;
-    }
+    }*/
 
     .chat-time {
         float: right;
@@ -180,54 +180,69 @@
 <div class="body">
 <div id="live-chat">
         
-        <header class="clearfix">
+  <header class="clearfix">
+      
+      <a href="#" class="chat-close">x</a>
+
+      <h4><%= @other_user[0].first_name + " " + @other_user[0].last_name %></h4>
+
+      <!-- <span class="chat-message-counter">3</span> -->
+
+  </header>
+
+  <div class="chat">
+
+    <div class="chat-history">
+    <% @messages.each do |message| %>
+        <% user = User.find(message.user_id) %>
+        <div class="chat-message clearfix">
+            <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
+            <div class="chat-message-content clearfix">
+              <span class="chat-time"><%= message.sent_at %></span>
+              <h5><%= user.first_name + " " + user.last_name %></h5>
+              <p><%= message.text %></p>
+            </div>
+        </div>
+        <hr>
+    <% end %>
+    </div> <!-- end chat-history -->
+
+  <!--        <p class="chat-feedback">Your partner is typing…</p> -->
+
+      <form id="chatBox">
+
+        <fieldset>
             
-            <a href="#" class="chat-close">x</a>
+          <input id="chatMsg" type="text" placeholder="Type your message…" autofocus>
+          <input type="hidden">
 
-            <h4><%= @other_user[0].first_name + " " + @other_user[0].last_name %></h4>
+        </fieldset>
 
-            <span class="chat-message-counter">3</span>
+      </form>
 
-        </header>
+  </div> <!-- end chat -->
 
-        <div class="chat">
-            
-            <div class="chat-history">
-            </div> <!-- end chat-history -->
-
-<!--             <p class="chat-feedback">Your partner is typing…</p> -->
-
-            <form id="chatBox">
-
-                <fieldset>
-                    
-                    <input id="chatMsg" type="text" placeholder="Type your message…" autofocus>
-                    <input type="hidden">
-
-                </fieldset>
-
-            </form>
-
-        </div> <!-- end chat -->
-
-    </div> <!-- end live-chat -->
-    </div>
+</div> <!-- end live-chat -->
+</div>
 <script>
   (function() {
 
-      $('#live-chat header').on('click', function() {
+    
 
-          $('.chat').slideToggle(300, 'swing');
-          $('.chat-message-counter').fadeToggle(300, 'swing');
+    $('#live-chat header').on('click', function() {
 
-      });
+        $('.chat').slideToggle(300, 'swing');
+        // $('.chat-message-counter').fadeToggle(300, 'swing');
+        $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
 
-      $('.chat-close').on('click', function(e) {
+    });
 
-          e.preventDefault();
-          $('#live-chat').fadeOut(300);
+    $('.chat-close').on('click', function(e) {
 
-      });
+        e.preventDefault();
+        $('#live-chat').fadeOut(300);
+
+    });
 
   }) ();
 </script>
