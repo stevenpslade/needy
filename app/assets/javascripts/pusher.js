@@ -23,24 +23,13 @@ $(document).ready(function() {
   var channel = pusher.subscribe('private-chat-room-' + chat_id);
 
   channel.bind('client-new-message', function(data) {
-    $.ajax({
-      dataType: "text",
-      url: '/messages/new',
-      method: 'GET',
-      data: {message: data.message, chat: chat_id, user_id: gon.other_user.id, sent_at: getTime()},
-      success:  function () {
-        $('<div>').addClass('chat-message clearfix')
-      .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
-      .append($('<div>').addClass('chat-message-content clearfix')
-        .append($('<span>').addClass('chat-time').html(getTime()))
-        .append($('<h5>').text(other_name))
-        .append($('<p>').text(data.message)))
-      .appendTo($('.chat-history'))
-      $('<hr>').appendTo($('.chat-history'));
-      }
-    });
-   ///////////
-    // $('<div>').addClass('chat-message clearfix')
+    // $.ajax({
+    //   dataType: "text",
+    //   url: '/messages/new',
+    //   method: 'GET',
+    //   data: {message: data.message, chat: chat_id, user_id: gon.other_user.id, sent_at: getTime()},
+    //   success:  function () {
+    //     $('<div>').addClass('chat-message clearfix')
     //   .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
     //   .append($('<div>').addClass('chat-message-content clearfix')
     //     .append($('<span>').addClass('chat-time').html(getTime()))
@@ -48,12 +37,29 @@ $(document).ready(function() {
     //     .append($('<p>').text(data.message)))
     //   .appendTo($('.chat-history'))
     //   $('<hr>').appendTo($('.chat-history'));
+    //   }
+    // });
+   ///////////
+    $('<div>').addClass('chat-message clearfix')
+      .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
+      .append($('<div>').addClass('chat-message-content clearfix')
+        .append($('<span>').addClass('chat-time').html(getTime()))
+        .append($('<h5>').text(other_name))
+        .append($('<p>').text(data.message)))
+      .appendTo($('.chat-history'))
+      $('<hr>').appendTo($('.chat-history'));
   });
 
 
   sendMessage = function(message) {
     channel.trigger('client-new-message', {message: message});
-    $('<div>').addClass('chat-message clearfix')
+    $.ajax({
+      dataType: "text",
+      url: '/messages/new',
+      method: 'GET',
+      data: {message: message, chat: chat_id, user_id: gon.current_user.id, sent_at: getTime()},
+      success:  function () {
+        $('<div>').addClass('chat-message clearfix')
       .append('<img src="'+ gon.current_user.profile_image_url +'" alt="" width="32" height="32">')
       .append($('<div>').addClass('chat-message-content clearfix')
         .append($('<span>').addClass('chat-time').html(getTime()))
@@ -62,6 +68,17 @@ $(document).ready(function() {
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'))
       $('#chatMsg').val("");
+      }
+    });
+    // $('<div>').addClass('chat-message clearfix')
+    //   .append('<img src="'+ gon.current_user.profile_image_url +'" alt="" width="32" height="32">')
+    //   .append($('<div>').addClass('chat-message-content clearfix')
+    //     .append($('<span>').addClass('chat-time').html(getTime()))
+    //     .append($('<h5>').text(current_name))
+    //     .append($('<p>').text(message)))
+    //   .appendTo($('.chat-history'))
+    //   $('<hr>').appendTo($('.chat-history'))
+    //   $('#chatMsg').val("");
   }
 
   // Pusher.trigger('my-channel', 'my-event', {:message => 'hello world'})
