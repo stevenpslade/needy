@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   current_name = gon.current_user.first_name + " " + gon.current_user.last_name
   other_name = gon.other_user.first_name + " " + gon.other_user.last_name
+  debugger
   chat_id = gon.chat[0].id
   // chat_id = 1
 

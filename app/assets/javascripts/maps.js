@@ -7,7 +7,7 @@
     return '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">' + taskTitle + '</h1>'+
+        '<h5 id="firstHeading" class="firstHeading">' + taskTitle + '</h5>'+
         '<div id="bodyContent">'+
         '<p>'+ taskDescription +'</p>'+
         '</div>'+
