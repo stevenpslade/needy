@@ -38,7 +38,9 @@ class TasksController < ApplicationController
     gon.other_user = @other_user[0]
     @chat = Chat.where("task_id = ?", @task.id)
     gon.chat = @chat
-    @messages = Message.where("chat_id = ?", @chat[0].id)
+    unless @chat.blank?
+      @messages = Message.where("chat_id = ?", @chat[0].id)
+    end
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
     # @review allows for the form_for to allow the review parameter
