@@ -1,6 +1,6 @@
 $(document).on("page:change", function() {
 
-// show neew task form 
+// show new task form 
   $('body').on('click', '#task-form', function() {
     $('#post-task').animate({width: 'toggle'});
     $('main').toggle();
@@ -44,10 +44,10 @@ $(document).on("page:change", function() {
   });
 
   // show Task index
-  $('body').on('click', '#show-all-needs', function() {
-    $('#needs').animate({width: 'toggle'});
-    $('main').toggle();
-  });
+  // $('body').on('click', '#show-all-needs', function() {
+  //   $('#needs').animate({width: 'toggle'});
+  //   $('main').toggle();
+  // });
 
   // show users index
   $('body').on('click', '#show-users', function() {
@@ -66,6 +66,8 @@ $(document).on("page:change", function() {
   });
 
   $('.modal-trigger').leanModal();
+  $('.modal-trigger1').leanModal();
+  $('.modal-trigger2').leanModal();
 
 
   // show info on landing page

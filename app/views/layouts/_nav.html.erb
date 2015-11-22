@@ -4,10 +4,10 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
   <ul id="slide-out" class="side-nav fixed">
     <li class="logo">
       <img id="needy-logo" src='<%= image_path('rob_logo.png') %>'>
-      <div>
+      <!-- <div>
         <p id="notice" style="color:red;"><%= flash[:notice] %></p>
         <p id="alert" style="color:red;"><%= flash[:alert] %></p>
-      </div>
+      </div> -->
     </li>
     <% if current_user %>
     <li class="bold">
@@ -34,7 +34,7 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
       <div id="show-users" class="waves-effect waves-light btn-large nav-button">Needers</div>
     </li>
     <li class="bold">
-      <div id="show-all-needs" class="waves-effect waves-light btn-large nav-button">All Needs</div>
+      <div id="show-all-needs" class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div>
     </li>
     <li class="bold">
       <div id="task-form" class="waves-effect waves-light btn-large nav-button">Post A Need</div>
@@ -92,10 +92,10 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
 </div>
 
 <!-- show tasks index -->
-<div id="needs" class="hide-form">
+<!-- <div id="needs" class="hide-form">
   <% @tasks = Task.all %>
   <%= render 'tasks/index' %>
-</div>
+</div> -->
 
 <!-- problematic div prevents map from showing -->
 <div id="filter-by-form" class="hide-form">
