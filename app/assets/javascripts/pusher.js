@@ -48,6 +48,7 @@ $(document).ready(function() {
         .append($('<p>').text(data.message)))
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'));
+      $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
   });
 
 
@@ -68,6 +69,7 @@ $(document).ready(function() {
       .appendTo($('.chat-history'))
       $('<hr>').appendTo($('.chat-history'))
       $('#chatMsg').val("");
+      $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
       }
     });
     // $('<div>').addClass('chat-message clearfix')
