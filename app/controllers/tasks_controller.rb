@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @tasks = Task.search(params[:username], params[:title], params[:location], params[:difficulty], params[:chronology])
+    @tasks = Task.search(params[:username], params[:query], params[:difficulty], params[:chronology])
   end
 
   def user_tasks
