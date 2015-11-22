@@ -34,7 +34,7 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
       <div id="show-users" class="waves-effect waves-light btn-large nav-button">Needers</div>
     </li>
     <li class="bold">
-      <div id="show-all-needs" class="waves-effect waves-light btn-large nav-button">All Needs</div>
+      <div id="show-all-needs" class="waves-effect waves-light btn-large nav-button"><%= link_to "All Needs", tasks_path %></div>
     </li>
     <li class="bold">
       <div id="task-form" class="waves-effect waves-light btn-large nav-button">Post A Need</div>
@@ -42,17 +42,9 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
     <li class="bold">
       <div class="waves-effect waves-light btn-large nav-button"><%= link_to "Map", map_tasks_path %>
     </li>
-    <li class="bold">
-      <div id="show-filter-by" class="waves-effect waves-light btn-large nav-button">Filter Tasks:</div>
-    </li>
-
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse" style="background-color: #81d4fa;"><i class="mdi-navigation-menu"></i></a>
 </nav>
-
-<div id="show-navbar">
-<!-- use later to show hidden nav bar -->
-</div>
 
 <script>
 // Initialize collapse button
@@ -61,9 +53,6 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
   // $('.collapsible').collapsible();
   
   </script>
-<div class="overlay">
-</div>
-
 <!-- <div id="profile" class="hide-form">
   <% @user = current_user %>
 
@@ -92,19 +81,14 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
 </div>
 
 <!-- show tasks index -->
-<div id="needs" class="hide-form">
+<!-- <div id="needs" class="hide-form">
   <% @tasks = Task.all %>
   <%= render 'tasks/index' %>
+<<<<<<< HEAD
 </div>
 
-<!-- problematic div prevents map from showing -->
-<div id="filter-by-form" class="hide-form">
-  <div class="center-transparent col s4">
-    <%= render 'tasks/filter_by' %>
-  </div>
-</div>
 
-<!-- show task form -->
+<! show task form -->
 <div id='post-task' class="hide-form">
   <div class="center-transparent col s4">
     <% if current_user %>

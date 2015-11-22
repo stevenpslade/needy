@@ -26,6 +26,12 @@
             <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
             <%= f.label :content, style: 'padding: 15px;' %>
           </div>
+          <div class="input-field col s12">
+            <p class="range-field">        
+              <label>Give them a rating!</label>
+              <%= f.range_field :user_rating, :in => -5..5, :step => '.1' %>
+            </p>
+          </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
@@ -60,8 +66,14 @@
           <%= f.hidden_field :for_user,:value=> @task.needed_id %>
         <div class="row">
           <div class="input-field col s12">
-            <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
+            <%= f.text_area :content, class: "materialize-textarea" %>
             <%= f.label :content, style: 'padding: 15px;' %>
+          </div>
+          <div class="input-field col s12">
+            <p class="range-field">        
+              <label>Give them a rating!</label>
+              <%= f.range_field :user_rating, :in => -5..5, :step => '.1' %>
+            </p>
           </div>
         </div>
         <div class="row">

@@ -22,32 +22,59 @@
       <div class="right-inner-content">
         <!-- <i class="large material-icons show-info">thumb_up</i> -->
         <div class="container">
-          <p class="landing-info">
-            Feel like you've got something to offer? Maybe you just have a bit of time to kill and are looking for something to do? Got any special skills?
-            There is most defintiely something on this site for you to do! People are posting new tasks on here all the time. Some are bigger and will give you an opportunity to flex 
-            you're skills. But some are simple too. No matter what the task, one thing is certain: you will get something in return. That's how this whole thing works. People need stuff, you do it, and then reap the rewards. 
-          </p>
-          <button id="needed-landing" class="waves-effect waves-light btn-large"><i class="material-icons right">cloud</i><%= link_to "Tasks", tasks_path, class: 'needed-landing1' %></button>
+          <div id="need-it-button" data-target="modal1" class="modal-trigger1 waves-effect waves-light">
+            <div id="text-wrap">
+              <p class="button-text">NEED IT</p>
+            </div>
+          </div>
+<!-- modal -->
+          <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>NEED IT</h4>
+              <p>
+                At some point, we all need something. It could be small or it could be big. It could be technical or it it could be simple. It could be anything. 
+                No one walks the path of life without a little help sometimes. That's where we come in. Too busy to pick up that drycleaning? Just can't quite figure out how to change that car battery? 
+                Whatever it is that's got you stressin, post it here and get what you Need. Odds are someone out there will be able to pick up the slack. Just don't forget to offer them something nice in return. 
+              </p>
+              <button id="needit-landing" class="waves-effect waves-light btn-large"><i class="material-icons right">cloud</i><%= link_to "Tasks", tasks_path, class: 'needed-landing1' %></button>
+            </div>
+          </div>
+<!-- end modal -->
         </div>
       </div>
     </div>
+    <img id="tiny-logo" src='<%= image_path('rob_logo.png') %>'>
+    <p  id="stick1">|</p><p id="stick2">|</p><p id="stick3">|</p>
     <div class="left-landing col s6">
-      <!-- <h3 class="landing-title">NEED-IT</h3> -->
       <div class="left-inner-content">
-        <!-- <i class="large material-icons show-info">thumb_up</i> -->
         <div class="container">
-          <p class="landing-info">
-            At some point, we all need something. It could be small or it could be big. It could be technical or it it could be simple. It could be anything. 
-            No one walks the path of life without a little help sometimes. That's where we come in. Too busy to pick up that drycleaning? Just can't quite figure out how to change that car battery? 
-            Whatever it is that's got you stressin, post it here and get what you Need. Odds are someone out there will be able to pick up the slack. Just don't forget to offer them something nice in return. 
-          </p>
-          <button id="needed-landing" class="waves-effect waves-light btn-large blue"><i class="material-icons right">cloud</i><%= link_to "Users", users_path, class: 'needed-landing2' %></button>
+          <div id="needed-button" data-target="modal2" class="modal-trigger2 waves-effect waves-light">
+            <div id="text-wrap2">
+              <p class="button-text">NEEDED</p>
+            </div>
+          </div>
+        </div>
+        <!-- modal -->
+          <div id="modal2" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>NEEDED</h4>
+              <p>
+                Feel like you've got something to offer? Maybe you just have a bit of time to kill and are looking for something to do? Got any special skills?
+                There is most defintiely something on this site for you to do! People are posting new tasks on here all the time. Some are bigger and will give you an opportunity to flex 
+                you're skills. But some are simple too. No matter what the task, one thing is certain: you will get something in return. That's how this whole thing works. People need stuff, you do it, and then reap the rewards. 
+              </p>
+              <button id="needed-landing" class="waves-effect waves-light btn-large"><i class="material-icons right">cloud</i><%= link_to "Users", users_path, class: 'needed-landing2' %></button>
+            </div>
+          </div>         
+          <!-- end modal -->
         </div>
       </div>
     </div>
   </div>
-  <div class="logo-wrap col s12">
-    <img id="needy-logo-landing" src='<%= image_path('rob_logo.png') %>'>
+  <div class="logo-big-wrap">
+    <div class="logo-wrap col s12">
+      <img id="needy-logo-landing" src='<%= image_path('rob_logo.png') %>'>
+    </div>
   </div>
 </body>
 </html>

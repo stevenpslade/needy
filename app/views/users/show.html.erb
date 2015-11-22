@@ -50,6 +50,71 @@
           <%= @user.bio %>
         </div>  
       </div>
+      <div class="row">
+        <div class="col s6">
+          <% @tasks = Task.where(needed_id: @user.id) %>
+          <h6 class="show-label">TASKS ACCEPTED<small> (<%= @tasks.count %>)</small></h6><br>
+          <% @tasks.each do |task| %>
+            <div class="chip">
+              <%= link_to "#{task.title}", task_path(task.id) %>
+              <i class="material-icons">close</i>
+            </div>
+          <% end %>
+        </div>
+        <div class="col s6">
+          <% @tasks = Task.where(user_id: @user.id) %> 
+          <% @tasks = @tasks.where(needy_confirm_completion: true, needed_confirm_completion: true) %>
+          <h6 class="show-label">TASKS COMPLETED<small> (<%= @tasks.count %>)</small></h6><br>
+          <% @tasks.each do |task| %>
+            <div class="chip">
+              <%= link_to "#{task.title}", task_path(task.id) %>
+              <i class="material-icons">close</i>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <h6 class="show-label">REVIEWS by <%= @user.username %></h6><br>
+            <% @reviews = Review.where(user_id: @user.id) %>
+            <% @reviews.each do |review| %>
+              <% if review.user_id == @user.id %>
+                <div class="chip review-tag-spacer">
+                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
+                  <i class="material-icons">close</i>
+                  <div class="hide-form reviews-modal">
+                    <div class="center-transparent col s6">
+                      <div class="col s12">
+                        <h5 class="review-title"><%= review.content %> - <small><%= review.user.username %></small></h5>
+                        <%= link_to "Show Task", task_path(review.task.id) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="col s6">
+          <h6 class="show-label">REVIEWS for <%= @user.username %></h6><br>
+            <% @reviews = Review.where(for_user: @user.id) %>
+            <% @reviews.each do |review| %>
+              <% if review.for_user == @user.id %>
+                <div class="chip review-tag-spacer">
+                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
+                  <i class="material-icons">close</i>
+                  <div class="hide-form reviews-modal">
+                    <div class="center-transparent col s6">
+                      <div class="col s12">
+                        <h5 class="review-title"><%= review.content %> - <small><%= review.user.username %></small></h5>
+                        <%= link_to "Show Task", task_path(review.task.id) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
