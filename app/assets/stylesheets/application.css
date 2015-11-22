@@ -62,16 +62,6 @@ body.overlay {
     z-index: -1;
 }
 
-/*img#needy-logo {
-  width: 70%;
-  margin-top: 10%;
-  margin-left: 14%;
-  border-radius: 50%;
-  -moz-box-shadow: 1px 0px 75px #9ccc65;
-  -webkit-box-shadow: 1px 0px 75px #9ccc65;
-  box-shadow: 1px 0px 75px #9ccc65;
-}*/
-
 #needy-logo {
   width: 100%;
     margin-left: 5%;
@@ -92,6 +82,7 @@ body.overlay {
   -webkit-box-shadow: 4px 4px 19px #000000;
   box-shadow: 4px 4px 19px #000000;
   background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(#0089EC), to(#FFFFF1));
+  background: -moz-linear-gradient(34% 38%, 1% -5%, from(#0089EC), to(#FFFFF1));
   /*border: solid 3px #0089EC;*/
 }
 
@@ -224,14 +215,14 @@ footer {
   font-size: 65px;
 }
 
-/*nav must use inline style in _nav.html.erb to overide matericalize.css */
+/*nav must use inline style in _nav.html.erb & taks/index.html.erb to overide matericalize.css */
 nav {
   -moz-box-shadow: 0px 0px 0px #000000;
   -webkit-box-shadow: 0px 0px 0px #000000;
   box-shadow: 0px 0px 0px #000000;
 }
 
-/*make materialize icons in navbar display inline */
+/*override materialize icons display in navbar display inline */
 #dropdown-icon {
   display: inline-block !important;
   margin:0 !important;
@@ -242,28 +233,6 @@ nav {
   margin-top: 1%;
   text-align: center;
 }
-/*#dropdown-nav {
-  display: inline !important;
-  margin:0 !important;
-  
-  top: -11%;
-}
-
-#dropdown-icon2 {
-display: inline-block;
-    position: absolute;
-    left: 38%; 
-  display: inline !important;
-  margin:0 !important;
-  top: -11%;
-}
-
-#dropdown-nav2 {
-  display: inline-block !important;
-  margin:0 !important;
-  position: absolute;
-  top: -11%;
-}*/
 
 .card-attr {
   text-align: left;
@@ -293,7 +262,7 @@ button {
 }
 
 .right-landing {
-  background-color: rgba(52, 161, 44, 0.6);
+  /*background-color: rgba(52, 161, 44, 0.6);*/
   height: 100%;
   min-height:100%;
   display: inline-block;
@@ -301,7 +270,7 @@ button {
 }
 
 .left-landing {
-  background-color: rgba(52, 95, 241, 0.6);
+  /*background-color: rgba(52, 95, 241, 0.6);*/
   height: 100%;
   min-height:100%;
   display: inline-block;
@@ -376,17 +345,30 @@ button {
 }
 
 .logo-wrap {
-  position:fixed;
-  top: 30%;
-  left: 39%;
+  margin-top: -100%;
+  position: relative;
+}
+
+.logo-big-wrap {
+  position: fixed;
+  top: 18%;
+  left: 35%;
+  background-color: rgba(52, 95, 241, 0.9);
+  height: 35%;
+  width: 31%;
+  border-radius: 50%;
+  border:outset 5px #25338f;
+  -moz-box-shadow: 0px 8px 16px #000000;
+  -webkit-box-shadow: 0px 8px 16px #000000;
+  box-shadow: 0px 8px 16px #000000;
+  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(50, 94, 221, 1)), to(#FFFFF1));
 }
 
 #needy-logo-landing {
-  height: 300px;
-  width: 400px;
-  margin-left: -14%;
-  margin-top: -40%;
-  /*z-index: 10;*/
+  height: 40%;
+  position: fixed;
+  top: 12%;
+  left: 36%;
 }
 
 #tiny-logo {
