@@ -1,37 +1,51 @@
 <%= form_tag(tasks_path, method: "get") do %>
   <div class="row">
-    <form class="col s3" id="new-filter-by">
+    <form class="col s12" id="new-filter-by" style="z-index:1;">
       <div class="row">
         <div class="row">
-          <div class="input-field col s4">
-            <%= label_tag(:username, "Username?") %>
-            <%= text_field_tag(:username) %>
+          <div class="input-field col s2">
+            <%= label_tag :query, "<i class='material-icons'>search</i>".html_safe %>
+            <%= search_field_tag :query, nil, placeholder: 'Search NEEDS' %>
           </div>
-          <div class="input-field col s4">
-            <%= label_tag(:location, "Location?") %>
-            <%= text_field_tag(:location) %>
+          <div class="input-field col s2">
+            <%= label_tag :username, "<i class='material-icons'>search</i>".html_safe  %>
+            <%= search_field_tag :username, nil, placeholder: 'need by user' %>
           </div>
-          <div class="input-field col s4">
-            <%= label_tag(:title, "Task title?") %>
-            <%= text_field_tag(:title) %>
+          <button id="search-button" class="input-field col btn waves-effect waves-light" type="submit" name="action">
+            <%= submit_tag("Filter tasks", name: nil, id: 'search-button') %>
+          </button>
+          <div class="input-field col s3 hide-on-med-and-down">            
+            <%= radio_button_tag :difficulty, "easy" %>
+            <%= label_tag(:difficulty_easy, "Easy") %>
+            <%= radio_button_tag :difficulty, "medium" %>
+            <%= label_tag(:difficulty_medium, "Medium") %>
+            <%= radio_button_tag :difficulty, "hard" %>
+            <%= label_tag(:difficulty_hard, "Hard") %>
           </div>
-        </div>
-        <div class="row">
-           <div class="input-field col s4">
+          <div class="input-field col s2 hide-on-med-and-down">
+            
+            
+            <!-- Dropdown Trigger -->
+            <a id="dropdown-nav2" class="dropdown-button" href="#!" data-activates="dropdown2">by date<i id="dropdown-icon" class="material-icons">arrow_drop_down</i></a>
+            <ul id="dropdown2" class="dropdown-content">
+              <li><a href="#!"><%= radio_button_tag(:chronology, "newest_first") %> 
+            <label for="newest_first">newest</label></a></li>
+              <li><a href="#!"><input name="chronology" type="radio" id="oldest_first" value="oldest_first"  /> 
+            <label for="oldest_first">oldest</label></a></li>
+            </ul>
+          </div>
+         <!-- <div class="input-field col s2">
             <%= label_tag(:difficulty, "Task difficulty?") %>
             <%= text_field_tag(:difficulty) %>
-          </div>
-          <div class="input-field col s4">
+          </div> -->
+          <!-- <div class="input-field col s2">
             <input name="chronology" type="radio" id="newest_first" value="newest_first"  /> 
             <label for="newest_first">Newest First</label>
             <input name="chronology" type="radio" id="oldest_first" value="oldest_first"  /> 
             <label for="oldest_first">Oldest First</label>
-          </div>
+          </div> -->
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" name="action">
-          <%= submit_tag("Filter tasks", name: nil) %>
-      </button>
     </form>
   </div>
 <% end %>

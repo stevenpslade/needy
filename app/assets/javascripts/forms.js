@@ -69,7 +69,6 @@ $(document).on("page:change", function() {
   $('.modal-trigger1').leanModal();
   $('.modal-trigger2').leanModal();
 
-
   // show info on landing page
   // $('body').on('click', ".show-info", function() {
   //   $('.landing-info').animate({height: 'toggle'});

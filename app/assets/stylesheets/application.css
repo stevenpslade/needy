@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   min-height: 100%;
-  background: url('https://c1.staticflickr.com/5/4124/5202980757_10e5e165fc_b.jpg') no-repeat center center fixed;
+  background: url("van_city.jpg") no-repeat center center fixed;
   -webkit-background-size: cover; /* For WebKit*/
   -moz-background-size: cover;    /* Mozilla*/
   -o-background-size: cover;      /* Opera*/
@@ -11,6 +11,12 @@ html, body {
 }
 .card-content {
   color: black;
+}
+
+.card-task-user {
+  color: black;
+  position: absolute;
+  bottom: 113px;
 }
 
 label {
@@ -224,6 +230,40 @@ nav {
   -webkit-box-shadow: 0px 0px 0px #000000;
   box-shadow: 0px 0px 0px #000000;
 }
+
+/*make materialize icons in navbar display inline */
+#dropdown-icon {
+  display: inline-block !important;
+  margin:0 !important;
+  top: -11%;
+}
+
+#search-button {
+  margin-top: 1%;
+  text-align: center;
+}
+/*#dropdown-nav {
+  display: inline !important;
+  margin:0 !important;
+  
+  top: -11%;
+}
+
+#dropdown-icon2 {
+display: inline-block;
+    position: absolute;
+    left: 38%; 
+  display: inline !important;
+  margin:0 !important;
+  top: -11%;
+}
+
+#dropdown-nav2 {
+  display: inline-block !important;
+  margin:0 !important;
+  position: absolute;
+  top: -11%;
+}*/
 
 .card-attr {
   text-align: left;
@@ -535,6 +575,15 @@ button {
 .input-field input[type=text]:focus {
    border-bottom: 1px solid #81d4fa !important;
    box-shadow: 0 1px 0 0 #000;
+ }
+
+ .input-field input[type=search]:focus {
+  color: #81d4fa !important;
+  background-color: rgba(23, 21, 22, 0.4) !important;
+ }
+
+ #newest_first {
+  display: inline;
  }
 
 .description {
