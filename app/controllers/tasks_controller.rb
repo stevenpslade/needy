@@ -58,7 +58,7 @@ class TasksController < ApplicationController
       else
         render :show
       end    
-    # TASK COMPLETE
+    # TASK COMPLETE by 
     elsif params[:task][:needy_confirm_completion]
       params.permit(:needy_confirm_completion)
       @task.needy_confirm_completion = params[:task][:needy_confirm_completion]

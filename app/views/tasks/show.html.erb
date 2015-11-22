@@ -73,7 +73,7 @@
                       <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
                     </p>
                   <% end %>
-                    <%= f.submit("Approve Request", name: nil) %>
+                    <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light") %>
                 <% end %>
               <% end %>
             </div>
@@ -179,11 +179,11 @@
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <% if (current_user.id == @task.user_id || current_user.id == @task.needed_id) %>
-    <%= render 'layouts/chatBox' %>
+    <% if (current_user.id == @task.user_id || current_user.id == @task.needed_id) %>
+      <%= render 'layouts/chatBox' %>
+    <% end %>
   <% end %>
 </div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZQ0u0B58kHdvch8UmNPY6jMM3L4n9fJc&callback=initMap"></script>
