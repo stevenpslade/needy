@@ -26,24 +26,14 @@
             
             
             <!-- Dropdown Trigger -->
-            <a id="dropdown-nav2" class="dropdown-button" href="#!" data-activates="dropdown2">by date<i id="dropdown-icon" class="material-icons">arrow_drop_down</i></a>
+          <a id="dropdown-nav2" class="dropdown-button" href="#!" data-activates="dropdown2">by date<i id="dropdown-icon" class="material-icons">arrow_drop_down</i></a>
             <ul id="dropdown2" class="dropdown-content">
-              <li><a href="#!"><%= radio_button_tag(:chronology, "newest_first") %> 
-            <label for="newest_first">newest</label></a></li>
-              <li><a href="#!"><input name="chronology" type="radio" id="oldest_first" value="oldest_first"  /> 
-            <label for="oldest_first">oldest</label></a></li>
+              <%= radio_button_tag :chronology, "newest_first" %>
+              <%= label_tag(:chronology_newest_first, "newest") %>
+              <%= radio_button_tag :chronology, "oldest_first" %>
+              <%= label_tag(:chronology_oldest_first, "oldest") %>
             </ul>
-          </div>
-         <!-- <div class="input-field col s2">
-            <%= label_tag(:difficulty, "Task difficulty?") %>
-            <%= text_field_tag(:difficulty) %>
-          </div> -->
-          <!-- <div class="input-field col s2">
-            <input name="chronology" type="radio" id="newest_first" value="newest_first"  /> 
-            <label for="newest_first">Newest First</label>
-            <input name="chronology" type="radio" id="oldest_first" value="oldest_first"  /> 
-            <label for="oldest_first">Oldest First</label>
-          </div> -->
+          </div> 
         </div>
       </div>
     </form>
