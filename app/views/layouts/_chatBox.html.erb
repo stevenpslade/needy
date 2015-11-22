@@ -202,30 +202,21 @@
       $('<hr>').appendTo($('.chat-history'));
              -->
             <div class="chat-history">
-
             <% @messages.each do |message| %>
                 <% user = User.find(message.user_id) %>
                 <div class="chat-message clearfix">
-                <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
+                    <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
+                    <div class="chat-message-content clearfix">
+                        <span class="chat-time"><%= message.sent_at %></span>
+                        <h5><%= user.first_name + " " + user.last_name %></h5>
+                        <p><%= message.text %></p>
+                    </div>
                 </div>
-
-                <div class="chat-message-content clearfix">
-
-                <span class="chat-time"><%= message.sent_at %></span>
-
-                <h5><%= user.first_name + " " + user.last_name %></h5>
-
-                <p><%= message.text %></p>
-
-                </div>
-
                 <hr>
-
             <% end %>
-
             </div> <!-- end chat-history -->
 
-<!--             <p class="chat-feedback">Your partner is typing…</p> -->
+<!--        <p class="chat-feedback">Your partner is typing…</p> -->
 
             <form id="chatBox">
 
