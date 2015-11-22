@@ -191,8 +191,38 @@
         </header>
 
         <div class="chat">
-            
+<!-- 
+         $('<div>').addClass('chat-message clearfix')
+      .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
+      .append($('<div>').addClass('chat-message-content clearfix')
+        .append($('<span>').addClass('chat-time').html(getTime()))
+        .append($('<h5>').text(other_name))
+        .append($('<p>').text(data.message)))
+      .appendTo($('.chat-history'))
+      $('<hr>').appendTo($('.chat-history'));
+             -->
             <div class="chat-history">
+
+            <% @messages.each do |message| %>
+                <% user = User.find(message.user_id) %>
+                <div class="chat-message clearfix">
+                <%= image_tag(user.profile_image_url, alt:"", size: "32x32") %>
+                </div>
+
+                <div class="chat-message-content clearfix">
+
+                <span class="chat-time"><%= message.sent_at %></span>
+
+                <h5><%= user.first_name + " " + user.last_name %></h5>
+
+                <p><%= message.text %></p>
+
+                </div>
+
+                <hr>
+
+            <% end %>
+
             </div> <!-- end chat-history -->
 
 <!--             <p class="chat-feedback">Your partner is typing…</p> -->

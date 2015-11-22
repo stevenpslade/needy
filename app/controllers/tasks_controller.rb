@@ -36,7 +36,9 @@ class TasksController < ApplicationController
       @other_user = User.where("id = ? ", @task.user_id)
     end
     gon.other_user = @other_user[0]
-    gon.chat = Chat.where("task_id = ?", @task.id)
+    @chat = Chat.where("task_id = ?", @task.id)
+    gon.chat = @chat
+    @messages = Message.where("chat_id = ?", @chat[0].id)
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
     # @review allows for the form_for to allow the review parameter

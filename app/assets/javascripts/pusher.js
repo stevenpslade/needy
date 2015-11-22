@@ -2,8 +2,8 @@ $(document).ready(function() {
 
   current_name = gon.current_user.first_name + " " + gon.current_user.last_name
   other_name = gon.other_user.first_name + " " + gon.other_user.last_name
-  // chat_id = gon.chat[0].id
-  chat_id = 1
+  chat_id = gon.chat[0].id
+  // chat_id = 1
 
   function getTime() {
     d = new Date();
@@ -27,7 +27,7 @@ $(document).ready(function() {
       dataType: "text",
       url: '/messages/new',
       method: 'GET',
-      data: {message: data.message, chat: chat_id},
+      data: {message: data.message, chat: chat_id, user_id: gon.other_user.id, sent_at: getTime()},
       success:  function () {
         $('<div>').addClass('chat-message clearfix')
       .append('<img src="'+ gon.other_user.profile_image_url +'" alt="" width="32" height="32">')
