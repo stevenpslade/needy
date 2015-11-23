@@ -16,7 +16,7 @@ class Map::TasksController < ApplicationController
     @task = Task.new(task_params)
   
     if @task.save
-      redirect_to tasks_path, notice: "New Task Created!"
+      redirect_to tasks_path, alert: "New Task Created!"
     else
       render :new
     end
