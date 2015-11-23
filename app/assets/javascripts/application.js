@@ -14,7 +14,13 @@
 //= require maps
 //= require pusher
 
+
 $(document).on("page:change", function() {
+
+  if ($('#alert').get(0)) {    
+    // alert($('#alert').text()); // throw an alert() with the div's text
+    Materialize.toast($('#alert').text(), 4000, 'rounded')
+  }
   
   $(".button-collapse").sideNav();
 
