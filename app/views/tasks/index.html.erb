@@ -1,4 +1,4 @@
-<nav style="background-color:rgba(23, 21, 22, 0.4); margin-top:0%; margin-left:4%; position:fixed; top:0; ">
+<nav style="background-color:rgba(23, 21, 22, 0.8); margin-top:0%; margin-left:4%; position:fixed; top:0; z-index:10; ">
   <div class="nav-wrapper">
     <div id="filter-by-form">
         <%= render 'tasks/filter_by' %>
@@ -6,14 +6,13 @@
   </div>
 </nav>
 <div class="top-content">
-  <div class="container">
-    <h3>Show me the NEEDS</h3>
+  <div class="container"> 
     <div class="row">
       <% @tasks.each do |task| %>
         <div class="col l3 m5 s12">
           <div class="index-card card small">
             <div class="card-image waves-effect waves-block waves-light activator">
-              <img class="activator responsive-img" src="<%= (task.image_url) %>">
+              <img class="activator responsive-image"><%= image_tag(task.image_url, class: "activator") %>
             </div>
             <div class="card-content">
               <span class="card-task-user">by: <%= User.find(task.user_id).full_name %></span>

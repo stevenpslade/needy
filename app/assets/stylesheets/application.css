@@ -9,8 +9,25 @@ html, body {
   /*color: rgba(18, 231, 48, 1); */
   color:white;
 }
+
+#map-container {
+  min-height: 0%;
+}
+
 .card-content {
   color: black;
+  max-height: 50%;
+}
+
+.card-content span a {
+  font-size: .8em;
+  line-height: 23px;
+}
+
+.card-image {
+  min-height: 50%;
+  overflow: hidden;
+  max-height: 50% !important;
 }
 
 .card.blue-grey.darken-1 {
@@ -21,10 +38,15 @@ html, body {
   margin-bottom: 0.5%;
 }
 
+.card.small {
+  height: 250px !important;
+}
+
 .card-task-user {
   color: black;
   position: absolute;
-  bottom: 113px;
+  bottom: 41%;
+  font-size: .7em;
 }
 
 label {
@@ -127,6 +149,8 @@ body.overlay {
 
 .task-user-image {
   border-radius: 20%;
+  width: 96%;
+  border:outset 2px #000000;
 }
 
 .task-map-image {
