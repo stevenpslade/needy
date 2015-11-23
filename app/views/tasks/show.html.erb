@@ -128,16 +128,20 @@
           <div class="row task-icons">
             <div class="col s12">
               <div class="card blue-grey darken-1">
-                <div class="col s4">
+                <div class="col s3">
                   <i class="material-icons large">tune</i>
                   <p><%= @task.difficulty %></p>
                 </div>
-                <div class="col s4">
-                  <i class="material-icons large">access_alarms</i>
-                  <p><%= @task.estimated_duration %> min</p>
+                <div class="col s3">
+                  <i class="material-icons large">alarm_on</i>
+                  <p><%= @task.due_date %></p>
                 </div>
-                <div class="col s4">
-                  <i class="material-icons large">adb</i>
+                <div class="col s3">
+                  <i class="material-icons large">restore</i>
+                  <p><%= @task.estimated_duration %><!-- dynamic minutes, hours, days based on form input --></p>
+                </div>
+                <div class="col s3">
+                  <i class="material-icons large">redeem</i>
                   <p><%= @task.compensation %></p>
                 </div>
                 <div class="card-action">

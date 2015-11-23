@@ -4,7 +4,7 @@
   <% @user_tasks = Task.where(user_id: current_user.id) %>
   <% if @user_tasks != nil %>
     <% @user_tasks.each do |task| %>
-      <div class="col s4">
+      <div class="col s3">
         <div class="index-card card small">
           <div class="card-image waves-effect waves-block waves-light activator">
             <img class="activator responsive-img"><%= image_tag(task.image_url) %>
@@ -31,7 +31,7 @@
   <div class="row">
   <% @user_tasks = Task.where(needed_id: current_user.id) %>
     <% @user_tasks.each do |task| %>
-      <div class="col s4">
+      <div class="col s3">
         <div class="index-card card small">
           <div class="card-image waves-effect waves-block waves-light activator">
             <img class="activator responsive-img"><%= image_tag(task.image_url) %>
@@ -58,7 +58,7 @@
   <div class="row">
   <% @user_tasks = Task.where(needed_id: current_user.id) || Task.where(user_id: current_user.id) && Task.where(needy_confirm_completion: true) && Task.where(needed_confirm_completion: true) %>
     <% @user_tasks.each do |task| %>
-      <div class="col s4">
+      <div class="col s3">
         <div class="index-card card small">
           <div class="card-image waves-effect waves-block waves-light activator">
             <img class="activator responsive-img"><%= image_tag(task.image_url) %>
