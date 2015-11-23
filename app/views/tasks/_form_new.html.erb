@@ -43,20 +43,20 @@
     <div class="row">
       <div class="input-field col s4">
         <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Quick needs can be completed within a day.">
-          <%= radio_button_tag :estimated_duration, "quick" %>
-          <%= label_tag(:estimated_duration_quick, "Quick") %>
+          <%= f.radio_button :estimated_duration, "quick" %>
+          <%= f.label(:estimated_duration_quick, "Quick") %>
         </div>
       </div>
       <div class="input-field col s4">
         <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="These needs are a bit more ambitious, usually taking at least a day to complete. Sometimes two.">
-          <%= radio_button_tag :estimated_duration, "day_or_two" %>
-          <%= label_tag(:estimated_duration_day_or_more, "A day or two") %>
+          <%= f.radio_button :estimated_duration, "day_or_two" %>
+          <%= f.label(:estimated_duration_day_or_two, "A day or two") %>
         </div>
       </div>
       <div class="input-field col s4">
         <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Epic needs are, well, epic. This lets the needed know they will be in it for the long haul.">
-          <%= radio_button_tag :estimated_duration, "epic" %>
-          <%= label_tag(:estimated_duration_epic, "Epic") %>
+          <%= f.radio_button :estimated_duration, "epic" %>
+          <%= f.label(:estimated_duration_epic, "Epic") %>
         </div>
       </div> 
     </div>  
