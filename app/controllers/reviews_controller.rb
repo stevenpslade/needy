@@ -23,13 +23,13 @@ class ReviewsController < ApplicationController
     if @review.save
       @task = Task.where(id: @review.task_id) 
       @for_user = User.where(id: @review.for_user)
-      # if @for_user[0].id == @task[0].user_id
-      #   @for_user[0].needed_rating += @review.user_rating
-      #   @for_user[0].save
-      # else
-      #   @for_user[0].needy_rating += @review.user_rating
-      #   @for_user[0].save
-      # end
+      if @for_user[0].id == @task[0].user_id
+        @for_user[0].needed_rating += @review.user_rating
+        @for_user[0].save
+      else
+        @for_user[0].needy_rating += @review.user_rating
+        @for_user[0].save
+      end
       redirect_to tasks_path, notice: "Review added"
     else 
       redirect_to tasks_path, alert: "Review unsuccessful!"

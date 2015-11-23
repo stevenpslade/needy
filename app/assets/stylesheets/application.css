@@ -13,8 +13,21 @@ html, body {
   color: black;
 }
 
+div.chip {
+  position: relative;
+  left: 10%;
+}
+
 .chip.review-tag-spacer {
   margin-bottom: 0.5%;
+}
+
+.chip {
+  margin-bottom :0.5%;
+}
+
+#show-review {
+  left: 27%;
 }
 
 .card-task-user {
