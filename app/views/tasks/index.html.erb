@@ -13,7 +13,7 @@
         <div class="col l3 m5 s12">
           <div class="index-card card small">
             <div class="card-image waves-effect waves-block waves-light activator">
-              <img class="activator responsive-img"><%= image_tag(task.image_url) %>
+              <img class="activator responsive-img" src="<%= (task.image_url) %>">
             </div>
             <div class="card-content">
               <span class="card-task-user">by: <%= User.find(task.user_id).full_name %></span>
