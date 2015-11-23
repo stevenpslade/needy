@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    # Pusher.trigger('private-chat-room-1', 'client-new-message', {:message => "test"})
     @task = Task.find(params[:id])
     gon.watch.tasks = @task
     gon.current_user = current_user
@@ -35,9 +36,14 @@ class TasksController < ApplicationController
       @other_user = User.where("id = ? ", @task.user_id)
     end
     gon.other_user = @other_user[0]
+    @chat = Chat.where("task_id = ?", @task.id)
+    gon.chat = @chat
+    unless @chat.blank?
+      @messages = Message.where("chat_id = ?", @chat[0].id)
+    end
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
-    # @review allos for the form_for to allow the review parameter
+    # @review allows for the form_for to allow the review parameter
     @review = Review.new
   end
 
@@ -48,6 +54,8 @@ class TasksController < ApplicationController
       params.permit(:needed_id)
       @task.needed_id = params[:needed_id]
       if @task.save
+        @chat = Chat.new({task_id: params[:id]})
+        @chat.save
         redirect_to task_path(params[:id]), notice: "You have accepted someone to do your bidding!"
       else
         render :show

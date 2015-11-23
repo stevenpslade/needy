@@ -1,3 +1,4 @@
+
   // var that sets location
   var myLatLng = {lat: 49.264, lng: -123.168};
   var info;
@@ -6,7 +7,7 @@
     return '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">' + taskTitle + '</h1>'+
+        '<h5 id="firstHeading" class="firstHeading">' + taskTitle + '</h5>'+
         '<div id="bodyContent">'+
         '<p>'+ taskDescription +'</p>'+
         '</div>'+

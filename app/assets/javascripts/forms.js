@@ -11,7 +11,6 @@ $(document).on("page:change", function() {
   // Show filter-tasks form
    $('body').on('click', '#show-filter-by', function() {
     $('#filter-by-form').animate({width: 'toggle'});
-    $('main').toggle();
   });
   
 // show signup form
@@ -30,6 +29,11 @@ $(document).on("page:change", function() {
   $('body').on('click', '#show-review', function() {
     $('#review').animate({height: 'toggle'});
   });
+
+// show the review comment on the profile page 
+  $('body').on('click', '.user-reviews-tags', function(){
+    $(this).siblings().closest('div.hide-form.reviews-modal').animate({height: 'toggle'});
+  })
 
 // Materialize datepicker
   $('.datepicker').pickadate({

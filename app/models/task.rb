@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   has_many :reviews
   belongs_to :user
 
+
   # validates :location,
   #   presence: true
 
@@ -42,9 +43,10 @@ class Task < ActiveRecord::Base
   # end
 
   def self.search(username = nil, query = nil, difficulty = nil, chronology = nil)
+
     @task = Task.all
 
-    # build up the query, i.e. if the title is blank or title is an empty string, do NOT carry this out
+    # build up the query, i.e. if the title is blank or title is an empty string, do NOT run code
     @task = @task.where("title LIKE ? OR location LIKE ?", "%#{query}%","%#{query}%") unless query.blank? || query == "" 
     @task = @task.where("difficulty LIKE ?", "%#{difficulty}%") unless difficulty.blank? || difficulty == ""
 
