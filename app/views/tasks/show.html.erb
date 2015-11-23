@@ -18,8 +18,12 @@
             <div class="row">
               <div class="col s6">
                 <img class="task-user-image" src="<%= @task.image_url %>"/>
-                <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
-                <p>Needed user: This spot could be yours!</p>
+                <div class="chip-task-names">
+                  <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
+                </div>
+                <div class="chip-task-names">
+                  <p>Needed user: This spot could be yours!</p>
+                </div>
               </div>
             </div>
           </div>
@@ -61,23 +65,25 @@
             <div class="col s6">
               <h5 class="center-align"><%= @task.description %></h5>
             </div>
-            <div class="top-content col s6">
+            <div class="col s6 task-request-approve-div">
               <% all_requests = Request.where(task_id: @task.id) %>
               <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
               <% all_requests.each do |r| %>
-                <p><%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+                <div class="chip">
+                  <%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+                </div>
               <% end %>
               <!-- Radio button select to approve one of the people requesting to do the task -->
               <% if current_user.id == @task.user_id %>
                 <p>Select one of the Needed's below and approve their request!</p>
                 <%= form_for @task do |f|%>
                   <% all_requests.each do |r| %>
-                    <p>
+                    <p class="task-show-push-right">
                       <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
                       <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
                     </p>
                   <% end %>
-                    <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light") %>
+                    <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light", id: "task-show-approve-user-btn") %>
                 <% end %>
               <% end %>
             </div>
@@ -89,17 +95,17 @@
               <img class="task-user-image" src="<%= @task.image_url %>"/>
               <div class="col s6">
                 <% if @task.user_id && @task.needed_id %>
-                  <div class="chip">
+                  <div class="chip-task-names">
                     <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
                   </div><br>
-                  <div class="chip">
+                  <div class="chip-task-names">
                     <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.user_id) %></p>
                   </div> 
                 <% else %>
-                  <div class="chip">
+                  <div class="chip-task-names">
                     <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
                   </div>
-                  <div class="chip">
+                  <div class="chip-task-names">
                     <p>Needed user: <span>This spot could be yours!</span></p>
                   </div>
                 <% end %>

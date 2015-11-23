@@ -13,9 +13,9 @@ html, body {
   color: black;
 }
 
-div.chip {
+.chip-task-names {
   position: relative;
-  left: 10%;
+  text-align: center;
 }
 
 .chip.review-tag-spacer {
@@ -26,9 +26,23 @@ div.chip {
   margin-bottom :0.5%;
 }
 
+.task-show-push-right label {
+  color: white;
+}
+
 #show-review {
   left: 27%;
 }
+
+.task-request-approve-div {
+  text-align: center;
+}
+
+.task-show-push-right {
+  position: relative;
+  text-align: center;
+}
+
 
 .card-task-user {
   color: black;
