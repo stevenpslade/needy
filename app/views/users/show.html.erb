@@ -4,7 +4,7 @@
       <h4 class="show-label"><%= @user.username %></h4>
       <div class="row">
         <div class="col s6">
-          <%= image_tag(@user.profile_image_url, class: "profile-image") %>
+        <img class="profile-image" src="<%= (@user.profile_image_url) %>">
         </div>   
         <div class="col s6">
           <div class="row">
