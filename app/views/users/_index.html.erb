@@ -2,7 +2,7 @@
   <h3>USERS</h3>
   <div class="row">
     <% @users.each do |user| %>
-      <div class="col s4">
+      <div class="col s3">
         <div class="index-card card small">
           <div class="card-image waves-effect waves-block waves-light activator">
             <img class="activator responsive-img"><%= image_tag(user.profile_image_url, class: "activator")  %>

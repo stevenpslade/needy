@@ -13,6 +13,10 @@ html, body {
   color: black;
 }
 
+.card.blue-grey.darken-1 {
+  color: white;
+}
+
 .chip.review-tag-spacer {
   margin-bottom: 0.5%;
 }
@@ -144,7 +148,7 @@ body.overlay {
   border: solid;
   width: 40%;
   margin: 0 auto;
-  background-color: rgba(23, 21, 22, 0.4);
+  background-color: rgba(23, 21, 22, 0.6);
   -moz-box-shadow: 13px 21px 50px #000000;
   -webkit-box-shadow: 13px 21px 50px #000000;
   box-shadow: 13px 21px 50px #000000;
@@ -360,57 +364,56 @@ button {
 
 .logo-big-wrap {
   position: fixed;
-  top: 18%;
-  left: 35%;
-  background-color: rgba(52, 95, 241, 0.9);
+  top: 22%;
+  left: 39.5%;
   height: 35%;
-  width: 31%;
-  border-radius: 50%;
-  border:outset 5px #25338f;
+  width: 20%;
+  border-radius: 10%;
+  border:outset 5px none;
   -moz-box-shadow: 0px 8px 16px #000000;
   -webkit-box-shadow: 0px 8px 16px #000000;
   box-shadow: 0px 8px 16px #000000;
-  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(50, 94, 221, 1)), to(#FFFFF1));
+  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(48, 82, 115, 0.8)), to(#FFFFF1));
 }
 
 #needy-logo-landing {
   height: 40%;
   position: fixed;
-  top: 12%;
-  left: 36%;
+  top: 20%;
+  left: 41%;
 }
 
 #tiny-logo {
   margin-top: 6%;
   margin-left: 19%;
   height: 10%;
-  position: absolute;
+  position: fixed;
   filter: blur(100px);
 }
 
 #stick1 {
-  margin-top: 9%;
+  margin-top: 9.3%;
   margin-left: 71%;
   height: 10%;
-  position: absolute;
+  position: fixed;
   color:white;
   font-size: 12px;
 }
 
 #stick2 {
-  margin-top: 9%;
+  margin-top: 9.3%;
   margin-left: 73%;
   height: 10%;
-  position: absolute;
+  position: fixed;
   color:white;
   font-size: 12px;
 }
 
 #stick3 {
-  margin-top: 9%;
-  margin-left: 75%;
+  margin-top: 9.3%;
+  margin-left: 75.2%;
   height: 10%;
-  position: absolute;
+  position: fixed;
   color:white;
   font-size: 12px;
 }
@@ -443,7 +446,7 @@ button {
 }
 
 #needed-button {
-  background-color: rgba(52, 95, 241, 1);
+  background-color: rgba(48, 110, 152, 1);
   width: 150px;
   height:100px;
   position: absolute;
