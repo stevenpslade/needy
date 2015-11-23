@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122004927) do
+ActiveRecord::Schema.define(version: 20151123082333) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "task_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20151122004927) do
     t.boolean  "needed_confirm_completion"
     t.string   "location"
     t.text     "description"
-    t.integer  "estimated_duration"
+    t.string   "estimated_duration"
     t.string   "category"
     t.datetime "due_date"
     t.string   "compensation"

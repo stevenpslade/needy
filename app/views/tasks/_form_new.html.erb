@@ -49,7 +49,7 @@
       </div>
       <div class="input-field col s4">
         <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="These needs are a bit more ambitious, usually taking at least a day to complete. Sometimes two.">
-          <%= radio_button_tag :estimated_duration, "day_or_more" %>
+          <%= radio_button_tag :estimated_duration, "day_or_two" %>
           <%= label_tag(:estimated_duration_day_or_more, "A day or two") %>
         </div>
       </div>
@@ -72,6 +72,7 @@
         </div>
       </div>
       <div class="input-field col s6">
+      <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter a specific address if you want people to have directions to your need on the map">
         <%= f.text_field :location, class: "validate" %>
         <%= f.label :location %>
       </div>

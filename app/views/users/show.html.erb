@@ -83,7 +83,7 @@
                   <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
-                    <div class="center-transparent col s6">
+                    <div class="center-transparent col s12">
                       <div class="col s12">
                         <h5 class="review-title"><%= review.content %> - <small><%= review.user.username %></small></h5>
                         <%= link_to "Show Task", task_path(review.task.id) %>
@@ -103,7 +103,7 @@
                   <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
-                    <div class="center-transparent col s6">
+                    <div class="center-transparent col s12">
                       <div class="col s12">
                         <h5 class="review-title"><%= review.content %> - <small><%= review.user.username %></small></h5>
                         <%= link_to "Show Task", task_path(review.task.id) %>
