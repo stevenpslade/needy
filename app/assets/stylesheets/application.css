@@ -676,5 +676,7 @@ button {
   padding-top: 25px;
 }
 
-
+.paginate {
+  text-align: center;
+}
 

@@ -8,7 +8,7 @@
 <div class="top-content">
   <div class="container"> 
     <div class="row">
-      <% @tasks.each do |task| %>
+      <% for task in @tasks %>
         <div class="col l3 m5 s12">
           <div class="index-card card small">
             <div class="card-image waves-effect waves-block waves-light activator">
@@ -29,6 +29,10 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="col s12 paginate">
+      <%= paginate @tasks %>
+      <%= page_entries_info @tasks, :entry_name => 'tasks' %>
     </div>
   </div>
 </div>
