@@ -55,20 +55,34 @@
           <% @tasks = Task.where(user_id: @user.id) %>
           <h6 class="show-label">TASKS POSTED<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip">
-              <%= link_to "#{task.title}", task_path(task.id) %>
-              <i class="material-icons">close</i>
-            </div>
+            <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
+              <div class="chip accepted-background-color">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% else %>
+              <div class="chip">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div class="col s4">
           <% @tasks = Task.where(needed_id: @user.id) %>
           <h6 class="show-label">TASKS ACCEPTED<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip">
-              <%= link_to "#{task.title}", task_path(task.id) %>
-              <i class="material-icons">close</i>
-            </div>
+            <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
+              <div class="chip accepted-background-color">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% else %>
+              <div class="chip">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div class="col s4">
@@ -77,7 +91,7 @@
           <% @tasks = @task_needed + @task_user %>
           <h6 class="show-label">TASKS INCOMPLETE<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip">
+            <div class="chip incomplete-background-color">
               <%= link_to "#{task.title}", task_path(task.id) %>
               <i class="material-icons">close</i>
             </div>

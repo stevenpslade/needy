@@ -67,7 +67,7 @@
           </div>
           <div class="row">
             <div class="col s6">
-              <h5 class="center-align"><%= @task.description %></h5>
+              <h5 class="show-label">Description: </h5> <h5 class="center-align"><%= @task.description %></h5>
             </div>
             <div class="col s6 task-request-approve-div">
               <% all_requests = Request.where(task_id: @task.id) %>
@@ -79,7 +79,7 @@
               <% end %>
               <!-- Radio button select to approve one of the people requesting to do the task -->
               <% if current_user.id == @task.user_id %>
-                <p>Select one of the Needed's below and approve their request!</p>
+                <p>Select one of the Needed's below to approve their request!</p>
                 <%= form_for @task do |f|%>
                   <% all_requests.each do |r| %>
                     <p class="task-show-push-right">

@@ -16,12 +16,16 @@ html, body {
   margin-bottom: 2%;
 }
 
+div.chip.incomplete-background-color {
+  background-color: #ff8466;
+}
+
 #complete-btn {
   float: left;
 }
 
 #map-container {
-  min-height: 0%;
+  min-height: 0% !important;
 }
 
 .card-content {
@@ -171,6 +175,10 @@ body.overlay {
 .nav-button {
   width:80%;
   margin-left: 8%;
+}
+
+div.chip.accepted-background-color {
+  background-color: #80ff80;
 }
 
 .waves-effect.waves-light.btn-large.nav-button {
