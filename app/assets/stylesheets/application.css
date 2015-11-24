@@ -10,6 +10,10 @@ html, body {
   color:white;
 }
 
+#incomplete-btn {
+  background-color: #ff5933;
+}
+
 #map-container {
   min-height: 0%;
 }
@@ -53,6 +57,10 @@ html, body {
 
 #show-review {
   left: 27%;
+}
+
+.align-the-element {
+  text-align: center;
 }
 
 .task-request-approve-div {
