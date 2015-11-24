@@ -10,6 +10,11 @@ html, body {
   color:white;
 }
 
+.user-profile-review-modal {
+  position: relative;
+  left: -27%;
+}
+
 #incomplete-btn {
   background-color: #ff5933;
   float: right;
