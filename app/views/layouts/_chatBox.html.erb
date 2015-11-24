@@ -98,6 +98,11 @@
 
     #live-chat h5 {
         font-size: 10px;
+        margin-left: 15%
+    }
+
+    #live-chat p {
+      margin-left: 15%;
     }
 
     #live-chat form {
@@ -193,7 +198,7 @@
   <div class="chat">
 
     <div class="chat-history">
-    <% unless @chat == nil %>
+    <% unless @chat == nil || @messages == nil %>
       <% @messages.each do |message| %>
           <% user = User.find(message.user_id) %>
           <div class="chat-message clearfix">

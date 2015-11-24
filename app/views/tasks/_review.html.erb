@@ -23,7 +23,7 @@
           <%= f.hidden_field :for_user,:value=> @task.user_id %>
         <div class="row">
           <div class="input-field col s12">
-            <%= f.text_field :content, id: "textarea1", class: "materialize-textarea" %>
+            <%= f.text_area :content, id: "textarea1", class: "materialize-textarea" %>
             <%= f.label :content, style: 'padding: 15px;' %>
           </div>
           <div class="input-field col s12">

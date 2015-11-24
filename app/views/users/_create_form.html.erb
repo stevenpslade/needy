@@ -1,4 +1,5 @@
 <div class="row">
+<h4 class="show-label" style="margin-left:4%;">Sign Up</h4>
   <%= form_for @user do |f| %>
   <form class="col s6">
     <% if @user.errors.any? %>
@@ -30,7 +31,7 @@
       </div>
       <div class="input-field col s6">
         <%= f.text_field :profile_image_url, class: "validate" %>
-        <%= f.label :profile_image_url %>
+        <%= f.label :profile_image_url, class: 'active' %>
       </div>
     </div>
     <div class="row">

@@ -1,27 +1,20 @@
-# t.string   "email",                                                                                                                             null: false
-#     t.string   "username"
-#     t.string   "phone"
-#     t.date     "birth_date"
-#     t.string   "skills"
-#     t.text     "bio"
-#     t.string   "gender"
-#     t.string   "city"
-#     t.string   "profile_image_url",               default: "http://smallfarms.oregonstate.edu/sites/default/files/_includes/staff_placeholder.jpg"
-#     t.string   "needy_rating"
-#     t.string   "needed_rating"
-#     t.boolean  "trackable"
-#     t.string   "task_radius"
-#     t.string   "crypted_password"
-#     t.string   "salt"
-#     t.datetime "created_at"
-#     t.datetime "updated_at"
-#     t.string   "remember_me_token"
-#     t.datetime "remember_me_token_expires_at"
-#     t.string   "reset_password_token"
-#     t.datetime "reset_password_token_expires_at"
-#     t.datetime "reset_password_email_sent_at"
-#     t.string   "first_name"
-#     t.string   "last_name"
+ # t.integer  "user_id"
+ #    t.integer  "needed_id"
+ #    t.boolean  "needy_confirm_completion"
+ #    t.boolean  "needed_confirm_completion"
+ #    t.string   "location"
+ #    t.text     "description"
+ #    t.integer  "estimated_duration"
+ #    t.string   "category"
+ #    t.datetime "due_date"
+ #    t.string   "compensation"
+ #    t.string   "image_url",                 default: "http://a3.mzstatic.com/us/r30/Purple3/v4/2f/81/d1/2f81d1ad-bd3c-1bf0-d355-0a843c1f8977/icon128-2x.png"
+ #    t.string   "video_url"
+ #    t.string   "difficulty"
+ #    t.datetime "created_at",                                                                                                                                  null: false
+ #    t.datetime "updated_at",                                                                                                                                  null: false
+ #    t.string   "title"
+
 
 
 
@@ -31,3 +24,15 @@ Task.create(user_id: 1, needed_id: nil, needy_confirm_completion: false, needed_
 Task.create(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, location: '3045 W Broadway, Vancouver, BC V6K 2G9', description: 'need someone to pick me up Doggies Delight pet food from Bosleys.  Try get me the 10kg one but if they run out, the 15kg one will suffice for now!', estimated_duration: 30, category: 'pet', compensation: 10, difficulty: 'easy', title: 'Pick up some dog food for me!' )
 Task.create(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, location: '128 W Hastings St #300, Vancouver, BC V6B 1G9', description: 'Looking for someone in Lighthouse to help me with some coding stuff.  Im like 100th in queue for assistance', estimated_duration: 60, category: 'errand', compensation: 'i will build you a website when im pro', difficulty: 'hard', title: 'Coding help at Lighthouse!' )
 Task.create(user_id: 3, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, location: '2902 West Broadway, Vancouver, BC', description: 'I have to work late and really need someone to pick up my drycleaning before they close. Please help me', estimated_duration: 60, category: 'errand', compensation: 15, difficulty: 'easy', title: 'Pick up my dry cleaning' )
+
+Task.create!(user_id: 1, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, location: '2902 West Broadway, Vancouver, BC', description: 'I have to work late and really need someone to pick up my drycleaning before they close. Please help me', estimated_duration: 'quick', category: 'errand', compensation: '$50', difficulty: 'easy', title: 'Pick up my dry cleaning', image_url: "http://3.imimg.com/data3/VM/EA/MY-6648931/dry-cleaning-services-250x250.jpg", due_date: DateTime.new(12/12/2015))
+Task.create!(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Paint my wall", location: '99 Keefer Pl, Vancouver, BC V6B 2L1', description: 'I need someone to come paint a beautiful landscape on my wall while talking soothingly to me.', estimated_duration: 'day_or_two', category: 'painting', compensation: 'I will make you tea and cookies and a $100 gift card to Boston Pizza', difficulty: 'medium', image_url: "http://www.deshow.net/d/file/cartoon/2008-12/bob-ross-landscape-painting-281-28.jpg", due_date: DateTime.new(01/01/2016))
+Task.create!(user_id: 1, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, location: '199 Water St, Vancouver, BC V6B 1A7', description: 'We need 12 coffees for out morning office meeting. We are all working on a big presentation and have no time to do it ourselves', estimated_duration: "quick", category: 'errand', compensation: '$30', difficulty: 'easy', title: 'We need coffee', image_url: "http://images.latinoshealth.com/data/images/full/8757/1-2-cups-of-coffee-everyday-prevents-mild-cognitive-impairment.jpg", due_date: DateTime.new(11/26/2015))
+Task.create!(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Build a replica Enterprise", location: '2948 W 4th Ave, Vancouver, BC', description: 'I am building a scale replicata of the Enterprise out of popsicle sticks. Looking for someone to assist with the building and decoration. Experience with models and art preferred. Fellow Trekkie a must.', estimated_duration: 'epic', category: 'model-building', compensation: '$150, free meals while we work, and the immense satisfaction of achieving the impossible.', difficulty: 'medium', image_url: "http://41.media.tumblr.com/2781523ef130fbde7e081a6caab8ed75/tumblr_nvdhnfdbQv1qzfsnio4_r2_1280.jpg", due_date: DateTime.new(02/14/2016))
+Task.create!(user_id: 3, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Help with Catcher in the Rye", location: '500 West Broadway, 104, Vancouver, BC V5Z 1E9', description: "I've got this huge essay due on this book about some dude who goes to New York. I need someone to maybe jump on a skype call with me and walk me through this.", estimated_duration: 'quick', category: 'homework', compensation: 'I work at Baskin-Robbins and will hook you up with free ice cream for life (or at least as long as I work there, which will be awhile I think).', difficulty: 'hard', image_url: "https://upload.wikimedia.org/wikipedia/en/3/32/Rye_catcher.jpg", due_date: DateTime.new(11/30/2015))
+Task.create!(user_id: 3, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Proofread my reddit posts", location: '850 Powell St, Vancouver, BC V6A 1H8', description: 'I am publishing my autobiography as a series of posts on Reddit. I need someone to go over all my posts for spelling and grammar mistakes before I post them.', estimated_duration: 'day_or_two', category: 'proof-reading', compensation: '$10 per post (I have about 50)', difficulty: 'medium', image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjaw4M-g2lqppRk9Ir7FF9UcSTJdCwiZN2wV0YD1cFxIA0lTc04Q", due_date: DateTime.new(01/01/2016))
+Task.create!(user_id: 3, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Cuddle buddy", location: '5763 Dalhousie Rd, Vancouver, BC V6T 2H9', description: 'I need a cuddle buddy.  Gonna be watching a scary movie', estimated_duration: 'quick', category: 'companion', compensation: 'I will wash you car and stuff', difficulty: 'medium', image_url: "http://queenmobs.com/wp-content/uploads/2015/01/cuddling-dog-cat.jpg", due_date: DateTime.new(12/20/2015))
+Task.create!(user_id: 4, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Film my son's Soccer Game", location: 'Empire Fields, Vancouver, BC', description: "I need someon to film my son's soccer game for his highlight reel. Filming experience greatly needed.", estimated_duration: "quick", category: "filming", compensation: "$150", difficulty: "hard", image_url: "http://s.hswstatic.com/gif/soccer-1.jpg", due_date: DateTime.new(11/22/2015))
+Task.create!(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Build a fence", location: "31739 King Rd, Abbotsford, BC V2T 5Z2", description: "I need help building a wire fence around my field. Basic carpentry expereince preferred", estimated_duration: "epic", category: "construction", compensation: "$500", difficulty: "hard", image_url: "http://www.deckmastersnw.com/wp-content/uploads/DSC01303-e1314409126905.jpg", due_date: DateTime.new(12/31/2015))
+Task.create!(user_id: 2, needed_id: nil, needy_confirm_completion: false, needed_confirm_completion: false, title: "Pick up my dogs poop", location: "west 4th, Vancouver, BC", description: "I need someone to walk 50 feet behind me an pick up my dogs poop", estimated_duration: "day_or_two", category: 'pooper scooper', compensation: "A whole bunch of A&W coupons!", difficulty: "medium", image_url: "http://www.wehoville.com/wp-content/uploads/2014/09/Dog-Poop.png", due_date: DateTime.new(12/25/2015))
+

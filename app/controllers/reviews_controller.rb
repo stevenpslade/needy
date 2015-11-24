@@ -30,10 +30,11 @@ class ReviewsController < ApplicationController
         @for_user[0].needy_rating += @review.user_rating
         @for_user[0].save
       end
-      redirect_to tasks_path, notice: "Review added"
+      redirect_to tasks_path, alert: "Review added"
     else 
       redirect_to tasks_path, alert: "Review unsuccessful!"
     end
+
   end
 
   protected

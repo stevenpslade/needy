@@ -1,5 +1,6 @@
 <%= form_for @task do |f| %>
 <div class="row">
+<h4 class="show-label" style="margin-left:4%;">Create a Need</h4>
   <form class="col s6" id="new-task-form">
     <div class="error-field">
     <% if @task.errors.any? %>
@@ -23,6 +24,7 @@
       <%= f.label :description %>
       </div>
     </div>
+    <h6 class="show-label" style="margin-left:4%;">Difficulty</h6>
     <div class="row">
       <div class="input-field col s4">
         <%= f.radio_button :difficulty, "easy" %>
@@ -37,36 +39,58 @@
         <%= f.label(:difficulty_hard, "Hard") %>
       </div>
     </div>
-    <div class="input-field col s6">
-      <%= f.text_field :estimated_duration, class: "validate" %>
-      <%= f. label :estimated_duration %>
-    </div>   
+    <h6 class="show-label" style="margin-left:4%;">Estimated Duration</h6>
+    <div class="row">
+      <div class="input-field col s4">
+        <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Quick needs can be completed within a day.">
+          <%= f.radio_button :estimated_duration, "quick" %>
+          <%= f.label(:estimated_duration_quick, "Quick") %>
+        </div>
+      </div>
+      <div class="input-field col s4">
+        <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="These needs are a bit more ambitious, usually taking at least a day to complete. Sometimes two.">
+          <%= f.radio_button :estimated_duration, "day_or_two" %>
+          <%= f.label(:estimated_duration_day_or_two, "A day or two") %>
+        </div>
+      </div>
+      <div class="input-field col s4">
+        <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Epic needs are, well, epic. This lets the needed know they will be in it for the long haul.">
+          <%= f.radio_button :estimated_duration, "epic" %>
+          <%= f.label(:estimated_duration_epic, "Epic") %>
+        </div>
+      </div> 
+    </div>  
     <div class="row">
       <div class="input-field col s6">
         <%= f.text_field :category, class: "validate" %>
         <%= f.label :category %>
       </div>
       <div class="input-field col s6">
-        <%= f.text_field :compensation, class: "validate" %>
-        <%= f.label :compensation %>
+        <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="This could be anything. Money, in kind trade of skills...anything. But whatever it is, be specific!">
+          <%= f.text_field :compensation, class: "validate" %>
+          <%= f.label :compensation %>
+        </div>
       </div>
       <div class="input-field col s6">
+      <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter a specific address if you want people to have directions to your need on the map">
         <%= f.text_field :location, class: "validate" %>
         <%= f.label :location %>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s4">
+      <div class="input-field col s6">
         <%= f.date_field :due_date, class: "datepicker" %>
         <%= f.label :due_date %>
       </div>
-      <div class="input-field col s4">
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
         <%= f.text_field :image_url, class: "validate" %>
-        <%= f.label :image_url %>
+        <%= f.label :image_url, class: "active" %>
       </div>
-       <div class="input-field col s4">
-        <%= f.text_field :video_url, class: "validate" %>
-        <%= f.label :video_url, class: "active" %>
+       <div class="input-field col s6">
+        <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add a link to a video relevant to your need.">
+          <%= f.text_field :video_url, class: "validate" %>
+          <%= f.label :video_url %>
+        </div>
       </div>
     </div>
     <div class="row">
