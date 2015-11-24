@@ -24,9 +24,6 @@ div.chip.incomplete-background-color {
   float: left;
 }
 
-#map-container {
-  min-height: 0% !important;
-}
 
 .card-content {
   color: black;
@@ -726,5 +723,7 @@ button {
   padding-top: 25px;
 }
 
-
+#map-container {
+  min-height: 0% !important;
+}
 
