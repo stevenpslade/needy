@@ -21,6 +21,15 @@ html, body {
   margin-bottom: 2%;
 }
 
+small.user-show-rating-positive{
+  color: green;
+}
+
+small.user-show-rating-negative{
+  color: red;
+}
+
+
 div.chip.incomplete-background-color {
   background-color: rgb(243, 160, 43);
 }

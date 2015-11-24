@@ -105,7 +105,15 @@
             <% @reviews.each do |review| %>
               <% if review.user_id == @user.id %>
                 <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= review.task.title %> <small>(<%= review.user_rating %>/5)</small></a>
+                  <a class="user-reviews-tags" style="cursor: pointer">
+                    <%= review.task.title %> <a class="user-reviews-tags" style="cursor: pointer">
+                    <%= review.task.title %> 
+                    <% if review.user_rating >= 0 %>
+                      <small class="user-show-rating-positive">(<%= review.user_rating %>/5)</small>
+                    <% else %>
+                      <small class="user-show-rating-negative">(<%= review.user_rating %>/5)</small>
+                    <% end %>
+                  </a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
                     <div class="center-transparent col s12 user-profile-review-modal">
@@ -125,7 +133,14 @@
             <% @reviews.each do |review| %>
               <% if review.for_user == @user.id %>
                 <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= review.task.title %> <small>(<%= review.user_rating %>/5)</small></a>
+                  <a class="user-reviews-tags" style="cursor: pointer">
+                    <%= review.task.title %> 
+                    <% if review.user_rating >= 0 %>
+                      <small class="user-show-rating-positive">(<%= review.user_rating %>/5)</small>
+                    <% else %>
+                      <small class="user-show-rating-negative">(<%= review.user_rating %>/5)</small>
+                    <% end %>
+                  </a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
                     <div class="center-transparent col s12 user-profile-review-modal">
