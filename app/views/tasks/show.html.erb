@@ -7,9 +7,9 @@
     }
   </style>
 </head>
-<div class="container">
+<div class="container ">
   <div class="background-show-page">
-    <div class="container" style="width:90%;">
+    <div class="container" style="width:90%;" id= "task-show-align-text">
       <h3 class="show-label"><%= @task.title %></h3>
         <div class="row">
         <% if @task.needed_id == nil %>
@@ -119,16 +119,16 @@
             <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false )  %>
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :needed_confirm_completion, value: true %>
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  <%= f.submit("Task complete", name: nil) %>
+                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                  <%= f.submit("Complete", name: nil) %>
                 <i class="material-icons right">done</i>
                 </button>
               <% end %>
             <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) %>
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :needy_confirm_completion, value: true %>
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  <%= f.submit("Task complete", name: nil) %>
+                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                  <%= f.submit("Complete", name: nil) %>
                 <i class="material-icons right">done</i>
                 </button>
               <% end %>
@@ -136,7 +136,7 @@
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :incomplete, value: true %>
                 <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
-                  <%= f.submit("Task Incomplete", name: nil) %>
+                  <%= f.submit("Incomplete", name: nil) %>
                 <i class="material-icons">warning</i>
               <% end %>
           </div>

@@ -92,7 +92,7 @@ class TasksController < ApplicationController
   protected
 
   def task_params
-    params.require(:task).permit(:user_id, :needed_id, :needy_confirm_completion, :needed_confirm_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty)
+    params.require(:task).permit(:user_id, :needed_id, :needy_confirm_completion, :needed_confirm_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty, :incomplete)
   end
 
 end

@@ -12,6 +12,12 @@ html, body {
 
 #incomplete-btn {
   background-color: #ff5933;
+  float: right;
+  margin-bottom: 2%;
+}
+
+#complete-btn {
+  float: left;
 }
 
 #map-container {
@@ -55,10 +61,6 @@ html, body {
   color: white;
 }
 
-#show-review {
-  left: 27%;
-}
-
 .align-the-element {
   text-align: center;
 }
@@ -69,6 +71,10 @@ html, body {
 
 .task-show-push-right {
   position: relative;
+  text-align: center;
+}
+
+#task-show-align-text {
   text-align: center;
 }
 /**/
