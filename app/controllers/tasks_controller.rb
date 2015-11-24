@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+  class TasksController < ApplicationController
 
   skip_before_filter :require_login, only: [:index, :new, :create]
 

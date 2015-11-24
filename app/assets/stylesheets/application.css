@@ -17,7 +17,7 @@ html, body {
 }
 
 div.chip.incomplete-background-color {
-  background-color: #ff8466;
+  background-color: rgb(243, 160, 43);
 }
 
 #complete-btn {
@@ -59,6 +59,10 @@ div.chip.incomplete-background-color {
 /* Ivan stuff added.  Could delete if needed*/
 .chip {
   margin-bottom :0.5%;
+}
+
+.chip a {
+  font-size: 0.7rem;
 }
 
 .task-show-push-right label {
@@ -178,7 +182,7 @@ body.overlay {
 }
 
 div.chip.accepted-background-color {
-  background-color: #80ff80;
+  background-color: #61FC61 ;
 }
 
 .waves-effect.waves-light.btn-large.nav-button {

@@ -105,7 +105,7 @@
             <% @reviews.each do |review| %>
               <% if review.user_id == @user.id %>
                 <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
+                  <a class="user-reviews-tags" style="cursor: pointer"><%= review.task.title %> <small>(<%= review.user_rating %>)</small></a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
                     <div class="center-transparent col s12">
@@ -125,7 +125,7 @@
             <% @reviews.each do |review| %>
               <% if review.for_user == @user.id %>
                 <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
+                  <a class="user-reviews-tags" style="cursor: pointer"><%= review.task.title %> <small>(<%= review.user_rating %>)</small></a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
                     <div class="center-transparent col s12">
