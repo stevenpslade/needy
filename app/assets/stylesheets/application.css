@@ -10,6 +10,13 @@ html, body {
   color:white;
 }
 
+
+
+/*CARD INDEX STYLING OVERRIDES DEFSUL MATERIALIZE*/
+.map-container {
+  min-height: 0% !important;
+}
+
 #incomplete-btn {
   background-color: #ff5933;
   float: right;
@@ -45,10 +52,27 @@ div.chip.incomplete-background-color {
   color: white;
 }
 
-.chip-task-names {
+.top-content .card.medium {
+  border-radius: 10%;
+  height: 360px;
+}
+
+#task-details-card div {
+  padding: 20px;
+}
+
+#task-details-card div p {
+  color: #81d4fa;
+}
+
+#compensation-trigger {
+  cursor: pointer;
+}
+
+/*.chip-task-names {
   position: relative;
   text-align: center;
-}
+}*/
 
 .chip.review-tag-spacer {
   margin-bottom: 0.5%;
@@ -75,14 +99,14 @@ div.chip.incomplete-background-color {
   text-align: center;
 }
 
-#task-show-align-text {
+/*#task-show-align-text {
   text-align: center;
 }
-
-div#task-show-name-align {
+*/
+/*div#task-show-name-align {
   position: relative;
   left: 25%;
-}
+}*/
 /**/
 
 
@@ -96,6 +120,7 @@ div#task-show-name-align {
   bottom: 41%;
   font-size: .7em;
 }
+/*END CARD STYLING*/
 
 label {
   padding: 10px;
@@ -182,11 +207,12 @@ div.chip.accepted-background-color {
   background-color: #4caf50;
 }
 
-.task-user-image {
+.task-image {
   border-radius: 20%;
   width: 96%;
-  border:outset 2px #000000;
   margin-bottom: 6%;
+  max-height: 366px;
+  padding-top: 7.5px;
 }
 
 .task-map-image {
@@ -428,30 +454,24 @@ button {
   left: 39%;
 }
 
-.logo-wrap {
-  margin-top: -100%;
-  position: relative;
-}
-
 .logo-big-wrap {
   position: fixed;
   top: 22%;
-  left: 39.5%;
-  height: 35%;
-  width: 20%;
-  border-radius: 10%;
-  border:outset 5px none;
-  -moz-box-shadow: 0px 8px 16px #000000;
-  -webkit-box-shadow: 0px 8px 16px #000000;
-  box-shadow: 0px 8px 16px #000000;
-  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(48, 82, 115, 0.8)), to(#FFFFF1));
+  left: 40.3%;
 }
 
 #needy-logo-landing {
   height: 40%;
   position: fixed;
   top: 20%;
-  left: 41%;
+  left: 40%;
+  padding-left: 1.5%;
+  border-radius: 10%;
+  border:outset 5px none;
+  -moz-box-shadow: 0px 8px 16px #000000;
+  -webkit-box-shadow: 0px 8px 16px #000000;
+  box-shadow: 0px 8px 16px #000000;
+  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(48, 82, 115, 0.8)), to(#FFFFF1));
 }
 
 #tiny-logo {
@@ -660,6 +680,7 @@ button {
 .description {
   /*color: rgba(18, 231, 48, 1);*/
   color:white;
+  font-size: 1em;
 }
 
 #task-index {
