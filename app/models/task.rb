@@ -4,14 +4,14 @@ class Task < ActiveRecord::Base
   belongs_to :user
 
 
-  # validates :location,
-  #   presence: true
+  validates :location,
+    presence: true
 
   validates :description,
     presence: true
 
-  # validates :category,
-  #   presence: true
+  # # validates :category,
+  # #   presence: true
 
   validates :compensation,
     presence: true
@@ -23,8 +23,8 @@ class Task < ActiveRecord::Base
     presence: true,
     length: { maximum: 30 }
 
-  validates :due_date,
-    presence: true
+  # validates :due_date,
+  #   presence: true
   # def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
   #   @task = Task.all
 
@@ -47,6 +47,11 @@ class Task < ActiveRecord::Base
     
   #   @task
   # end
+
+  def date_parse
+
+    
+  end
 
   def self.search(username = nil, query = nil, difficulty = nil, chronology = nil)
 

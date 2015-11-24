@@ -7,21 +7,27 @@
     }
   </style>
 </head>
-<div class="container">
+<div class="container ">
   <div class="background-show-page">
-    <div class="container" style="width:90%;">
+    <div class="container" style="width:90%;" id= "task-show-align-text">
       <h3 class="show-label"><%= @task.title %></h3>
         <div class="row">
         <% if @task.needed_id == nil %>
         <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
           <div class="top-content col s6">
-            <img class="task-user-image" src="<%= @task.image_url %>"/>
-            <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
-            <p>Needed user: This spot could be yours!</p>
+            <div class="row">
+              <img class="task-image" src="<%= @task.image_url %>"/>
+              <!-- <div class="chip-task-names"> -->
+                <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
+              <!-- </div> -->
+              <!-- <div class="chip-task-names"> -->
+                <p>Needed user: This spot could be yours!</p>
+              </div>
+            <!-- </div> -->
           </div>
           <div class="top-content col s6">
             <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light map-container"></div>
+              <div id="map-container" class="card-image waves-effect waves-block waves-light"></div>
               <div class="card-content">
                 <p><%= link_to "See Task Map", map_tasks_path %></p>
                 <div id="map"></div>
@@ -33,51 +39,57 @@
             </div>
           </div>
           <div class="row task-icons">
-            <div class="col s12">
-              <div class="card blue-grey darken-1">
-                <div class="col s3">
-                  <i class="material-icons large">tune</i>
-                  <p><%= @task.difficulty %></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">alarm_on</i>
-                  <p><%= @task.due_date %></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">restore</i>
-                  <p><%= @task.estimated_duration %><!-- dynamic minutes, hours, days based on form input --></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">redeem</i>
-                  <p><%= @task.compensation %></p>
-                </div>
-                <div class="card-action">
-                  <a id="start"><%= @task.title %></a>
+            <div id="task-details-card" class="card blue-grey darken-1 col s12">
+              <div class="col s3">
+                <i class="material-icons large">tune</i>
+                <p><%= @task.difficulty %></p>
+              </div>
+              <div class="col s3">
+                <i class="material-icons large">alarm_on</i>
+                <p><%= @task.due_date %></p>
+              </div>
+              <div class="col s3">
+                <i class="material-icons large">restore</i>
+                <p><%= @task.estimated_duration %><!-- dynamic minutes, hours, days based on form input --></p>
+              </div>
+              <div class="col s3 modal-trigger1" data-target="modal3" id="compensation-trigger">
+                <i class="material-icons large ">redeem</i>
+                <p>View Compensation</p>
+                <div id="modal3" class="modal modal-footer">
+                  <div class="modal-content">
+                    <h4>Compensation</h4>
+                    <p>
+                      In exchange for completing this task you can expect to receive the following rewards:
+                    </p>
+                      <div><%= @task.compensation %></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s6">
-              <h5 class="center-align"><%= @task.description %></h5>
+              <h5 class="show-label">Description: </h5> <h5 class="description"><%= @task.description %></h5>
             </div>
-            <div class="top-content col s6">
+            <div class="col s6 task-request-approve-div">
               <% all_requests = Request.where(task_id: @task.id) %>
               <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
               <% all_requests.each do |r| %>
-                <p><%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+                <div class="chip">
+                  <%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
+                </div>
               <% end %>
               <!-- Radio button select to approve one of the people requesting to do the task -->
               <% if current_user.id == @task.user_id %>
-                <p>Select one of the Needed's below and approve their request!</p>
+                <p>Select one of the Needed's below to approve their request!</p>
                 <%= form_for @task do |f|%>
                   <% all_requests.each do |r| %>
-                    <p>
+                    <p class="task-show-push-right">
                       <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
                       <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
                     </p>
                   <% end %>
-                    <%= f.submit("Approve Request", name: nil) %>
+                    <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light", id: "task-show-approve-user-btn") %>
                 <% end %>
               <% end %>
             </div>
@@ -85,36 +97,60 @@
         <% else %>
         <!-- if TASK.NEEDED_ID is present -->
           <div class="top-content col s6">
-            <img class="task-user-image" src="<%= @task.image_url %>"/>
-            <% if @task.user_id && @task.needed_id %>
-              <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
-              <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.user_id) %></p>
-            <% else %>
-              <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-              <p>Needed user: <span>This spot could be yours!</span></p>
-            <% end %>
+            <div class="row">
+              <img class="task-image" src="<%= @task.image_url %>"/>
+              
+                <% if @task.user_id && @task.needed_id %>
+                  <!-- <div class="chip-task-names"> -->
+                    <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
+                  <!-- </div><br> -->
+                  <!-- <div class="chip-task-names"> -->
+                    <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.needed_id) %></p>
+                  <!-- </div>  -->
+                <% else %>
+                  <!-- <div class="chip-task-names"> -->
+                    <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+                  <!-- </div> -->
+                  <div class="chip-task-names">
+                    <p>Needed user: <span>This spot could be yours!</span></p>
+                  </div>
+                <% end %>
+            </div>
             <!-- MARK AS COMPLETE buttons -->
-            <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false )  %>
+            <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false ) && (@task.incomplete == false) %>
               <%= form_for @task do |f| %>
-                <%= f.hidden_field :needed_confirm_completion, :value=> true %>
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  <%= f.submit("Task complete", name: nil) %>
+                <%= f.hidden_field :needed_confirm_completion, value: true %>
+                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                  <%= f.submit("Complete", name: nil) %>
                 <i class="material-icons right">done</i>
                 </button>
               <% end %>
-            <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) %>
+            <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) && (@task.incomplete == false)  %>
               <%= form_for @task do |f| %>
-                <%= f.hidden_field :needy_confirm_completion, :value=> true %>
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  <%= f.submit("Task complete", name: nil) %>
+                <%= f.hidden_field :needy_confirm_completion, value: true %>
+                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                  <%= f.submit("Complete", name: nil) %>
                 <i class="material-icons right">done</i>
                 </button>
+              <% end %>
+            <% end %>
+            <!-- Hide the incomplete button if both users have marked the task as complete -->
+            <% if !(@task.needed_confirm_completion && @task.needy_confirm_completion) &&  (@task.incomplete == false) %>
+              <%= form_for @task do |f| %>
+                <%= f.hidden_field :incomplete, value: true %>
+                <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
+                  <%= f.submit("Incomplete", name: nil) %>
+                <i class="material-icons">warning</i>
               <% end %>
             <% end %>
           </div>
+
+
+<!-- IF Needed ID is present and task is ready to be completed -->
+
           <div class="top-content col s6">
             <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light map-container"></div>
+              <div id="map-container" class="card-image waves-effect waves-block waves-light"></div>
               <div class="card-content">
                 <p><%= link_to "See Task Map", map_tasks_path %></p>
                 <div id="map"></div>
@@ -126,26 +162,30 @@
             </div>
           </div>
           <div class="row task-icons">
-            <div class="col s12">
-              <div class="card blue-grey darken-1">
-                <div class="col s3">
-                  <i class="material-icons large">tune</i>
-                  <p><%= @task.difficulty %></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">alarm_on</i>
-                  <p><%= @task.due_date %></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">restore</i>
-                  <p><%= @task.estimated_duration %><!-- dynamic minutes, hours, days based on form input --></p>
-                </div>
-                <div class="col s3">
-                  <i class="material-icons large">redeem</i>
-                  <p><%= @task.compensation %></p>
-                </div>
-                <div class="card-action">
-                  <a id="start"><%= @task.title %></a>
+            <div id="task-details-card" class="card blue-grey darken-1 col s12">
+              <div class="col s3">
+                <i class="material-icons large">tune</i>
+                <p><%= @task.difficulty %></p>
+              </div>
+              <div class="col s3">
+                <i class="material-icons large">alarm_on</i>
+                <p><%= @task.due_date %></p>
+              </div>
+              <div class="col s3">
+                <i class="material-icons large">restore</i>
+                <p><%= @task.estimated_duration %></p>
+              </div>
+              <div class="col s3 modal-trigger1" data-target="modal3" id="compensation-trigger">
+                <i class="material-icons large ">redeem</i>
+                <p>View Compensation</p>
+                <div id="modal3" class="modal modal-footer">
+                  <div class="modal-content">
+                    <h4>Compensation</h4>
+                    <p>
+                      In exchange for completing this task you can expect to receive the following rewards:
+                    </p>
+                      <div><%= @task.compensation %></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,7 +215,7 @@
       <% elsif @task.needed_id %>     
         <div class="row">
           <div class="col s6">
-            <h5 class="show-label">Description: </h5><h5 class="center-align description"><%= @task.description %></h5>
+            <h5 class="show-label">Description: </h5><h5 class="description"><%= @task.description %></h5>
           </div>
           <div class="col s6">
             <button id="show-review" class="btn waves-effect waves-light" type="submit" name="action">Review Experience<i class="material-icons right">mode_edit</i></button>
@@ -187,8 +227,8 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-  </div>
     <% if (current_user.id == @task.user_id || current_user.id == @task.needed_id) %>
       <%= render 'layouts/chatBox' %>
     <% end %>
