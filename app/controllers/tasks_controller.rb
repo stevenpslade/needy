@@ -49,6 +49,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    
     # the APPROVE REQUEST portion
     if params[:task] == nil
       params.permit(:needed_id)
@@ -74,8 +75,8 @@ class TasksController < ApplicationController
        else
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
-    elsif params[:task][:incopmlete]
-      if @task.update(task_parms)
+    elsif params[:task][:incomplete]
+      if @task.update(task_params)
         redirect_to task_path(params[:id]), alert: "Task marked as incomplete!"
       else
         redirect_to task_path(params[:id]), alert: "Error! 'Task incomplete' unsuccessful"

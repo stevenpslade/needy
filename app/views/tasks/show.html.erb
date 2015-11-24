@@ -16,7 +16,7 @@
         <!-- if TASK.NEEDED_ID is not present, then continue displaying the number of request and who has requested the task -->
           <div class="top-content col s6">
             <div class="row">
-              <div class="col s6">
+              <div class="col s6" id="task-show-name-align">
                 <img class="task-user-image" src="<%= @task.image_url %>"/>
                 <div class="chip-task-names">
                   <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
@@ -97,13 +97,13 @@
           <div class="top-content col s6">
             <div class="row">
               <img class="task-user-image" src="<%= @task.image_url %>"/>
-              <div class="col s6">
+              <div class="col s6" id="task-show-name-align">
                 <% if @task.user_id && @task.needed_id %>
                   <div class="chip-task-names">
                     <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
                   </div><br>
                   <div class="chip-task-names">
-                    <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.user_id) %></p>
+                    <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.needed_id) %></p>
                   </div> 
                 <% else %>
                   <div class="chip-task-names">
@@ -116,7 +116,7 @@
               </div>
             </div>
             <!-- MARK AS COMPLETE buttons -->
-            <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false )  %>
+            <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false ) && (@task.incomplete == false) %>
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :needed_confirm_completion, value: true %>
                 <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
@@ -124,7 +124,7 @@
                 <i class="material-icons right">done</i>
                 </button>
               <% end %>
-            <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) %>
+            <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) && (@task.incomplete == false)  %>
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :needy_confirm_completion, value: true %>
                 <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
@@ -133,12 +133,15 @@
                 </button>
               <% end %>
             <% end %>
+            <!-- Hide the incomplete button if both users have marked the task as complete -->
+            <% if !(@task.needed_confirm_completion && @task.needy_confirm_completion) &&  (@task.incomplete == false) %>
               <%= form_for @task do |f| %>
                 <%= f.hidden_field :incomplete, value: true %>
                 <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
                   <%= f.submit("Incomplete", name: nil) %>
                 <i class="material-icons">warning</i>
               <% end %>
+            <% end %>
           </div>
           <div class="top-content col s6">
             <div class="card medium">

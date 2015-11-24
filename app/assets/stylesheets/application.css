@@ -77,6 +77,11 @@ html, body {
 #task-show-align-text {
   text-align: center;
 }
+
+div#task-show-name-align {
+  position: relative;
+  left: 25%;
+}
 /**/
 
 
@@ -172,27 +177,11 @@ body.overlay {
   background-color: #4caf50;
 }
 
-/* the hiding of elements on the task show page
-
-.hidden-element {
-  visibility: hidden;
-}
-
-.dom-removed-element .show-review-form {
-  display: "";
-
-}
-
-.dom-removed-element {
-  display: none;
-}
-/**/
-
-
 .task-user-image {
   border-radius: 20%;
   width: 96%;
   border:outset 2px #000000;
+  margin-bottom: 6%;
 }
 
 .task-map-image {
