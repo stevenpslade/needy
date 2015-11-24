@@ -1,12 +1,12 @@
 <div class="container">
   <div class="background-show-page">
     <div class="container">
-      <h4 class="show-label"><%= @user.username %></h4>
+      <h4 class="show-label" id="profile-username-header"><%= @user.username %></h4>
       <div class="row">
         <div class="col s6">
         <img class="profile-image" src="<%= (@user.profile_image_url) %>">
         </div>   
-        <div class="col s6">
+        <div class="col s6" id="profile-rating-col">
           <div class="row">
             <h6 class="show-label">SKILLS</h6>
             <%= @user.skills %>
@@ -50,30 +50,55 @@
           <%= @user.bio %>
         </div>  
       </div>
-      <div class="row">
-        <div class="col s6">
+      <div class="row align-the-element">
+        <div class="col s4"> 
+          <% @tasks = Task.where(user_id: @user.id) %>
+          <h6 class="show-label">TASKS POSTED<small> (<%= @tasks.count %>)</small></h6><br>
+          <% @tasks.each do |task| %>
+            <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
+              <div class="chip accepted-background-color">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% else %>
+              <div class="chip">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col s4">
           <% @tasks = Task.where(needed_id: @user.id) %>
           <h6 class="show-label">TASKS ACCEPTED<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip">
-              <%= link_to "#{task.title}", task_path(task.id) %>
-              <i class="material-icons">close</i>
-            </div>
+            <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
+              <div class="chip accepted-background-color">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% else %>
+              <div class="chip">
+                <%= link_to "#{task.title}", task_path(task.id) %>
+                <i class="material-icons">close</i>
+              </div>
+            <% end %>
           <% end %>
         </div>
-        <div class="col s6">
-          <% @tasks = Task.where(user_id: @user.id) %> 
-          <% @tasks = @tasks.where(needy_confirm_completion: true, needed_confirm_completion: true) %>
-          <h6 class="show-label">TASKS COMPLETED<small> (<%= @tasks.count %>)</small></h6><br>
+        <div class="col s4">
+          <% @task_needed = Task.where(needed_id: @user.id, incomplete: true) %>
+          <% @task_user = Task.where(user_id: @user.id, incomplete: true) %>
+          <% @tasks = @task_needed + @task_user %>
+          <h6 class="show-label">TASKS INCOMPLETE<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip">
+            <div class="chip incomplete-background-color">
               <%= link_to "#{task.title}", task_path(task.id) %>
               <i class="material-icons">close</i>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="row">
+      <div class="row align-the-element">
         <div class="col s6">
           <h6 class="show-label">REVIEWS by <%= @user.username %></h6><br>
             <% @reviews = Review.where(user_id: @user.id) %>

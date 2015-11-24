@@ -7,24 +7,24 @@ class Task < ActiveRecord::Base
   # validates :location,
   #   presence: true
 
-  validates :description,
-    presence: true
-
-  # validates :category,
+  # validates :description,
   #   presence: true
 
-  validates :compensation,
-    presence: true
+  # # validates :category,
+  # #   presence: true
 
-  validates :difficulty,
-    presence: true
+  # validates :compensation,
+  #   presence: true
 
-  validates :title, 
-    presence: true,
-    length: { maximum: 30 }
+  # validates :difficulty,
+  #   presence: true
 
-  validates :due_date,
-    presence: true
+  # validates :title, 
+  #   presence: true,
+  #   length: { maximum: 30 }
+
+  # validates :due_date,
+  #   presence: true
   # def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
   #   @task = Task.all
 

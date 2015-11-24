@@ -10,8 +10,22 @@ html, body {
   color:white;
 }
 
+#incomplete-btn {
+  background-color: #ff5933;
+  float: right;
+  margin-bottom: 2%;
+}
+
+div.chip.incomplete-background-color {
+  background-color: #ff8466;
+}
+
+#complete-btn {
+  float: left;
+}
+
 #map-container {
-  min-height: 0%;
+  min-height: 0% !important;
 }
 
 .card-content {
@@ -51,8 +65,8 @@ html, body {
   color: white;
 }
 
-#show-review {
-  left: 27%;
+.align-the-element {
+  text-align: center;
 }
 
 .task-request-approve-div {
@@ -62,6 +76,15 @@ html, body {
 .task-show-push-right {
   position: relative;
   text-align: center;
+}
+
+#task-show-align-text {
+  text-align: center;
+}
+
+div#task-show-name-align {
+  position: relative;
+  left: 25%;
 }
 /**/
 
@@ -154,31 +177,19 @@ body.overlay {
   margin-left: 8%;
 }
 
+div.chip.accepted-background-color {
+  background-color: #80ff80;
+}
+
 .waves-effect.waves-light.btn-large.nav-button {
   background-color: #4caf50;
 }
-
-/* the hiding of elements on the task show page
-
-.hidden-element {
-  visibility: hidden;
-}
-
-.dom-removed-element .show-review-form {
-  display: "";
-
-}
-
-.dom-removed-element {
-  display: none;
-}
-/**/
-
 
 .task-user-image {
   border-radius: 20%;
   width: 96%;
   border:outset 2px #000000;
+  margin-bottom: 6%;
 }
 
 .task-map-image {
@@ -241,7 +252,7 @@ footer {
 
 .profile-image {
   display: inline-block;
-  margin-left: -20%;
+  /*margin-left: -20%;*/
   border-radius: 50%;
   border: solid;
   border-color: #81d4fa;
@@ -260,6 +271,17 @@ footer {
   color: #81d4fa;
   display: inline-block;
   padding-right: 10px;
+}
+
+#profile-username-header {
+  margin-bottom: 8%;
+  position: relative;
+  left: 40%;
+}
+
+#profile-rating-col {
+  position: relative;
+  left: 15%;
 }
 
 .task-icons {
