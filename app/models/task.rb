@@ -25,6 +25,7 @@ class Task < ActiveRecord::Base
 
   # validates :due_date,
   #   presence: true
+
   # def self.search(username = nil, title = nil, location = nil, difficulty = nil, chronology = nil)
   #   @task = Task.all
 

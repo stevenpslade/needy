@@ -41,6 +41,9 @@ gem 'gon'
 # Pusher
 gem 'pusher'
 
+# Kaminari for pagination
+gem 'kaminari'
+
 # carrierwave to upload images
 gem 'carrierwave'
 gem "rmagick"
