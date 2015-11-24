@@ -24,9 +24,6 @@ div.chip.incomplete-background-color {
   float: left;
 }
 
-#map-container {
-  min-height: 0% !important;
-}
 
 .card-content {
   color: black;
@@ -730,5 +727,19 @@ button {
   padding-top: 25px;
 }
 
+#map-container {
+  min-height: 0% !important;
+}
 
+.paginate {
+  text-align: center;
+}
+
+.pagination li {
+  background-color: rgba(255,255,255,0.8);
+}
+
+.pagination li.active {
+  background-color: #0089EC !important;
+}
 

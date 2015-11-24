@@ -3,7 +3,7 @@
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @tasks = Task.search(params[:username], params[:query], params[:difficulty], params[:chronology])
+    @tasks = Task.search(params[:username], params[:query], params[:difficulty], params[:chronology]).page(params[:page]).per(12)
   end
 
   def user_tasks
