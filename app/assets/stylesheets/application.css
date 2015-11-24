@@ -255,7 +255,7 @@ footer {
 
 .profile-image {
   display: inline-block;
-  margin-left: -20%;
+  /*margin-left: -20%;*/
   border-radius: 50%;
   border: solid;
   border-color: #81d4fa;
@@ -274,6 +274,17 @@ footer {
   color: #81d4fa;
   display: inline-block;
   padding-right: 10px;
+}
+
+#profile-username-header {
+  margin-bottom: 8%;
+  position: relative;
+  left: 40%;
+}
+
+#profile-rating-col {
+  position: relative;
+  left: 15%;
 }
 
 .task-icons {

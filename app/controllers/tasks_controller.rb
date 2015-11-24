@@ -62,21 +62,23 @@ class TasksController < ApplicationController
       end    
     # TASK COMPLETE by 
     elsif params[:task][:needy_confirm_completion]
-      params.permit(:needy_confirm_completion)
-      @task.needy_confirm_completion = params[:task][:needy_confirm_completion]
-      if @task.save
+      if @task.update(task_params)
         redirect_to task_path(params[:id]), alert: "Task marked as complete!"
       else
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
     #  TASK COMPLETE
     elsif params[:task][:needed_confirm_completion]
-      params.permit(:needed_confirm_completion)
-      @task.needed_confirm_completion = params[:task][:needed_confirm_completion]
-      if @task.save
+      if @task.update(task_params)
         redirect_to task_path(params[:id]), alert: "Task marked as complete!"
        else
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
+      end
+    elsif params[:task][:incopmlete]
+      if @task.update(task_parms)
+        redirect_to task_path(params[:id]), alert: "Task marked as incomplete!"
+      else
+        redirect_to task_path(params[:id]), alert: "Error! 'Task incomplete' unsuccessful"
       end
     else
       redirect_to task_path(params[:id]), alert: "Error, something went wrong!" 
