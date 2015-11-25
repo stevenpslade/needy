@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124165253) do
+ActiveRecord::Schema.define(version: 20151125063836) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "task_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20151124165253) do
     t.datetime "updated_at",                                                                                                                                  null: false
     t.string   "title"
     t.boolean  "incomplete",                default: false
+    t.integer  "incomplete_by"
   end
 
   create_table "users", force: :cascade do |t|
