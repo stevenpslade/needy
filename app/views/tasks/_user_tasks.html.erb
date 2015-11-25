@@ -2,7 +2,7 @@
   <div class="container">
     <h3>My Needs</h3>
     <div class="row">
-    <% @user_tasks = Task.where(user_id: current_user.id).where(needy_confirm_completion: false).where(needed_confirm_completion: false) %>
+    <% @user_tasks = Task.where(user_id: current_user.id).where(needy_confirm_completion: false).where(needed_confirm_completion: false).where(incomplete: false) %>
     <% if @user_tasks != nil %>
       <% @user_tasks.each do |task| %>
         <div class="col s3">
@@ -30,7 +30,7 @@
   <div class="container">
     <h3>Where I'm Needed</h3>
     <div class="row">
-    <% @user_needed_tasks = Task.where(needed_id: current_user.id).where(needy_confirm_completion: false) %>
+    <% @user_needed_tasks = Task.where(needed_id: current_user.id).where(needy_confirm_completion: false).where(incomplete: false) %>
       <% @user_needed_tasks.each do |task| %>
         <div class="col s3">
           <div class="index-card card small">
@@ -55,10 +55,10 @@
     </div>
   </div>
   <div class="container">
-    <h3>Completed</h3>
+    <h3 class="show-label-green">Completed</h3>
     <div class="row">
-    <% @user_completed_tasks = Task.where(needed_id: current_user.id).where(needy_confirm_completion: true).where(needed_confirm_completion: true) %>
-    <% @user_needed_completed_tasks = Task.where(user_id: current_user.id).where(needy_confirm_completion: true).where(needed_confirm_completion: true) %>  
+    <% @user_completed_tasks = Task.where(needed_id: current_user.id).where(needy_confirm_completion: true).where(needed_confirm_completion: true).where(incomplete: false) %>
+    <% @user_needed_completed_tasks = Task.where(user_id: current_user.id).where(needy_confirm_completion: true).where(needed_confirm_completion: true).where(incomplete: false) %>  
       <% @user_completed_tasks.each do |task| %>
         <div class="col s3">
           <div class="index-card card small">
@@ -101,10 +101,58 @@
           </div>
         </div>
       <% end %>
-    <% end %>
     </div>
   </div>
-
+  <div class="container">
+  <h3 class="show-label-red">Incomplete</h3>
+  <div class="row">
+  <% @user_incomplete_tasks = Task.where(user_id: current_user.id).where(incomplete: true) %>
+  <% @needed_incomplete_tasks = Task.where(needed_id: current_user.id).where(incomplete: true) %>
+    <% @user_incomplete_tasks.each do |task| %>
+      <div class="col s3">
+        <div class="index-card card small">
+          <div class="card-image waves-effect waves-block waves-light activator">
+            <img class="activator responsive-img"><%= image_tag(task.image_url) %>
+          </div>
+          <div class="card-content">
+            <span class="card-task-user">by: <%= User.find(task.user_id).full_name %></span>
+            <span class="card-title activator grey-text text-darken-4"><%= link_to task.title, task_path(task) %><i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= task.title %><i class="material-icons right">close</i></span>
+            <p class="card-attr"><span>Est Duration: </span><%= task.estimated_duration %></p>
+            <p class="card-attr"><span>Difficulty: </span><%= task.difficulty %></p>
+            <p class="card-attr"><span>Category: </span><%= task.category %></p>
+            <p class="card-attr"><span>Compensation: </span><%= task.compensation %></p>
+            <p class="card-attr"><span>Description: </span><%= task.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% @needed_incomplete_tasks.each do |task| %>
+      <div class="col s3">
+        <div class="index-card card small">
+          <div class="card-image waves-effect waves-block waves-light activator">
+            <img class="activator responsive-img"><%= image_tag(task.image_url) %>
+          </div>
+          <div class="card-content">
+            <span class="card-task-user">by: <%= User.find(task.user_id).full_name %></span>
+            <span class="card-title activator grey-text text-darken-4"><%= link_to task.title, task_path(task) %><i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= task.title %><i class="material-icons right">close</i></span>
+            <p class="card-attr"><span>Est Duration: </span><%= task.estimated_duration %></p>
+            <p class="card-attr"><span>Difficulty: </span><%= task.difficulty %></p>
+            <p class="card-attr"><span>Category: </span><%= task.category %></p>
+            <p class="card-attr"><span>Compensation: </span><%= task.compensation %></p>
+            <p class="card-attr"><span>Description: </span><%= task.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
 
 
 

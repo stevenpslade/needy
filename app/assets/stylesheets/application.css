@@ -113,6 +113,10 @@ div.chip.incomplete-background-color {
   font-size: 0.7rem;
 }
 
+.display-task {
+  text-align: left;
+}
+
 .task-show-push-right label {
   color: white;
 }
@@ -230,9 +234,6 @@ body.overlay {
   margin-left: 8%;
 }
 
-div.chip.accepted-background-color {
-  background-color: #61FC61 ;
-}
 
 .waves-effect.waves-light.btn-large.nav-button {
   background-color: #4caf50;
@@ -307,7 +308,7 @@ footer {
 
 .profile-image {
   display: inline-block;
-  /*margin-left: -20%;*/
+  margin-left: -10%;
   border-radius: 50%;
   border: solid;
   border-color: #81d4fa;
@@ -316,6 +317,10 @@ footer {
   box-shadow: 10px 14px 29px #121214;
   height: 257px;
   width: 287px;
+}
+
+div.accepted-background-color a {
+  color: #61FC61 ;
 }
 
 .name {
@@ -335,7 +340,7 @@ footer {
 }
 
 .show-label-green {
-  color: green;
+  color: rgba(52, 211, 44, 1);
   display: inline-block;
   padding-right: 10px;
 }
@@ -344,11 +349,6 @@ footer {
   margin-bottom: 8%;
   position: relative;
   left: 40%;
-}
-
-#profile-rating-col {
-  position: relative;
-  left: 15%;
 }
 
 .task-icons {

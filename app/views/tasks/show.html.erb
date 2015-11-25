@@ -163,7 +163,7 @@
                 <h5 class="show-label-green">Task Complete!</h5>
               <% end %>     
             <% else %>
-              <h5 class="show-label-red">TASK MARKED INCOMPLETE BY: </h5><%= User.find(@task.incomplete_by).full_name %>
+              <h6 class="show-label-red">TASK MARKED INCOMPLETE BY: </h6><%= User.find(@task.incomplete_by).full_name %>
             <% end %>
             <!-- conditionals for shown status of task if current user is not involved -->
             <% if (current_user.id != @task.user_id) && (current_user.id != @task.needed_id) %>
