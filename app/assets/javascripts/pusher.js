@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 
   current_name = gon.current_user.first_name + " " + gon.current_user.last_name
   other_name = gon.other_user.first_name + " " + gon.other_user.last_name

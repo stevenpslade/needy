@@ -1,4 +1,4 @@
-$(document).on("page:change", function() {
+$(function() {
 
 // show new task form 
   $('body').on('click', '#task-form', function() {
