@@ -28,6 +28,7 @@
   def show
     # Pusher.trigger('private-chat-room-1', 'client-new-message', {:message => "test"})
     @task = Task.find(params[:id])
+    @user = User.find(@task.user_id)
     gon.watch.tasks = @task
     gon.current_user = current_user
     if current_user.id == @task.user_id && @task.needed_id != nil
@@ -43,6 +44,7 @@
     end
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
+    @all_requests = Request.where(task_id: @task.id)
     # @review allows for the form_for to allow the review parameter
     @review = Review.new
   end
