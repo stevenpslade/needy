@@ -23,6 +23,7 @@
             <h6 class="show-label">EMAIL</h6>
             <%= @user.email %>
           </div>
+        <% if (current_user.id == @user.id) %>
           <div class="row">
             <div id="show-edit-profile" class="btn-floating btn-large waves-effect waves-light blue btn tooltipped btn modal-trigger" data-delay="50" data-tooltip="Edit Profile" data-target="modal1">
               <i class="material-icons">mode_edit</i>
@@ -36,6 +37,7 @@
               <i class="material-icons">delete</i> <!-- still need to add functionality -->
             </div> 
           </div>
+        <% end %>
         </div>
       </div>
       <div class="row">
@@ -51,47 +53,43 @@
         </div>  
       </div>
       <div class="row align-the-element">
-        <div class="col s4"> 
+        <div class="col s4 display-task"> 
           <% @tasks = Task.where(user_id: @user.id) %>
           <h6 class="show-label">TASKS POSTED<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
             <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
-              <div class="chip accepted-background-color">
+              <div class="accepted-background-color">
                 <%= link_to "#{task.title}", task_path(task.id) %>
-                <i class="material-icons">close</i>
               </div>
             <% else %>
-              <div class="chip">
+              <div>
                 <%= link_to "#{task.title}", task_path(task.id) %>
-                <i class="material-icons">close</i>
               </div>
             <% end %>
           <% end %>
         </div>
-        <div class="col s4">
+        <div class="col s4 display-task">
           <% @tasks = Task.where(needed_id: @user.id) %>
           <h6 class="show-label">TASKS ACCEPTED<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
             <% if task.needy_confirm_completion == true && task.needed_confirm_completion == true %>
-              <div class="chip accepted-background-color">
+              <div class="accepted-background-color">
                 <%= link_to "#{task.title}", task_path(task.id) %>
-                <i class="material-icons">close</i>
               </div>
             <% else %>
-              <div class="chip">
+              <div>
                 <%= link_to "#{task.title}", task_path(task.id) %>
-                <i class="material-icons">close</i>
               </div>
             <% end %>
           <% end %>
         </div>
-        <div class="col s4">
+        <div class="col s4 display-task">
           <% @task_needed = Task.where(needed_id: @user.id, incomplete: true) %>
           <% @task_user = Task.where(user_id: @user.id, incomplete: true) %>
           <% @tasks = @task_needed + @task_user %>
           <h6 class="show-label">TASKS INCOMPLETE<small> (<%= @tasks.count %>)</small></h6><br>
           <% @tasks.each do |task| %>
-            <div class="chip incomplete-background-color">
+            <div class="incomplete-background-color">
               <%= link_to "#{task.title}", task_path(task.id) %>
               <i class="material-icons">close</i>
             </div>
@@ -104,13 +102,19 @@
             <% @reviews = Review.where(user_id: @user.id) %>
             <% @reviews.each do |review| %>
               <% if review.user_id == @user.id %>
-                <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
-                  <i class="material-icons">close</i>
+                <div class="review-tag-spacer">
+                  <a class="user-reviews-tags" style="cursor: pointer">
+                    <%= review.task.title %> 
+                    <% if review.user_rating >= 0 %>
+                      <small class="user-show-rating-positive">(<%= review.user_rating %>/5)</small>
+                    <% else %>
+                      <small class="user-show-rating-negative">(<%= review.user_rating %>/5)</small>
+                    <% end %>
+                  </a>
                   <div class="hide-form reviews-modal">
-                    <div class="center-transparent col s12">
+                    <div class="center-transparent col s12 user-profile-review-modal">
                       <div class="col s12">
-                        <p class="review-title"><%= review.content %> - <small><%= review.user.username %></small></p>
+                        <p class="review-title"><%= review.content %> (<%= review.user_rating %>/5) - <small><%= review.user.username %></small></p>
                         <%= link_to "Show Task", task_path(review.task.id) %>
                       </div>
                     </div>
@@ -124,13 +128,20 @@
             <% @reviews = Review.where(for_user: @user.id) %>
             <% @reviews.each do |review| %>
               <% if review.for_user == @user.id %>
-                <div class="chip review-tag-spacer">
-                  <a class="user-reviews-tags" style="cursor: pointer"><%= Task.find(review.task_id).title %></a>
+                <div class="review-tag-spacer">
+                  <a class="user-reviews-tags" style="cursor: pointer">
+                    <%= review.task.title %> 
+                    <% if review.user_rating >= 0 %>
+                      <small class="user-show-rating-positive">(<%= review.user_rating %>/5)</small>
+                    <% else %>
+                      <small class="user-show-rating-negative">(<%= review.user_rating %>/5)</small>
+                    <% end %>
+                  </a>
                   <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
-                    <div class="center-transparent col s12">
+                    <div class="center-transparent col s12 user-profile-review-modal">
                       <div class="col s12">
-                        <p class="review-title"><%= review.content %> - <small><%= review.user.username %></small></p>
+                        <p class="review-title"><%= review.content %> (<%= review.user_rating %>/5) - <small><%= review.user.username %></small></p>
                         <%= link_to "Show Task", task_path(review.task.id) %>
                       </div>
                     </div>

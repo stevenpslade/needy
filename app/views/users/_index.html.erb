@@ -4,7 +4,7 @@
     <% @users.each do |user| %>
       <div class="col s3">
         <div class="index-card card small">
-          <div class="card-image waves-effect waves-block waves-light activator">
+          <div id="user-index-card" class="card-image waves-effect waves-block waves-light activator">
             <img class="activator responsive-img"><%= image_tag(user.profile_image_url, class: "activator")  %>
           </div>
           <div class="card-content">
