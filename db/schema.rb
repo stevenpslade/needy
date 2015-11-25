@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125063836) do
+ActiveRecord::Schema.define(version: 20151125221301) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "task_id"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20151125063836) do
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "needed_id"
-    t.boolean  "needy_confirm_completion"
-    t.boolean  "needed_confirm_completion"
+    t.boolean  "needy_confirm_completion",  default: false
+    t.boolean  "needed_confirm_completion", default: false
     t.string   "location"
     t.text     "description"
     t.string   "estimated_duration"
