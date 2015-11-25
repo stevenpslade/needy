@@ -27,7 +27,12 @@ $(document).on("page:change", function() {
 
 // show review form
   $('body').on('click', '#show-review', function() {
-    $('#review').animate({height: 'toggle'});
+    $('#review').animate({
+      duration: 500,
+      opacity: 1,
+      right: "+=100",
+      height: 'toggle'
+    });
   });
 
 // show the review comment on the profile page 
