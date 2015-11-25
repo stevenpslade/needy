@@ -10,12 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
+//= require application
 //= require forms
 //= require maps
 //= require pusher
 
+$(function() {
 
-$(document).on("page:change", function() {
 
   if ($('#alert').get(0)) {    
     // alert($('#alert').text()); // throw an alert() with the div's text
