@@ -30,7 +30,7 @@
   <div class="container">
     <h3>Where I'm Needed</h3>
     <div class="row">
-    <% @user_tasks = Task.where(needed_id: current_user.id) %>
+    <% @user_tasks = Task.where(needed_id: current_user.id) && Task.where(needy_confirm_completion: false) && Task.where(needed_confirm_completion: false) %>
       <% @user_tasks.each do |task| %>
         <div class="col s3">
           <div class="index-card card small">
