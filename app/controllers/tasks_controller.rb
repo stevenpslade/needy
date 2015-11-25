@@ -26,7 +26,6 @@
   end
 
   def show
-    # Pusher.trigger('private-chat-room-1', 'client-new-message', {:message => "test"})
     @task = Task.find(params[:id])
     @user = User.find(@task.user_id)
     gon.watch.tasks = @task

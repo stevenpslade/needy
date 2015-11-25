@@ -53,7 +53,7 @@ $(function() {
     });
   }
 
-  // Pusher.trigger('my-channel', 'my-event', {:message => 'hello world'})
+  // Pusher.trigger('notifChannel', 'client-new-notif', {:message => 'hello world'})
   $('#chatBox').on('submit', function(e) {
     e.preventDefault();
     msg = $('#chatMsg').val();
