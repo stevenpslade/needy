@@ -386,6 +386,7 @@ nav {
 #search-button {
   margin-top: 1%;
   text-align: center;
+  padding-left: 0rem;
 }
 
 .card-attr {
