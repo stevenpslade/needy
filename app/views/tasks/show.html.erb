@@ -251,7 +251,7 @@
             </div>
         </div>
         <!-- bring up the REVIEW button if the task has both is PENDING-->
-      <% elsif @task.needed_id %>     
+      <% elsif @task.needed_id && @user_review.blank? %>     
         <div class="row">
           <div class="col s6">
             <h5 class="show-label">Description: </h5><h5 class="description"><%= @task.description %></h5>

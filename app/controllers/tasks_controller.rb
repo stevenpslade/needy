@@ -47,6 +47,7 @@
     @all_requests = Request.where(task_id: @task.id)
     # @review allows for the form_for to allow the review parameter
     @review = Review.new
+    @user_review = Review.where("task_id = ? AND user_id = ?", @task.id, current_user.id)
   end
 
   def update
