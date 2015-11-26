@@ -18,7 +18,7 @@
             <div class="row">
               <img class="task-image" src="<%= @task.image_url %>"/>
               <p>Needy user: <%= link_to @task.user.full_name, user_path(@task.user_id) %></p>
-              <p>Needed user: This spot could be yours!</p>
+              <p>Needed user: Pending requests (<%= @all_requests.length %>)</p>
             </div>
           </div>
           <div class="top-content col s6">
@@ -42,7 +42,7 @@
               </div>
               <div class="col s3">
                 <i class="material-icons large">alarm_on</i>
-                <p><%= @task.due_date %></p>
+                <p><%= @task.due_date.strftime("%a %m/ %d/ %y") %></p>
               </div>
               <div class="col s3">
                 <i class="material-icons large">restore</i>
@@ -68,9 +68,8 @@
               <h5 class="show-label">Description: </h5> <h5 class="description"><%= @task.description %></h5>
             </div>
             <div class="col s6 task-request-approve-div">
-              <% all_requests = Request.where(task_id: @task.id) %>
-              <p>There are currently <%= all_requests.count %> users requesting to do this task.</p>
-              <% all_requests.each do |r| %>
+              <p>There are currently <%= @all_requests.count %> users requesting to do this task.</p>
+              <% @all_requests.each do |r| %>
                 <div class="chip">
                   <%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
                 </div>
@@ -79,7 +78,7 @@
               <% if current_user.id == @task.user_id %>
                 <p>Select one of the Needed's below to approve their request!</p>
                 <%= form_for @task do |f|%>
-                  <% all_requests.each do |r| %>
+                  <% @all_requests.each do |r| %>
                     <p class="task-show-push-right">
                       <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
                       <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
@@ -96,47 +95,91 @@
             <div class="row">
               <img class="task-image" src="<%= @task.image_url %>"/>
               
-                <% if @task.user_id && @task.needed_id %>
-                  <!-- <div class="chip-task-names"> -->
-                    <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
-                  <!-- </div><br> -->
-                  <!-- <div class="chip-task-names"> -->
-                    <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.needed_id) %></p>
-                  <!-- </div>  -->
-                <% else %>
-                  <!-- <div class="chip-task-names"> -->
-                    <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
-                  <!-- </div> -->
-                  <div class="chip-task-names">
-                    <p>Needed user: <span>This spot could be yours!</span></p>
-                  </div>
-                <% end %>
+              <% if @task.user_id && @task.needed_id %>
+                <!-- <div class="chip-task-names"> -->
+                  <p>Needy user: <%= link_to User.find(@task.user_id).full_name, user_path(@task.user_id) %></p>
+                <!-- </div><br> -->
+                <!-- <div class="chip-task-names"> -->
+                  <p>Needed user: <%=  link_to User.find(@task.needed_id).full_name, user_path(@task.needed_id) %></p>
+                <!-- </div>  -->
+              <% else %>
+                <!-- <div class="chip-task-names"> -->
+                  <p>Needy user: <%= User.find(@task.user_id).full_name %></p>
+                <!-- </div> -->
+                <div class="chip-task-names">
+                  <p>Needed user: Pending requests (<%= @all_requests.length %>)</p>
+                </div>
+              <% end %>
             </div>
+            <% if (@task.incomplete == false) %>
             <!-- MARK AS COMPLETE buttons -->
-            <% if (current_user.id == @task.user_id) && (@task.needed_confirm_completion == nil || @task.needed_confirm_completion == false ) && (@task.incomplete == false) %>
-              <%= form_for @task do |f| %>
-                <%= f.hidden_field :needed_confirm_completion, value: true %>
-                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
-                  <%= f.submit("Complete", name: nil) %>
-                <i class="material-icons right">done</i>
-                </button>
-              <% end %>
-            <% elsif (current_user.id == @task.needed_id) && (@task.needy_confirm_completion == nil || @task.needy_confirm_completion == false) && (@task.incomplete == false)  %>
-              <%= form_for @task do |f| %>
-                <%= f.hidden_field :needy_confirm_completion, value: true %>
-                <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
-                  <%= f.submit("Complete", name: nil) %>
-                <i class="material-icons right">done</i>
-                </button>
-              <% end %>
+              <!-- current user is task poster or needed user and they have not marked complete -->
+              <% if (current_user.id == @task.user_id && @task.needy_confirm_completion == false) && (@task.incomplete == false) %>
+                <%= form_for @task do |f| %>
+                  <%= f.hidden_field :needy_confirm_completion, value: true %>
+                  <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                    <%= f.submit("Complete", name: nil) %>
+                  <i class="material-icons right">done</i>
+                  </button>
+                <% end %>
+                <%= form_for @task do |f| %>
+                  <%= f.hidden_field :incomplete, value: true %>
+                  <%= f.hidden_field :incomplete_by, value: @task.user_id %>
+                  <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
+                    <%= f.submit("Incomplete", name: nil) %>
+                  <i class="material-icons">warning</i>
+                <% end %>
+                              <!-- if the opposing user has marked the task complete -->
+                <% if (@needed_confirm_completion == true) %>
+                  <h6 class="show-label">Task Marked complete by: </h6><%= User.find(@task.needed_id).full_name %>
+                <% end %>
+              <% elsif (current_user.id == @task.needed_id && @task.needed_confirm_completion == false) && (@task.incomplete == false) %>
+                <%= form_for @task do |f| %>
+                  <%= f.hidden_field :needed_confirm_completion, value: true %>
+                  <button class="btn waves-effect waves-light" id="complete-btn" type="submit" name="action">
+                    <%= f.submit("Complete", name: nil) %>
+                  <i class="material-icons right">done</i>
+                  </button>
+                <% end %>
+                <%= form_for @task do |f| %>
+                  <%= f.hidden_field :incomplete, value: true %>
+                  <%= f.hidden_field :incomplete_by, value: @task.needed_id %>
+                  <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
+                    <%= f.submit("Incomplete", name: nil) %>
+                  <i class="material-icons">warning</i>
+                <% end %>
+                              <!-- if the opposing user has marked the task complete -->
+                <% if (@needy_confirm_completion == true) %>
+                  <h6 class="show-label">Task Marked complete by: </h6><%= User.find(@task.user_id).full_name %>
+                <% end %>
+                              <!-- if the current user has marked completion but opposing user has not -->
+              <% elsif (current_user.id == @task.needed_id) && (@task.needed_confirm_completion && @task.needy_confirm_completion == false) %>
+                <h6 class="show-label">You have marked this task complete</h6>
+                <h6 class="show-label">Approval pending from: </h6><%= User.find(@task.user_id).full_name %>
+              <% elsif (current_user.id == @task.user_id && @task.needy_confirm_completion && @task.needed_confirm_completion == false) %>
+                <h6 class="show-label">You have marked this task complete</h6>
+                <h6 class="show-label">Approval pending from: </h6><%= User.find(@task.needed_id).full_name %>
+              <% elsif (@task.needed_confirm_completion && @task.needy_confirm_completion) %>
+                <h5 class="show-label-green">Task Complete!</h5>
+              <% end %>     
+            <% else %>
+              <h6 class="show-label-red">TASK MARKED INCOMPLETE BY: </h6><%= User.find(@task.incomplete_by).full_name %>
             <% end %>
-            <!-- Hide the incomplete button if both users have marked the task as complete -->
-            <% if !(@task.needed_confirm_completion && @task.needy_confirm_completion) &&  (@task.incomplete == false) %>
-              <%= form_for @task do |f| %>
-                <%= f.hidden_field :incomplete, value: true %>
-                <button class="btn waves-effect waves-light" id="incomplete-btn" type="submit" name="action">
-                  <%= f.submit("Incomplete", name: nil) %>
-                <i class="material-icons">warning</i>
+            <!-- conditionals for shown status of task if current user is not involved -->
+            <% if (current_user.id != @task.user_id) && (current_user.id != @task.needed_id) %>
+              <% if (@task.needed_confirm_completion && @task.needy_confirm_completion == false) %>
+                <h6 class="show-label">Task Marked complete by: </h6><%= User.find(@task.needed_id).full_name %>
+                <h6 class="show-label">Task completion pending approval of: </h6><%= User.find(@task.user_id).full_name %>
+
+              <% elsif (@task.needy_confirm_completion && @task.needed_confirm_completion == false) %>
+                <h6 class="show-label">Task Marked complete by: </h6><%= User.find(@task.user_id).full_name %>
+                <h6 class="show-label">Task completion pending approval of: </h6><%= User.find(@task.needed_id).full_name %>
+
+              <% elsif (@task.needed_confirm_completion && @task.needy_confirm_completion) %>
+                <h6 class="show-label">TASK COMPLETE!</h6>
+        
+              <% elsif (@task.incomplete == true && !@task.incomplete_by.blank?) %>
+                <h5 class="show-label-red">Task marked incomplete by <%= User.find(@task.incomplete_by).full_name %></h5>            
               <% end %>
             <% end %>
           </div>
@@ -165,7 +208,7 @@
               </div>
               <div class="col s3">
                 <i class="material-icons large">alarm_on</i>
-                <p><%= @task.due_date %></p>
+                <p><%= @task.due_date.strftime("%a %m/ %d/ %y")  %></p>
               </div>
               <div class="col s3">
                 <i class="material-icons large">restore</i>

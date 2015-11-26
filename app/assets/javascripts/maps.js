@@ -3,11 +3,11 @@
   var myLatLng = {lat: 49.264, lng: -123.168};
   var info;
 
-  function contentBox(taskTitle, taskDescription) {
+  function contentBox(taskTitle, taskDescription, taskId) {
     return '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h5 id="firstHeading" class="firstHeading">' + taskTitle + '</h5>'+
+        '<a href="/tasks/'+ taskId +'"><h5 id="firstHeading" class="firstHeading">' + taskTitle + '</h5></a>'+
         '<div id="bodyContent">'+
         '<p>'+ taskDescription +'</p>'+
         '</div>'+
@@ -68,12 +68,12 @@
       // if (window.location.pathname == '/map/tasks') {
       if (tasks.length >= 1) {
         tasks.forEach(function(task) {
-          popUp = contentBox(task.title, task.description);
+          popUp = contentBox(task.title, task.description, task.id);
           address = task.location;
           geocodeAddress(geocoder, map, address, popUp);
         });
       } else {
-        popUp = contentBox(tasks.title, tasks.description);
+        popUp = contentBox(tasks.title, tasks.description, tasks.id);
         address = tasks.location;
         geocodeAddress(geocoder, map, address, popUp);
       }

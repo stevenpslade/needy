@@ -3,7 +3,8 @@
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @tasks = Task.search(params[:username], params[:query], params[:difficulty], params[:chronology]).page(params[:page]).per(12)
+    filter_tasks = Task.search(params[:username], params[:query], params[:difficulty], params[:chronology]).page(params[:page]).per(12)
+    @tasks = filter_tasks.where(needed_id: nil)
   end
 
   def user_tasks
@@ -26,8 +27,8 @@
   end
 
   def show
-    # Pusher.trigger('private-chat-room-1', 'client-new-message', {:message => "test"})
     @task = Task.find(params[:id])
+    @user = User.find(@task.user_id)
     gon.watch.tasks = @task
     gon.current_user = current_user
     if current_user.id == @task.user_id && @task.needed_id != nil
@@ -43,6 +44,7 @@
     end
     # @request allows for the form_for to allow the request parameter
     @request = Request.new
+    @all_requests = Request.where(task_id: @task.id)
     # @review allows for the form_for to allow the review parameter
     @review = Review.new
   end
@@ -95,7 +97,7 @@
   protected
 
   def task_params
-    params.require(:task).permit(:user_id, :needed_id, :needy_confirm_completion, :needed_confirm_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty, :incomplete)
+    params.require(:task).permit(:user_id, :needed_id, :needy_confirm_completion, :needed_confirm_completion, :location, :description, :estimated_duration, :category, :due_date, :title, :compensation, :image_url, :video_url, :difficulty, :incomplete, :incomplete_by)
   end
 
 end
