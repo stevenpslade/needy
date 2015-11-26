@@ -76,7 +76,9 @@
               <% end %>
               <!-- Radio button select to approve one of the people requesting to do the task -->
               <% if current_user.id == @task.user_id %>
-                <p>Select one of the Needed's below to approve their request!</p>
+                <% if !@task.requests.blank? %>
+                  <p>Select one of the Needed's below to approve their request!</p>
+                <% end %>
                 <%= form_for @task do |f|%>
                   <% @all_requests.each do |r| %>
                     <p class="task-show-push-right">
@@ -84,7 +86,9 @@
                       <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
                     </p>
                   <% end %>
-                    <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light", id: "task-show-approve-user-btn") %>
+                    <% if !@task.requests.blank? %>
+                      <%= f.submit("Approve Request", name: nil, class: "btn waves-effect waves-light", id: "task-show-approve-user-btn") %>
+                    <% end %>
                 <% end %>
               <% end %>
             </div>
