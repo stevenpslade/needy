@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125221301) do
+ActiveRecord::Schema.define(version: 20151126064844) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "task_id"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20151125221301) do
     t.string   "category"
     t.datetime "due_date"
     t.string   "compensation"
-    t.string   "image_url",                 default: "http://a3.mzstatic.com/us/r30/Purple3/v4/2f/81/d1/2f81d1ad-bd3c-1bf0-d355-0a843c1f8977/icon128-2x.png"
+    t.string   "image_url",                 default: "https://cdn3.iconfinder.com/data/icons/illustricon-tech/512/task.board-512.png"
     t.string   "video_url"
     t.string   "difficulty"
-    t.datetime "created_at",                                                                                                                                  null: false
-    t.datetime "updated_at",                                                                                                                                  null: false
+    t.datetime "created_at",                                                                                                           null: false
+    t.datetime "updated_at",                                                                                                           null: false
     t.string   "title"
     t.boolean  "incomplete",                default: false
     t.integer  "incomplete_by"
