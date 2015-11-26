@@ -108,3 +108,12 @@ iframe {
 .task-request-approve-div strong {
   color:#81d4fa;
 }
+
+.task-show-approve-request-label {
+  padding: 0px;
+  color: white;
+}
+
+#show-review-div {
+  text-align: center;
+}

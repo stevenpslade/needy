@@ -139,3 +139,8 @@ div.accepted-background-color a {
   display: inline;
   margin-left: -1%;
 }
+
+.task-show-approve-request-label {
+  padding: 0px;
+  color: white;
+}
