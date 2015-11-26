@@ -8,17 +8,49 @@ html, body {
   background-size: 100% 100%; 
   /*color: rgba(18, 231, 48, 1); */
   color:white;
+  z-index: -2;
 }
 
+main {
+  margin-left: 15%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/*body .overlay {
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity = 50); /* IE7 & 8*/ 
+    /*position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}*/
 
 .user-profile-review-modal {
   position: relative;
   left: -27%;
 }
 
+.rating-badge {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 100%;
+  padding-left: 2px;
+}
 
+.rating-badge-green {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 100%;
+  padding-left: 5px;
+  margin-left: 2px;
+}
 
-/*CARD INDEX STYLING OVERRIDES DEFSUL MATERIALIZE*/
+/*CARD INDEX STYLING OVERRIDES DEFAULT MATERIALIZE*/
 .map-container {
   min-height: 0% !important;
 }
@@ -84,6 +116,14 @@ div.chip.incomplete-background-color {
   height: 360px;
 }
 
+#task-details-card {
+  margin-left: 0;
+  border: solid 2px #81d4fa;
+  background: -webkit-gradient(linear, 123% -1%, -178% -40%, from(#757C8C), to(#FFFFFF));
+  padding-top: 2%;
+  /*color: #81d4fa;*/
+}
+
 #task-details-card div {
   padding: 20px;
 }
@@ -94,6 +134,10 @@ div.chip.incomplete-background-color {
 
 #compensation-trigger {
   cursor: pointer;
+}
+
+#compensation-trigger:hover {
+  color: #0089EC;
 }
 
 /*.chip-task-names {
@@ -123,6 +167,10 @@ div.chip.incomplete-background-color {
 
 .align-the-element {
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5%;
+  border-radius: 10%;
+  border:double 3px #81d4fa;
 }
 
 .task-request-approve-div {
@@ -133,17 +181,6 @@ div.chip.incomplete-background-color {
   position: relative;
   text-align: center;
 }
-
-/*#task-show-align-text {
-  text-align: center;
-}
-*/
-/*div#task-show-name-align {
-  position: relative;
-  left: 25%;
-}*/
-/**/
-
 
 .card.small {
   height: 250px !important;
@@ -166,11 +203,6 @@ label {
   position: absolute;
 }
 
-main {
-  margin-left: 15%;
-  height: 100%;
-  min-height: 100%;
-}
 
 .waves-effect.waves-light.btn-large {
   background-color: #9ccc65 ;
@@ -190,19 +222,6 @@ li.bold {
 
 .hide-form .show-form {
   display: inline-block;
-}
-
-body.overlay {
-    display:none;
-    background-color: #000;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    filter: alpha(opacity = 50); /* IE7 & 8*/ 
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: -1;
 }
 
 #needy-logo {
@@ -297,13 +316,14 @@ footer {
 }
 
 .background-show-page {
-  background-color: rgba(23, 21, 22, 0.6);
+  background-color: rgba(23, 21, 22, 0.8);
   -moz-box-shadow: 13px 21px 50px #000000;
   -webkit-box-shadow: 13px 21px 50px #000000;
   box-shadow: 13px 21px 50px #000000;
   border-color: rgba(26, 187, 99, 1);
   border-radius: 20px;
   width: 110%;
+  margin-left: -2%;
 }
 
 .profile-image {
@@ -315,7 +335,7 @@ footer {
   -moz-box-shadow: 10px 14px 29px #121214;
   -webkit-box-shadow: 10px 14px 29px #121214;
   box-shadow: 10px 14px 29px #121214;
-  height: 257px;
+  height: 300px;
   width: 287px;
 }
 
@@ -343,6 +363,13 @@ div.accepted-background-color a {
   color: rgba(52, 211, 44, 1);
   display: inline-block;
   padding-right: 10px;
+}
+
+.show-label-underline {
+  color: #81d4fa;
+  display: inline-block;
+  padding-right: 10px;
+  text-decoration: underline; 
 }
 
 #profile-username-header {
@@ -516,41 +543,6 @@ button {
   -webkit-box-shadow: 0px 8px 16px #000000;
   box-shadow: 0px 8px 16px #000000;
   background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(rgba(48, 82, 115, 0.8)), to(#FFFFF1));
-}
-
-#tiny-logo {
-  margin-top: 6%;
-  margin-left: 19%;
-  height: 10%;
-  position: fixed;
-  filter: blur(100px);
-}
-
-#stick1 {
-  margin-top: 9.3%;
-  margin-left: 71%;
-  height: 10%;
-  position: fixed;
-  color:white;
-  font-size: 12px;
-}
-
-#stick2 {
-  margin-top: 9.3%;
-  margin-left: 73%;
-  height: 10%;
-  position: fixed;
-  color:white;
-  font-size: 12px;
-}
-
-#stick3 {
-  margin-top: 9.3%;
-  margin-left: 75.2%;
-  height: 10%;
-  position: fixed;
-  color:white;
-  font-size: 12px;
 }
 
 #need-it-button {
