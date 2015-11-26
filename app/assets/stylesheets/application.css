@@ -557,9 +557,9 @@ button {
   background-color: rgba(52, 161, 44, 1);
   width: 150px;
   height:100px;
-  position: absolute;
-  top: 35%;
-  left:35%;
+  position: fixed;
+  top: 44%;
+  left:19%;
   transform: translateY(-50%);
   cursor: pointer;
   border:outset 2px rgba(52, 161, 44, 0.8);
@@ -584,9 +584,9 @@ button {
   background-color: rgba(48, 110, 152, 1);
   width: 150px;
   height:100px;
-  position: absolute;
-  top: 35%;
-  left:35%;
+  position: fixed;
+  top: 44%;
+  left:69.5%;
   transform: translateY(-50%);
   cursor: pointer;
   border:outset 2px;

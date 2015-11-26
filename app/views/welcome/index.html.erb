@@ -14,8 +14,20 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <title>Need It</title>
+  <style type="text/css">
+            html, main {
+        height: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
 </head>
 <body>
+<div id="map"></div>
   <div class="landing-wrap col s12 row">
     <div class="right-landing col s6">
       <!-- <h3 class="landing-title">NEEDED</h3> -->
@@ -76,5 +88,8 @@
       <img id="needy-logo-landing" src='<%= image_path('needit2.png') %>'>
     
   </div>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZQ0u0B58kHdvch8UmNPY6jMM3L4n9fJc&callback=initMap">
+  </script>
 </body>
 </html>
