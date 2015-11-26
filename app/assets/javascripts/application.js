@@ -17,6 +17,14 @@
 
 $(function() {
 
+  $(".index-card").on({
+    mouseenter: function () {
+      $(this).toggleClass('z-depth-5');
+    },
+    mouseleave: function () {
+      $(this).toggleClass('z-depth-5');
+    }
+  });
 
   if ($('#alert').get(0)) {    
     // alert($('#alert').text()); // throw an alert() with the div's text
