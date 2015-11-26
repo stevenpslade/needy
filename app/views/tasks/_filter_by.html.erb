@@ -16,11 +16,11 @@
           </button>
           <div class="input-field col s3 hide-on-med-and-down">            
             <%= radio_button_tag :difficulty, "easy" %>
-            <%= label_tag(:difficulty_easy, "Easy") %>
+            <%= label_tag(:difficulty_easy, "Easy", class: "task-index-filter-diff-label") %>
             <%= radio_button_tag :difficulty, "medium" %>
-            <%= label_tag(:difficulty_medium, "Medium") %>
+            <%= label_tag(:difficulty_medium, "Medium", class: "task-index-filter-diff-label") %>
             <%= radio_button_tag :difficulty, "hard" %>
-            <%= label_tag(:difficulty_hard, "Hard") %>
+            <%= label_tag(:difficulty_hard, "Hard", class: "task-index-filter-diff-label") %>
           </div>
           <div class="input-field col s2 hide-on-med-and-down">
             

@@ -7,6 +7,7 @@
 
 #search-button {
   margin-top: 1%;
+  margin-right: 2.5%;
   text-align: center;
   padding-left: 0.7rem;
 }
@@ -26,6 +27,11 @@
 
 .card-content {
   color: black;
+}
+
+.task-index-filter-diff-label {
+  padding: 0px;
+  color: white;
 }
 
 button {
