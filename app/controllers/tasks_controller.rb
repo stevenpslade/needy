@@ -20,7 +20,7 @@
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to tasks_path, alert: "New Task Created!"
+      redirect_to tasks_path, notice: "New Task Created!"
     else
       render :new
     end
@@ -60,27 +60,27 @@
       if @task.save
         @chat = Chat.new({task_id: params[:id]})
         @chat.save
-        redirect_to task_path(params[:id]), alert: "You have accepted someone to do your bidding!"
+        redirect_to task_path(params[:id]), notice: "You have accepted someone to do your bidding!"
       else
         render :show
       end    
     # TASK COMPLETE by 
     elsif params[:task][:needy_confirm_completion]
       if @task.update(task_params)
-        redirect_to task_path(params[:id]), alert: "Task marked as complete!"
+        redirect_to task_path(params[:id]), notice: "Task marked as complete!"
       else
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
     #  TASK COMPLETE
     elsif params[:task][:needed_confirm_completion]
       if @task.update(task_params)
-        redirect_to task_path(params[:id]), alert: "Task marked as complete!"
+        redirect_to task_path(params[:id]), notice: "Task marked as complete!"
        else
         redirect_to task_path(params[:id]), alert: "Error! 'Task complete' unsuccessful"
       end
     elsif params[:task][:incomplete]
       if @task.update(task_params)
-        redirect_to task_path(params[:id]), alert: "Task marked as incomplete!"
+        redirect_to task_path(params[:id]), notice: "Task marked as incomplete!"
       else
         redirect_to task_path(params[:id]), alert: "Error! 'Task incomplete' unsuccessful"
       end

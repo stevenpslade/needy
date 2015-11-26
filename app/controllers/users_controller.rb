@@ -13,7 +13,7 @@
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to tasks_path, alert: "Welcome, #{@user.first_name}!"
+      redirect_to tasks_path, notice: "Welcome, #{@user.first_name}!"
       # redirect_to root_url, notice: "Signup successful! Log in."
     else
       @user = User.new

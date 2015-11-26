@@ -5,6 +5,7 @@ box-shadow: 0px 0px 0px #000000; width:0%;" class="" id="navbar">
     <li class="logo">
       <img id="needy-logo" src='<%= image_path('rob_logo.png') %>'>
       <div>
+      <p id="notice" style="visibility: hidden;"><%= flash[:notice] %></p>
         <p id="alert" style="visibility: hidden;"><%= flash[:alert] %></p>
       </div>
     </li>

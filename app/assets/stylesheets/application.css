@@ -804,3 +804,10 @@ button {
   background-color: #0089EC !important;
 }
 
+.alert {
+  color: red !important;
+}
+
+.notice {
+  color: #32CD32 !important;
+}

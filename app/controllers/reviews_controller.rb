@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    
     @review = Review.new(review_params) 
     if @review.save
       @task = Task.where(id: @review.task_id) 
@@ -30,9 +31,9 @@ class ReviewsController < ApplicationController
         @for_user[0].needy_rating += @review.user_rating
         @for_user[0].save
       end
-      redirect_to tasks_path, alert: "Review added"
+      redirect_to tasks_path, notice: "Review added"
     else 
-      redirect_to tasks_path, alert: "Review unsuccessful!"
+      redirect_to task_path(params[:review][:task_id]), alert: "Please add content to your review!"
     end
 
   end

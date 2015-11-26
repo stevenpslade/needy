@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
   
     if @request.save
-      redirect_to task_path(task_id), alert: "You have submitted your request!"
+      redirect_to task_path(task_id), notice: "You have submitted your request!"
     else
       redirect_to task_path(task_id), alert: "Unsuccessfull request submission!"
     end

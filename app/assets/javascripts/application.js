@@ -20,7 +20,12 @@ $(function() {
 
   if ($('#alert').get(0)) {    
     // alert($('#alert').text()); // throw an alert() with the div's text
-    Materialize.toast($('#alert').text(), 4000, 'rounded')
+    Materialize.toast($('#alert').text(), 4000, 'rounded alert')
+  }
+
+  if ($('#notice').get(0)) {    
+    // alert($('#alert').text()); // throw an alert() with the div's text
+    Materialize.toast($('#notice').text(), 4000, 'rounded notice')
   }
   
   $(".button-collapse").sideNav();
