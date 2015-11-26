@@ -1,0 +1,124 @@
+small.user-show-rating-positive{
+  color: green;
+}
+
+small.user-show-rating-negative{
+  color: red;
+}
+
+
+div.chip.incomplete-background-color {
+  background-color: rgb(243, 160, 43);
+}
+
+.chip.review-tag-spacer {
+  margin-bottom: 0.5%;
+}
+/* Ivan stuff added.  Could delete if needed*/
+.chip {
+  margin-bottom :0.5%;
+}
+
+.chip a {
+  font-size: 0.7rem;
+}
+
+.display-task {
+  text-align: left;
+}
+
+.task-show-push-right label {
+  color: white;
+}
+
+.align-the-element {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5%;
+  border-radius: 10%;
+  border:double 3px #81d4fa;
+}
+
+.hide-form.reviews-modal {
+  z-index: 5;
+  position: absolute;
+}
+
+.profile-image {
+  display: inline-block;
+  margin-left: -10%;
+  border-radius: 50%;
+  border: solid;
+  border-color: #81d4fa;
+  -moz-box-shadow: 10px 14px 29px #121214;
+  -webkit-box-shadow: 10px 14px 29px #121214;
+  box-shadow: 10px 14px 29px #121214;
+  height: 300px;
+  width: 287px;
+}
+
+.name {
+  margin-left: 12%;
+}
+
+#profile-username-header {
+  margin-bottom: 8%;
+  position: relative;
+  left: 40%;
+}
+
+.form-image {
+  height: 200px;
+  width: 300px;
+  border:solid 2px #000000;
+  -moz-border-radius-topleft: 37px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-bottomright:38px;
+  -webkit-border-top-left-radius:37px;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-bottom-right-radius:38px;
+  border-top-left-radius:37px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:38px;
+  position: fixed;
+  top: 30px;
+  border-color: #81d4fa;
+}
+
+.user-profile-review-modal {
+  position: relative;
+  left: -27%;
+}
+
+.rating-badge {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 100%;
+  padding-left: 2px;
+}
+
+.rating-badge-green {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 100%;
+  padding-left: 5px;
+  margin-left: 2px;
+}
+
+div.accepted-background-color a {
+  color: #61FC61 ;
+}
+
+#user-tasks {
+  margin-left: 10%;
+  width: 100%;
+}
+
+#edit-profile {
+  padding: 30px;
+}

@@ -1,0 +1,232 @@
+/*CSS shared across whole app*/
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background: url("van_city.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover; /* For WebKit*/
+  -moz-background-size: cover;    /* Mozilla*/
+  -o-background-size: cover;      /* Opera*/
+  background-size: 100% 100%; 
+  /*color: rgba(18, 231, 48, 1); */
+  color:white;
+  z-index: -2;
+}
+
+main {
+  margin-left: 15%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/*body .overlay {
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity = 50); /* IE7 & 8*/ 
+    /*position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}*/
+
+.card.blue-grey.darken-1 {
+  color: white;
+}
+
+.top-content .card.medium {
+  border-radius: 10%;
+  height: 360px;
+}
+
+label {
+  padding: 10px;
+}
+
+.waves-effect.waves-light.btn-large {
+  background-color: #9ccc65 ;
+}
+
+.side-nav.fixed {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+li.bold {
+  margin-bottom: 2%;
+}
+
+.hide-form {
+  display: none;
+}
+
+.hide-form .show-form {
+  display: inline-block;
+}
+
+.waves-effect.waves-light.btn-large.nav-button {
+  background-color: #4caf50;
+}
+
+.top-content {
+  margin-top: 5%;
+}
+
+.center-transparent {
+  border: solid;
+  width: 40%;
+  margin: 0 auto;
+  background-color: rgba(23, 21, 22, 0.6);
+  -moz-box-shadow: 13px 21px 50px #000000;
+  -webkit-box-shadow: 13px 21px 50px #000000;
+  box-shadow: 13px 21px 50px #000000;
+  border-color: rgba(26, 187, 99, 1);
+  border-radius: 20px;
+  color: white;
+}
+
+.error-field {
+  padding-left: 10px;
+  color: red;
+}
+
+footer {
+  margin-left: 15%;
+  position: fixed;
+  font-size: 0.7em;
+  bottom: 0;
+  right: 0;
+  background-color: #fff9c4;
+  border-radius: 50%;
+  text-align: center;
+  height: 17px;
+  width: 135px;
+  color: white;
+  background:-webkit-gradient(linear, 13% 56%, 0% 12%, from(#000000), to(#FFFFFF));
+}
+
+.background-show-page {
+  background-color: rgba(23, 21, 22, 0.8);
+  -moz-box-shadow: 13px 21px 50px #000000;
+  -webkit-box-shadow: 13px 21px 50px #000000;
+  box-shadow: 13px 21px 50px #000000;
+  border-color: rgba(26, 187, 99, 1);
+  border-radius: 20px;
+  width: 110%;
+  margin-left: -2%;
+}
+
+.show-label {
+  color: #81d4fa;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.show-label-red {
+  color: red;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.show-label-green {
+  color: rgba(52, 211, 44, 1);
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.show-label-underline {
+  color: #81d4fa;
+  display: inline-block;
+  padding-right: 10px;
+  text-decoration: underline; 
+}
+
+.show-info {
+  margin: 35%;
+  cursor: pointer;
+}
+
+.material-icons large {
+  color: blue;
+}
+
+.review-title {
+  color: white;
+  padding-left: 10px;
+}
+
+.modal {
+  background-color: black !important;
+  border-radius: 5% !important;
+}
+
+.container {
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+#map-container {
+  min-height: 0% !important;
+}
+
+.paginate {
+  text-align: center;
+}
+
+.pagination li {
+  background-color: rgba(255,255,255,0.8);
+}
+
+.pagination li.active {
+  background-color: #0089EC !important;
+}
+
+.alert {
+  color: red !important;
+}
+
+.notice {
+  color: #32CD32 !important;
+}
+
+
+#needy-logo {
+  width: 100%;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 50%;
+    height: 100%;
+    padding-bottom: 20%;
+}
+
+.logo {
+  margin-bottom: 12%;
+  border-radius: 50%;
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 80%;
+  height: 20%;
+  -moz-box-shadow: 4px 4px 19px #000000;
+  -webkit-box-shadow: 4px 4px 19px #000000;
+  box-shadow: 4px 4px 19px #000000;
+  background: -webkit-gradient(linear, 34% 38%, 1% -5%, from(#0089EC), to(#FFFFF1));
+  background: -moz-linear-gradient(34% 38%, 1% -5%, from(#0089EC), to(#FFFFF1));
+  /*border: solid 3px #0089EC;*/
+}
+
+.nav-button {
+  width:80%;
+  margin-left: 8%;
+}
+
+/*nav must use inline style in _nav.html.erb & taks/index.html.erb to overide matericalize.css */
+nav {
+  -moz-box-shadow: 0px 0px 0px #000000;
+  -webkit-box-shadow: 0px 0px 0px #000000;
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/*override materialize icons display in navbar display inline */
+.nav-change-color {
+  background-color: rgba(23, 103, 196, 1) !important;
+}
+
+

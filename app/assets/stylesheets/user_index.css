@@ -1,0 +1,39 @@
+.card-content {
+  color: black;
+  max-height: 50%;
+}
+
+.card-content span a {
+  font-size: .8em;
+  line-height: 23px;
+}
+
+.card-image {
+  min-height: 50%;
+  overflow: hidden;
+  max-height: 50% !important;
+}
+
+#user-index-card.card-image {
+  padding-bottom: 90%;
+}
+
+#user-index-card.card-image img {
+  min-height: 100%;
+  position: absolute;
+}
+
+.card.small {
+  height: 250px !important;
+}
+
+.card-task-user {
+  color: black;
+  position: absolute;
+  bottom: 41%;
+  font-size: .7em;
+}
+
+#users-index {
+  margin-left: 25%;
+}
