@@ -14,7 +14,7 @@
           <button id="search-button" class="input-field col btn waves-effect waves-light" type="submit" name="action">
             <%= submit_tag("Filter tasks", name: nil, id: 'search-button') %>
           </button>
-          <div class="input-field col s3 hide-on-med-and-down">            
+          <div class="input-field col s3 hide-on-med-and-down" id="diff-radio-btn-align">            
             <%= radio_button_tag :difficulty, "easy" %>
             <%= label_tag(:difficulty_easy, "Easy", class: "task-index-filter-diff-label") %>
             <%= radio_button_tag :difficulty, "medium" %>

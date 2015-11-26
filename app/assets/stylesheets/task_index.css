@@ -25,6 +25,10 @@
   padding: 5px;
 }
 
+#diff-radio-btn-align {
+  margin-right: -2.5%;
+}
+
 .card-content {
   color: black;
 }
