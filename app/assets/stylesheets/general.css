@@ -156,6 +156,7 @@ footer {
 .modal {
   background-color: black !important;
   border-radius: 5% !important;
+  font-size: 1.3em;
 }
 
 .container {
