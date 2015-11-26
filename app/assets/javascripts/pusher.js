@@ -45,7 +45,7 @@ $(function() {
       dataType: "text",
       url: '/messages/new',
       method: 'GET',
-      data: {message: message, chat: chat_id, user_id: gon.current_user.id, sent_at: getTime()},
+      data: {message: message, chat: chat_id, user_id: gon.other_user.id, sent_at: getTime()},
       success:  function () {
         appendMessage(gon.current_user.profile_image_url, current_name, message);
       $('#chatMsg').val("");
