@@ -37,7 +37,7 @@ class Task < ActiveRecord::Base
 
     unless username.blank? || username == ""
       user = User.where("username LIKE ?", "%#{username}%") 
-      @task = @task.where(user: user).to_a 
+      @task = @task.where(user: user)
     end
 
     @task = case chronology
