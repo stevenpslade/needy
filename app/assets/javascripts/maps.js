@@ -73,7 +73,7 @@
           geocodeAddress(geocoder, map, address, popUp);
         });
       } else {
-        popUp = contentBox(tasks.title, tasks.description);
+        popUp = contentBox(tasks.title, tasks.description, tasks.id);
         address = tasks.location;
         geocodeAddress(geocoder, map, address, popUp);
       }
