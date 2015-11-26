@@ -91,7 +91,6 @@
           <% @tasks.each do |task| %>
             <div class="incomplete-background-color">
               <%= link_to "#{task.title}", task_path(task.id) %>
-              <i class="material-icons">close</i>
             </div>
           <% end %>
         </div>
@@ -102,7 +101,7 @@
             <% @reviews = Review.where(user_id: @user.id) %>
             <% @reviews.each do |review| %>
               <% if review.user_id == @user.id %>
-                <div class="review-tag-spacer">
+                <div class="review-tag-spacer chip">
                   <a class="user-reviews-tags" style="cursor: pointer">
                     <%= review.task.title %> 
                     <% if review.user_rating >= 0 %>
@@ -111,6 +110,7 @@
                       <small class="user-show-rating-negative">(<%= review.user_rating %>/5)</small>
                     <% end %>
                   </a>
+                  <i class="material-icons">close</i>
                   <div class="hide-form reviews-modal">
                     <div class="center-transparent col s12 user-profile-review-modal">
                       <div class="col s12">
@@ -128,7 +128,7 @@
             <% @reviews = Review.where(for_user: @user.id) %>
             <% @reviews.each do |review| %>
               <% if review.for_user == @user.id %>
-                <div class="review-tag-spacer">
+                <div class="review-tag-spacer chip">
                   <a class="user-reviews-tags" style="cursor: pointer">
                     <%= review.task.title %> 
                     <% if review.user_rating >= 0 %>
