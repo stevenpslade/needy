@@ -91,3 +91,20 @@
 .map-container {
   min-height: 0% !important;
 }
+
+#task-video {
+  margin-left: 10%;
+  margin-left: 10%;
+  /*border: outset 4px #81d4fa;*/
+  display: inline-block;
+  border-radius: 20px
+}
+
+iframe {
+  border-radius: 20px;
+  border: outset 4px #81d4fa;
+}
+
+.task-request-approve-div strong {
+  color:#81d4fa;
+}

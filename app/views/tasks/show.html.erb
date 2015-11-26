@@ -68,7 +68,7 @@
               <h5 class="show-label">Description: </h5> <h5 class="description"><%= @task.description %></h5>
             </div>
             <div class="col s6 task-request-approve-div">
-              <p>There are currently <%= @all_requests.count %> users requesting to do this task.</p>
+              <p>There are currently <strong><%= @all_requests.count %></strong> users requesting to do this task.</p>
               <% @all_requests.each do |r| %>
                 <div class="chip">
                   <%= link_to User.find(r.user_id).full_name, user_path(r.user_id) %></p>
@@ -88,6 +88,11 @@
                 <% end %>
               <% end %>
             </div>
+          </div>
+          <div id="task-video">
+            <% if @task.video_url %>
+             <iframe width="640" height="360" src="<%= @task.video_url %>" frameborder="0" allowfullscreen></iframe>
+            <% end %>
           </div>
         <% else %>
         <!-- if TASK.NEEDED_ID is present -->
@@ -265,6 +270,11 @@
               </div>
             </div>
           </div>
+        </div>
+        <div id="task-video">
+          <% if @task.video_url %>
+            <iframe width="640" height="360" src="<%= @task.video_url %>" frameborder="0" allowfullscreen></iframe>
+          <% end %>
         </div>
       </div>
     </div>

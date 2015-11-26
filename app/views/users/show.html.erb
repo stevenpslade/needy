@@ -31,24 +31,26 @@
             <h6 class="show-label">EMAIL</h6>
             <%= @user.email %>
           </div>
-        <% if (current_user.id == @user.id) %>
-          <div class="row">
-            <div id="show-edit-profile" class="btn-floating btn-large waves-effect waves-light blue btn tooltipped btn modal-trigger" data-delay="50" data-tooltip="Edit Profile" data-target="modal1">
-              <i class="material-icons">mode_edit</i>
-            </div>
-            <div id="modal1" class="modal">
-              <div id="edit-profile" class="hide-form">
-                <%= render 'users/edit_form' %>
-              </div>
-            </div>
-            <div id="delete-profile" class="btn-floating btn-large waves-effect waves-light red btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Profile">
-              <i class="material-icons">delete</i> <!-- still need to add functionality -->
-            </div> 
-          </div>
-        <% end %>
         </div>
       </div>
       <div class="row">
+        <% if (current_user.id == @user.id) %>
+
+            <div class="edit-delete-container">              
+              <div id="show-edit-profile" class="btn-floating btn-large waves-effect waves-light blue btn tooltipped btn modal-trigger" data-delay="50" data-tooltip="Edit Profile" data-target="modal1">
+                <i class="material-icons">mode_edit</i>
+              </div>
+              <div id="modal1" class="modal">
+                <div id="edit-profile" class="hide-form">
+                  <%= render 'users/edit_form' %>
+                </div>
+              </div>
+              <div id="delete-profile" class="btn-floating btn-large waves-effect waves-light red btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete Profile">
+                <i class="material-icons">delete</i> <!-- still need to add functionality -->
+              </div> 
+            </div>
+   
+        <% end %>
         <div class="col s6">
           <h6 class="show-label">NAME</h6>
           <%= @user.first_name %> <%= @user.last_name %>

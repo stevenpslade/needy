@@ -67,6 +67,10 @@ div.chip.incomplete-background-color {
   left: 40%;
 }
 
+#profile-rating-col {
+  margin-top: 8%;
+}
+
 .form-image {
   height: 200px;
   width: 300px;
@@ -121,4 +125,9 @@ div.accepted-background-color a {
 
 #edit-profile {
   padding: 30px;
+}
+
+.edit-delete-container {
+  display: inline;
+  margin-left: -1%;
 }

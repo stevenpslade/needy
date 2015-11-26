@@ -42,3 +42,8 @@ button {
  #task-index {
   margin-left: 25%;
 }
+
+/*Override materialize card line-height*/
+.card .card-content .card-title {
+    line-height: 25px !important;
+}
