@@ -93,11 +93,11 @@
               <% end %>
             </div>
           </div>
-          <div class="video-container">
-            <% if @task.video_url %>
+          <% if @task.video_url %>
+            <div class="video-container">
              <iframe width="640" height="360" src="<%= @task.video_url %>" frameborder="0" allowfullscreen></iframe>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         <% else %>
         <!-- if TASK.NEEDED_ID is present -->
           <div class="top-content col s6">
@@ -277,11 +277,11 @@
             <% end %>
           </div>
         </div>
-        <div id="task-video">
-          <% if @task.video_url %>
+        <% if @task.video_url %>
+          <div id="task-video">
             <iframe width="640" height="360" src="<%= @task.video_url %>" frameborder="0" allowfullscreen></iframe>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <% if (current_user.id == @task.user_id || current_user.id == @task.needed_id) %>
