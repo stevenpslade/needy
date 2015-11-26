@@ -110,8 +110,16 @@ div.chip.incomplete-background-color {
   height: 20px;
   background-color: white;
   border-radius: 100%;
-  padding-left: 5px;
   margin-left: 2px;
+  text-align: center;
+  transition: all 1s;
+}
+
+.rating-badge-green:hover {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(0,0,0,0);
+  font-size: 30px;
 }
 
 div.accepted-background-color a {
