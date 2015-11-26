@@ -83,7 +83,7 @@
                   <% @all_requests.each do |r| %>
                     <p class="task-show-push-right">
                       <input name="needed_id" type="radio" id="<%= r[:user_id] %>" value="<%= r[:user_id] %>"  /> 
-                      <label for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
+                      <label class= "task-show-approve-request-label" for="<%= r[:user_id] %>"><%= r.user.full_name %></label>
                     </p>
                   <% end %>
                     <% if !@task.requests.blank? %>

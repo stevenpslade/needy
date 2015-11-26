@@ -811,3 +811,8 @@ button {
 .notice {
   color: #32CD32 !important;
 }
+
+.task-show-approve-request-label {
+  padding: 0px;
+  color: white;
+}
