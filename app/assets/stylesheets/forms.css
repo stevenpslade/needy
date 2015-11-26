@@ -1,0 +1,34 @@
+/*CSS Override Materialize form colors*/
+.input-field label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text] + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=textarea]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=radio]:focus + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=radio] + label {
+  color: #81d4fa !important;
+}
+
+.input-field input[type=text]:focus {
+   border-bottom: 1px solid #81d4fa !important;
+   box-shadow: 0 1px 0 0 #000;
+ }
+
+ .input-field input[type=search]:focus {
+  color: #81d4fa !important;
+  background-color: rgba(23, 21, 22, 0.4) !important;
+ }

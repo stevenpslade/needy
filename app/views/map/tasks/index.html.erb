@@ -1,5 +1,19 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <%= include_gon(:init => true) %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'vendors' %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+  <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Need It</title>
     <style type="text/css">
             html, main {
         height: 100%;

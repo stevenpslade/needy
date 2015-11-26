@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     uniqueness: true
 
 
-  # validates :first_name,
-  #   presence: true
+  validates :first_name,
+    presence: true
 
   # validates :birth_date,
   #   presence: true

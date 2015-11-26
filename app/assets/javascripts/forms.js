@@ -77,6 +77,8 @@ $(function() {
   $('.modal-trigger').leanModal();
   $('.modal-trigger1').leanModal();
   $('.modal-trigger2').leanModal();
+  $('.modal-trigger3').leanModal();
+
 
   // show info on landing page
   // $('body').on('click', ".show-info", function() {

@@ -4,6 +4,7 @@ class Map::TasksController < ApplicationController
 
   def index
     gon.watch.tasks = Task.all
+    # render :layout => false
     # @tasks = Task.all
   end
 

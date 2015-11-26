@@ -1,0 +1,49 @@
+/*search filter styling*/
+#dropdown-icon {
+  display: inline-block !important;
+  margin:0 !important;
+  top: -11%;
+}
+
+#search-button {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.card-attr {
+  text-align: left;
+  color: black;
+}
+
+.card-attr span {
+  font-weight: bold;
+}
+
+.input-field {
+  padding: 5px;
+}
+
+.card-content {
+  color: black;
+}
+
+button {
+  padding: 20px;
+}
+
+#newest_first {
+  display: inline;
+ }
+
+ #oldest_first {
+  display: inline;
+ }
+
+ #task-index {
+  margin-left: 25%;
+}
+
+/*Override materialize card line-height*/
+.card .card-content .card-title {
+    line-height: 25px !important;
+}
